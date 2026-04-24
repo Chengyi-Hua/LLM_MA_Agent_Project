@@ -1,0 +1,33 @@
+llm:
+  temperature: 0.0
+  max_tokens: 4096
+  method0:
+    # provider: "openai"
+    # model: "gpt-5.4-mini"
+    provider: "groq"
+    model: "openai/gpt-oss-20b"
+  method1:
+    # provider: "openai"
+    # model: "gpt-5.4-mini"
+    provider: "groq"
+    model: "openai/gpt-oss-20b"
+  method2:
+    provider: "openai"
+    model: "gpt-5.4-mini"
+  agent2:
+    provider: "openai"
+    model: "gpt-5.4-mini"
+  agent3:
+    provider: "openai"
+    model: "gpt-5.4-mini"
+  agent4:
+    provider: "openai"
+    model: "gpt-5.4-mini"
+
+retrieval:
+  top_n: 10    # number of candidate chunks from vector retrieval
+  top_l: 5     # number of chunks kept after reranking
+
+api_keys:
+  openai_env: "OPENAI_API_KEY"
+  groq_env: "GROQ_API_KEY"
