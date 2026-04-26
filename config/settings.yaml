@@ -24,10 +24,22 @@ llm:
     provider: "openai"
     model: "gpt-5.4-mini"
 
-retrieval:
-  top_n: 10    # number of candidate chunks from vector retrieval
-  top_l: 5     # number of chunks kept after reranking
-
 api_keys:
   openai_env: "OPENAI_API_KEY"
   groq_env: "GROQ_API_KEY"
+
+retrieval:
+  tavily:
+    max_results: 10      # Tavily initially retrieves a large number of chunks (e.g., 100) and then we take the top N (e.g., 8) for reranking
+    search_depth: "advanced"
+  
+  chunking:
+    chunk_size: 500     # chunking limit (number of characters per chunk)
+    overlap: 60         # chunk overlap (number of characters that overlap between consecutive chunks)
+
+  rerank:
+    top_l: 8     # number of chunks kept after reranking
+
+pipeline_config:
+  target_entity: "Surtsey"
+  api_key_env_var: "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"
