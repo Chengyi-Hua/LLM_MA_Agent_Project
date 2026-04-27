@@ -2,6 +2,8 @@ import os
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
+import networkx as nx
+from sentence_transformers import CrossEncoder
 
 # Load environment variables for the API key
 load_dotenv()
@@ -12,7 +14,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # ==========================================
-# 这一部分是为了从 chunks 当中提炼出可以进行逻辑计算的一段信息
+# Step 1, 从 chunks 当中提炼出可以进行逻辑计算的一段信息
 # ==========================================
 
 def load_eden_knowledge_base(filepath: str) -> dict:
@@ -116,12 +118,7 @@ if __name__ == "__main__":
     for sec, summ in summaries_dict.items():
         print(f"\n[{sec}]\n{summ}")
 
-# ==========================================
-# 开始计算逻辑关系 进行排序
-# ==========================================
 
-import networkx as nx
-from sentence_transformers import CrossEncoder
 
 # ==========================================
 # Agent 2: Logic & Graph Algorithm Engineering
