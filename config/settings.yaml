@@ -15,8 +15,21 @@ llm:
     provider: "openai"
     model: "gpt-5.4-mini"
   agent2:
-    provider: "openai"
-    model: "gpt-5.4-mini"
+    # 第一部分：负责将 Chunks 压缩为 Summary 的大语言模型
+    llm:
+      provider: "openai"
+      model: "gpt-5.4-mini"
+      temperature: 0.3      
+      max_tokens: 250
+    # 第二部分：负责计算蕴含概率与构建图谱的专用逻辑模块
+    graph_logic:
+      nli_model:
+        provider: "huggingface"
+        model_name: "cross-encoder/nli-deberta-v3-base"
+        entailment_index: 1
+      algorithm:
+        threshold: 0.6
+        allow_cycles: false
   agent3:
     provider: "openai"
     model: "gpt-5.4-mini"
