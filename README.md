@@ -1,7 +1,7 @@
 # LLM Multi-Agent Wikipedia Generation Project
 
 ## Project Overview
-This project builds a multi-agent RAG pipeline to automatically generate full-length Wikipedia-style articles for geographic islands. We compare three generation methods (Method 0-2) and propose an inter-section aware method (Method 3) to improve inter-section coherence.
+This project builds a multi-agent RAG pipeline to automatically generate full-length Wikipedia-style articles for geographic islands. We compare three generation methods (Method 0-2) and propose an inter-section aware method (Method 3) to improve cross-section coherence.
 
 ## Repository Structure
 ```
@@ -16,6 +16,7 @@ LLM_MA_Agent_Project/
 │   └── ...
 ├── agents/
 │   ├── agent2_orchestrator.py       # fuzheng: NLI, DAG, topological sort
+│   ├── agent3_generator.py          # Thomas: context-aware inter-section generation
 │   └── agent4_evaluator.py          # Chengyi: LLM-as-judge evaluation
 ├── evaluation/                      # Chengyi: Evaluation metrics
 │   └── ...
@@ -55,18 +56,32 @@ python pipeline.py --method all
 ## Input Format (Eden → everyone)
 ```json
 {
-  "island_name": "Nishinoshima",
-  "sections": ["Geology", "Ecology", "Climate", "History"],
-  "chunks": [
-    {
-      "chunk_id": "chunk_001",
-      "text": "...",
-      "source_url": "https://..."
+  "metadata": {
+    "original_input": "Nishinoshima",
+    "resolved_entity_name": "Nishinoshima (Ogasawara)",
+    "total_sections": 3
+  },
+  "blueprint_data": {
+    "island_name": "Nishinoshima (Ogasawara)",
+    "sections_data": {
+      "Geology": {
+        "chunks": [
+          {
+            "chunk_id": "chunk_0001",
+            "text": "...",
+            "source_url": "https://...",
+            "retrieval_score": 0.999
+          }
+        ]
+      },
+      "Ecology": {
+        "chunks": [...]
+      }
     }
-  ]
+  }
 }
 ```
-Note: chunks do not need to be pre-assigned to sections — the reranker handles this.
+Note: chunks are pre-assigned to sections by Eden.
 
 ## Output Format (Yen-An → Chengyi)
 ```json
