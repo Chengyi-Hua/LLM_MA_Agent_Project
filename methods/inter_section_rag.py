@@ -2,6 +2,7 @@ import os
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
+from scipy.special import softmax
 import networkx as nx
 from sentence_transformers import CrossEncoder
 
@@ -123,7 +124,6 @@ if __name__ == "__main__":
 # ==========================================
 # Agent 2: Logic & Graph Algorithm Engineering
 # ==========================================
-
 class Agent2Orchestrator:
     def __init__(self, threshold=0.6):
         # Using a Cross-Encoder for high-accuracy NLI entailment scores
@@ -142,38 +142,32 @@ class Agent2Orchestrator:
         dag.add_nodes_from(sections)
 
         # 1. Nested loop to compare every section pair (Asymmetric)
-        # We check if Section A entails Section B
-      
-        # enumerate(sections): 这个函数会同时返回列表中每个元素的索引 (i) 和内容 (sec_a)
-        # sections 是 ["Geology", "Ecology", "Tourism"]，那么第一轮循环 i 就是 0，sec_a 就是 "Geology"
         for i, sec_a in enumerate(sections):
-            # 它选定另一个章节作为**“结论 (Conclusion)”**
             for j, sec_b in enumerate(sections):
                 if i == j:
                     continue
                 
-                # Model predicts probabilities for [Contradiction, Neutral, Entailment]
-                # We focus on index 2 (Entailment score)
-                # summaries[i] 被视为 前提 (Premise) 
-                # summaries[j] 被视为 假设 (Hypothesis)
-                scores = self.model.predict([(summaries[i], summaries[j])])
-              
-                # scores[2] 是3 个概率值 里面的 Entailment 
-                entailment_score = scores[2] 
+                # Model predicts logits, which need to be converted to probabilities
+                logits = self.model.predict([(summaries[i], summaries[j])])[0]
+                probs = softmax(logits) # 将 Logits 转换为 0-1 的概率分布
+                
+                entailment_score = probs[1] 
 
                 # 2. Threshold Filtering Logic
-                # Only add a dependency edge if the score is high enough
+                # 将 entailment_score 作为 weight (权重) 存入边中，方便后续破环
                 if entailment_score > self.threshold:
-                    dag.add_edge(sec_a, sec_b)
+                    dag.add_edge(sec_a, sec_b, weight=entailment_score)
                     print(f"[Dependency Found] {sec_a} -> {sec_b} (Score: {entailment_score:.2f})")
 
         # 3. Resolve potential cycles to ensure it's a DAG
-        # If a cycle exists (A->B and B->A), we break it by removing the weaker edge
         while not nx.is_directed_acyclic_graph(dag):
             cycle = nx.find_cycle(dag)
-            # Logic: Remove the edge in the cycle with the lowest entailment score
-            # (Simplified for this example: just removing one edge to break the cycle)
-            dag.remove_edge(cycle[0][0], cycle[0][1])
+            # 找到环里面 weight (也就是蕴含分数) 最低的那条边
+            min_edge = min(cycle, key=lambda edge: dag.edges[edge[0], edge[1]]['weight'])
+            
+            # 移除最弱的依赖关系来打破死循环
+            dag.remove_edge(min_edge[0], min_edge[1])
+            print(f"[Cycle Broken] Removed weaker edge {min_edge[0]} -> {min_edge[1]}")
 
         # 4. Topological Sorting
         # This converts the DAG into a linear generation order
@@ -188,7 +182,6 @@ class Agent2Orchestrator:
             "execution_order": execution_order,
             "dependency_map": dependency_map
         }
-        return execution_order
 
 # Integration Test
 
