@@ -11,9 +11,9 @@ Usage:
 import argparse
 import json
 from datetime import datetime
+from pathlib import Path
 from methods import PureGeneration, NaiveRAG, HierarchicalRAG
 from methods.base_rag import load_config
-from data.mock_data import get_mock_input
 
 
 METHOD_MAP = {
@@ -25,10 +25,15 @@ METHOD_MAP = {
 }
 
 
+def load_input(path: str = "data/mock_data.json") -> dict:
+    with open(path, "r") as f:
+        return json.load(f)
+
+
 def run(method_name: str, input_data: dict, config: dict) -> dict:
     cls = METHOD_MAP[method_name]
     runner = cls(config=config)
-    print(f"\n[{method_name}] Generating article for: {input_data['island_name']}")
+    print(f"\n[{method_name}] Generating article for: {input_data['blueprint_data']['island_name']}")
     result = runner.generate(input_data)
     print(f"[{method_name}] Done. Sections generated: {len(result['sections'])}")
     return result
@@ -41,10 +46,15 @@ def main():
         default="method1",
         choices=list(METHOD_MAP.keys()) + ["all"]
     )
+    parser.add_argument(
+        "--input",
+        default="data/mock_data.json",
+        help="Path to input JSON file"
+    )
     args = parser.parse_args()
 
     config = load_config()
-    input_data = get_mock_input()  # swap with real data from Eden later
+    input_data = load_input(args.input)
 
     if args.method == "all":
         results = {}

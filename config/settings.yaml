@@ -12,8 +12,10 @@ llm:
     provider: "groq"
     model: "openai/gpt-oss-20b"
   method2:
-    provider: "openai"
-    model: "gpt-5.4-mini"
+    # provider: "openai"
+    # model: "gpt-5.4-mini"
+    provider: "groq"
+    model: "openai/gpt-oss-20b"
   agent2:
     # 第一部分：负责将 Chunks 压缩为 Summary 的大语言模型
     llm:
@@ -51,8 +53,16 @@ retrieval:
     overlap: 60         # chunk overlap (number of characters that overlap between consecutive chunks)
 
   rerank:
-    top_l: 8     # number of chunks kept after reranking
+    top_l: 8     # number of chunks kept after reranking #move to base_rag.py logic
 
 pipeline_config:
   target_entity: "Surtsey"
-  api_key_env_var: "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"
+  # api_key_env_var: move Tavily API key to .env — do not hardcode here
+
+# Methods config — used by methods 1, 2, and 3
+methods:
+  use_top_l: true
+  top_l: 5
+  # top_l: 8  # use when Eden's real data is ready
+  reranker_type: "cross-encoder"       # "bm25", "cross-encoder", or "none"
+  rerank_scope: "per-section"  # Method 2 only: "global" (2.1) or "per-section" (2.2) # method1 hardcoded in naive_rag.py
