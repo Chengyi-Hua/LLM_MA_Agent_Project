@@ -1,82 +1,81 @@
 """
+methods/inter_section_rag.py
+
 Method 3: Inter-Section Aware RAG.
-Extends HierarchicalRAG with NLI-based dependency ordering and context injection.
-- Agent 2 (fuzheng): NLI, DAG, topological sort → determines generation order
-- Agent 3 (Thomas): generates each section with context from previous sections
+Thin coordinator — contains no generation or NLI logic.
+
+Inherits from HierarchicalRAG to satisfy the pipeline interface.
+pipeline.py calls .generate(input_data) identically on all methods.
+
+Coordination flow:
+  1. Agent 2 (GraphAwareRAG)  — reranks chunks, builds NLI summaries, constructs
+                                DAG, returns execution order + dependency map
+  2. Agent 3 (Agent3Generator) — generates each section in DAG order,
+                                 injecting Agent 2's summaries as hard context
+
+input_data format (standard across all methods, from Eden + mock_data.py):
+{
+    "metadata"       : { ... },
+    "blueprint_data" : {
+        "island_name"  : str,
+        "sections_data": {
+            "Geology": { "chunks": [ { "chunk_id", "text", "source_url", ... } ] },
+            ...
+        }
+    }
+}
 """
 
-from methods.hierarchical_rag import HierarchicalRAG, SECTION_PROMPT
+from methods.hierarchical_rag import HierarchicalRAG
+from agents.agent2_orchestrator import GraphAwareRAG   # Agent 2's actual class name
+from agents.agent3_generator import Agent3Generator
 
 
 class InterSectionRAG(HierarchicalRAG):
-    agent_key = "agent3"
+    """
+    Method 3: Inter-Section Aware RAG.
+    Coordinates Agent 2 → Agent 3 and returns standard output for Agent 4.
+    """
+
+    agent_key = "method3"
 
     def generate(self, input_data: dict) -> dict:
-        island_name, sections_data = self._parse_input(input_data)
+        """
+        Parameters
+        ----------
+        input_data : standard blueprint dict (same format as Methods 0-2)
 
-        # TODO (fuzheng - Agent 2):
-        # 1. Run NLI across section chunks to compute entailment probabilities
-        # 2. Build DAG from entailment matrix
-        # 3. Topological sort → ordered_sections
-        ordered_sections = list(sections_data.keys())  # placeholder
+        Returns
+        -------
+        Standard output dict consumed by Agent 4:
+        { "method", "island_name", "metadata", "generated_article", "sections" }
+        """
+        island_name = input_data["blueprint_data"]["island_name"]
 
-        full_article_parts = []
-        all_used_chunks = []
-        previous_summaries = {}
+        print(f"\n{'='*60}")
+        print(f"[Method 3] Inter-Section RAG | island: {island_name}")
+        print(f"{'='*60}")
 
-        for section in ordered_sections:
-            section_chunks = sections_data[section]["chunks"]
-            context = self._build_context(previous_summaries)
+        # ── Agent 2: NLI + DAG + topological sort ─────────────────────────────
+        # GraphAwareRAG inherits BaseRAG — passes same config, no double init cost
+        print("\n[Method 3] Running Agent 2 (NLI + DAG) ...")
+        agent2 = GraphAwareRAG(config=self.config)
+        agent2_output = agent2.generate(input_data)
+        # agent2_output = {
+        #     "status"    : "success",
+        #     "order"     : list[str],            # DAG topological execution order
+        #     "dependency": dict[str, list[str]], # section → list of dep sections
+        #     "summaries" : dict[str, str]        # section → pre-built NLI summary
+        # }
+        print(f"[Method 3] Agent 2 done. Execution order: {agent2_output['order']}")
 
-            top_chunks, section_text = self._generate_section(
-                island_name=island_name,
-                section=section,
-                section_chunks=section_chunks,
-                context=context
-            )
+        # ── Agent 3: context-aware generation in DAG order ────────────────────
+        print("\n[Method 3] Running Agent 3 (context-aware generation) ...")
+        agent3 = Agent3Generator(config=self.config)
 
-            previous_summaries[section] = self._summarize(section_text)
-            full_article_parts.append(f"=={section}==\n{section_text}")
-            all_used_chunks.extend(top_chunks)
+        # Inject agent2_output into input_data for Agent 3
+        agent3_input = {**input_data, "agent2_output": agent2_output}
+        result = agent3.generate(agent3_input)
 
-        article_text = "\n\n".join(full_article_parts)
-
-        return self._build_output(
-            method="method3",
-            island_name=island_name,
-            article_text=article_text,
-            chunks=all_used_chunks,
-            rerank_strategy="per-section",
-            top_l_applied_at="per-section" if self.use_top_l else "none"
-        )
-
-    def _generate_section(
-        self,
-        island_name: str,
-        section: str,
-        section_chunks: list[dict],
-        context: str = ""
-    ) -> tuple[list[dict], str]:
-        query = f"{island_name} {section}"
-        top_chunks = self._rerank_chunks(section_chunks, query=query)
-        documents = self._format_chunks_for_prompt(top_chunks)
-
-        context_block = f"\nContext from previously generated sections:\n{context}\n" if context else ""
-
-        prompt = SECTION_PROMPT.format(
-            island_name=island_name,
-            section=section,
-            documents=documents
-        ) + context_block
-
-        section_text = self._call_llm(prompt)
-        return top_chunks, section_text
-
-    def _build_context(self, previous_summaries: dict) -> str:
-        if not previous_summaries:
-            return ""
-        return "\n".join(f"[{s}]: {summary}" for s, summary in previous_summaries.items())
-
-    def _summarize(self, section_text: str) -> str:
-        prompt = f"Summarize the following section in 2-3 sentences:\n\n{section_text}"
-        return self._call_llm(prompt)
+        print(f"\n[Method 3] Complete. Sections generated: {len(result['sections'])}")
+        return result
