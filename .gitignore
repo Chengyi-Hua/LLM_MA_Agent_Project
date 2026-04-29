@@ -20,4 +20,4 @@ data/outputs/
 .idea/
 
 # OS
-.DS_Store
+.DS_Store.env
