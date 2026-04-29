@@ -16,14 +16,19 @@ llm:
     # model: "gpt-5.4-mini"
     provider: "groq"
     model: "openai/gpt-oss-20b"
+  method3:
+    # provider: "openai"
+    # model: "gpt-5.4-mini"
+    provider: "groq"
+    model: "openai/gpt-oss-20b"
   agent2:
-    # 第一部分：负责将 Chunks 压缩为 Summary 的大语言模型
+    # Part 1: LLM for compressing chunks into summaries
     llm:
       provider: "openai"
       model: "gpt-5.4-mini"
-      temperature: 0.3      
+      temperature: 0.3
       max_tokens: 250
-    # 第二部分：负责计算蕴含概率与构建图谱的专用逻辑模块
+    # Part 2: NLI model + graph algorithm config
     graph_logic:
       nli_model:
         provider: "huggingface"
@@ -45,24 +50,23 @@ api_keys:
 
 retrieval:
   tavily:
-    max_results: 10      # Tavily initially retrieves a large number of chunks (e.g., 100) and then we take the top N (e.g., 8) for reranking
+    max_results: 10
     search_depth: "advanced"
-  
+
   chunking:
-    chunk_size: 500     # chunking limit (number of characters per chunk)
-    overlap: 60         # chunk overlap (number of characters that overlap between consecutive chunks)
+    chunk_size: 500
+    overlap: 60
 
   rerank:
-    top_l: 8     # number of chunks kept after reranking #move to base_rag.py logic
+    top_l: 8
 
 pipeline_config:
   target_entity: "Surtsey"
-  # api_key_env_var: move Tavily API key to .env — do not hardcode here
 
 # Methods config — used by methods 1, 2, and 3
 methods:
   use_top_l: true
   top_l: 5
   # top_l: 8  # use when Eden's real data is ready
-  reranker_type: "cross-encoder"       # "bm25", "cross-encoder", or "none"
-  rerank_scope: "per-section"  # Method 2 only: "global" (2.1) or "per-section" (2.2) # method1 hardcoded in naive_rag.py
+  reranker_type: "cross-encoder"      # "bm25", "cross-encoder", or "none"
+  rerank_scope: "per-section"         # "global" (2.1) or "per-section" (2.2)
