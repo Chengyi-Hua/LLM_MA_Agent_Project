@@ -21,3 +21,4 @@ data/outputs/
 
 # OS
 .DS_Store.env
+data/.DS_Store
