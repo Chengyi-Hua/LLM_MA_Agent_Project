@@ -59,8 +59,17 @@ class BaseRAG:
             api_key = os.getenv(self.config["api_keys"]["groq_env"])
             return Groq(api_key=api_key), model
 
+        elif provider == "openrouter":
+            # OpenRouter is OpenAI-compatible — just needs a different base_url
+            from openai import OpenAI
+            api_key = os.getenv(self.config["api_keys"]["openrouter_env"])
+            return OpenAI(
+                api_key=api_key,
+                base_url="https://openrouter.ai/api/v1"
+            ), model
+
         else:
-            raise ValueError(f"Unknown provider: {provider}. Use 'openai' or 'groq'.")
+            raise ValueError(f"Unknown provider: {provider}. Use 'openai', 'groq', or 'openrouter'.")
 
     def _call_llm(self, prompt: str, system: str = "You are a helpful assistant.") -> str:
         """Single entry point for all LLM calls."""

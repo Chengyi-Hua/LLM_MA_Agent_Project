@@ -2,30 +2,22 @@ llm:
   temperature: 0.0
   max_tokens: 4096
   method0:
-    # provider: "openai"
-    # model: "gpt-5.4-mini"
-    provider: "groq"
-    model: "openai/gpt-oss-20b"
+    provider: "openrouter"
+    model: "openai/gpt-4.1-mini"        # change to any model on openrouter.ai/models
   method1:
-    # provider: "openai"
-    # model: "gpt-5.4-mini"
-    provider: "groq"
-    model: "openai/gpt-oss-20b"
+    provider: "openrouter"
+    model: "openai/gpt-4.1-mini"
   method2:
-    # provider: "openai"
-    # model: "gpt-5.4-mini"
-    provider: "groq"
-    model: "openai/gpt-oss-20b"
+    provider: "openrouter"
+    model: "openai/gpt-4.1-mini"
   method3:
-    # provider: "openai"
-    # model: "gpt-5.4-mini"
-    provider: "groq"
-    model: "openai/gpt-oss-20b"
+    provider: "openrouter"
+    model: "openai/gpt-4.1-mini"
   agent2:
     # Part 1: LLM for compressing chunks into summaries
     llm:
-      provider: "openai"
-      model: "gpt-5.4-mini"
+      provider: "openrouter"
+      model: "openai/gpt-4.1-mini"
       temperature: 0.3
       max_tokens: 250
     # Part 2: NLI model + graph algorithm config
@@ -38,15 +30,16 @@ llm:
         threshold: 0.6
         allow_cycles: false
   agent3:
-    provider: "openai"
-    model: "gpt-5.4-mini"
+    provider: "openrouter"
+    model: "openai/gpt-4.1-mini"
   agent4:
-    provider: "openai"
-    model: "gpt-5.4-mini"
+    provider: "openrouter"
+    model: "openai/gpt-4.1-mini"
 
 api_keys:
-  openai_env: "OPENAI_API_KEY"
-  groq_env: "GROQ_API_KEY"
+  openai_env: "OPENAI_API_KEY"          # only needed if provider is "openai"
+  groq_env: "GROQ_API_KEY"              # only needed if provider is "groq"
+  openrouter_env: "OPENROUTER_API_KEY"  # your current key
 
 retrieval:
   tavily:
@@ -67,6 +60,6 @@ pipeline_config:
 methods:
   use_top_l: true
   top_l: 5
-  # top_l: 8  # use when Eden's real data is ready
-  reranker_type: "cross-encoder"      # "bm25", "cross-encoder", or "none"
-  rerank_scope: "per-section"         # "global" (2.1) or "per-section" (2.2)
+  reranker_type: "bm25"          # "bm25", "cross-encoder", or "none"
+                                  # tip: use "bm25" locally — cross-encoder is slow
+  rerank_scope: "per-section"    # "global" or "per-section"
