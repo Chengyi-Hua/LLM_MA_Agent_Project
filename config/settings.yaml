@@ -37,9 +37,9 @@ llm:
     model: "openai/gpt-4.1-mini"
 
 api_keys:
-  openai_env: "OPENAI_API_KEY"          # only needed if provider is "openai"
-  groq_env: "GROQ_API_KEY"              # only needed if provider is "groq"
-  openrouter_env: "OPENROUTER_API_KEY"  # your current key
+  openai_env: "OPENAI_API_KEY"          
+  groq_env: "GROQ_API_KEY"              
+  openrouter_env: "OPENROUTER_API_KEY"  
 
 retrieval:
   tavily:
