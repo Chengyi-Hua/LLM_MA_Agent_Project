@@ -18,7 +18,7 @@ Output format:
     "summaries" : dict[str, str]         # section → pre-built NLI summary
 }
 """
-
+import json
 import os
 import networkx as nx
 from scipy.special import softmax
@@ -167,9 +167,20 @@ class GraphAwareRAG(BaseRAG):
         plan = self._build_nli_graph(summaries)
         print(f"[Agent 2] Execution order: {plan['order']}")
 
-        return {
+        output_payload = {
             "status"    : "success",
+            "island"    : island_name,
             "order"     : plan["order"],
             "dependency": plan["map"],
             "summaries" : summaries
         }
+        save_dir = "logs/agent2_plans"
+        os.makedirs(save_dir, exist_ok=True)
+        
+        save_path = os.path.join(save_dir, f"{island_name}_plan.json")
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(output_payload, f, ensure_ascii=False, indent=4)
+        
+        print(f"💾 [Agent 2] Plan saved to: {save_path}")
+
+        return output_payload
