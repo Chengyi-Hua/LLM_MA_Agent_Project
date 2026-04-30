@@ -73,6 +73,14 @@ class GraphAwareRAG(BaseRAG):
             api_key = os.getenv(self.config["api_keys"]["groq_env"])
             return Groq(api_key=api_key), model
 
+        elif provider == "openrouter":
+            from openai import OpenAI
+            api_key = os.getenv(self.config["api_keys"]["openrouter_env"])
+            return OpenAI(
+                api_key=api_key,
+                base_url="https://openrouter.ai/api/v1"
+            ), model
+
         else:
             raise ValueError(f"Unknown provider: {provider}")
 
