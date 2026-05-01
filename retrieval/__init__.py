@@ -1,0 +1,1 @@
+from retrieval.rag_data_pipeline import run_rag_pipeline
