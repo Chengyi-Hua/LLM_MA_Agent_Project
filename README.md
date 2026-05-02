@@ -11,7 +11,6 @@ This project builds a multi-agent RAG pipeline to automatically generate Wikiped
 | method2 | Hierarchical RAG | Chunks retrieved per section, sections generated independently |
 | method3 | Inter-Section RAG | Multi-agent: NLI dependency graph + context-aware generation |
 
-Method 3 is the proposed approach. Methods 0–2 are baselines for comparison.
 
 ---
 
