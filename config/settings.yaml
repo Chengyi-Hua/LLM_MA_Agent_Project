@@ -19,7 +19,7 @@ llm:
       provider: "openrouter"
       model: "openai/gpt-5.4-mini"
       temperature: 0.3
-      max_tokens: 250
+      max_tokens: 400
     # Part 2: NLI model + graph algorithm config
     graph_logic:
       nli_model:
@@ -27,7 +27,7 @@ llm:
         model_name: "cross-encoder/nli-deberta-v3-base"
         entailment_index: 1
       algorithm:
-        threshold: 0.6
+        threshold: 0.3
         allow_cycles: false
   agent3:
     provider: "openrouter"
