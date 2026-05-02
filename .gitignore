@@ -13,7 +13,6 @@ __pycache__/
 .Python
 
 # Outputs
-data/outputs/
 
 # IDE
 .vscode/
