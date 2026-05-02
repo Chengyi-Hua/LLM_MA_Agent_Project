@@ -162,6 +162,7 @@ class GraphAwareRAG(BaseRAG):
             summaries[section]   = self._generate_quick_summary(section, best_chunks)
             print(f"  [{section}] summary ready ({len(summaries[section])} chars)")
 
+    
         # Phase 2: NLI graph → execution order + dependency map
         print("\n[Agent 2] Phase 2: building NLI dependency graph ...")
         plan = self._build_nli_graph(summaries)
