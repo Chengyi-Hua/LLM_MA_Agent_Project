@@ -7,7 +7,7 @@ Data is cached in data/ so repeated runs skip the retrieval step.
 Usage (always run from project root):
     python full_pipeline.py --island Surtsey
     python full_pipeline.py --island Surtsey --method method3
-    python full_pipeline.py --island Surtsey --method all
+    python full_pipeline.py --island Hawaii --method all
     python full_pipeline.py --island Surtsey --method all --force-refresh
 """
 
@@ -22,7 +22,7 @@ from methods.base_rag import load_config
 
 # Import data collection from retrieval/
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "retrieval"))
-from retrieval import run_rag_pipeline
+from retrieval.rag_data_pipeline import run_rag_pipeline
 
 
 METHOD_MAP = {
