@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "experiment_name": "exp_20260503_193538",
+    "timestamp": "2026-05-03T19:39:35",
+    "island": "Hawaii",
+    "input_json": "D:\\Users\\cheng\\Documents\\GitHub\\LLM_MA_Agent_Project\\data\\Hawaii_rag_context.json",
+    "method": "method1",
+    "combo": {
+      "reranker_type": "bm25",
+      "rerank_scope": "per-section",
+      "top_l": 5,
+      "tag": "rerank-bm25_scope-per-section_top5"
+    }
+  },
+  "result": {
+    "method": "method1",
+    "island_name": "Hawaii",
+    "metadata": {
+      "reranker": "bm25",
+      "rerank_strategy": "global",
+      "use_top_l": true,
+      "top_l": 5,
+      "top_l_applied_at": "global"
+    },
+    "generated_article": "==Geography==\nHawaii is composed of eight major islands and 124 minor islands covering a total land area of 6,425 square miles.[4]\nThe archipelago's general coastline measures approximately 750 miles.[4]\nMauna Kea, the highest peak, rises to 13,796 feet above sea level.[4]\nThe longest river, Kaukonahua Stream on Oʻahu, is 33 miles in length.[4]\nThe largest lake, Halaliʻi on Niʻihau, covers 841 acres.[4]\nThe biggest named waterfall, Kahiwa on Molokaʻi, drops 1,750 feet.[4]\nHonolulu International Airport is about 2,397 miles from San Francisco and 4,829 miles from Washington, D.C.[5]\nDistances between the islands and other locations are documented in geographic tables.[5]\n\n==Tourism==\nAir arrivals to Hawaii reached 9,827,1",
+    "sections": [
+      {
+        "section_name": "Geography",
+        "content": "Hawaii is composed of eight major islands and 124 minor islands covering a total land area of 6,425 square miles.[4]\nThe archipelago's general coastline measures approximately 750 miles.[4]\nMauna Kea, the highest peak, rises to 13,796 feet above sea level.[4]\nThe longest river, Kaukonahua Stream on Oʻahu, is 33 miles in length.[4]\nThe largest lake, Halaliʻi on Niʻihau, covers 841 acres.[4]\nThe biggest named waterfall, Kahiwa on Molokaʻi, drops 1,750 feet.[4]\nHonolulu International Airport is about 2,397 miles from San Francisco and 4,829 miles from Washington, D.C.[5]\nDistances between the islands and other locations are documented in geographic tables.[5]",
+        "citations": [
+          "https://files.hawaii.gov/dbedt/economic/databook/2024-individual/05/narr05.pdf",
+          "https://files.hawaii.gov/dbedt/economic/archive/databook/db1982/section05.pdf"
+        ]
+      },
+      {
+        "section_name": "Tourism",
+        "content": "Air arrivals to Hawaii reached 9,827,1",
+        "citations": []
+      }
+    ]
+  }
+}
