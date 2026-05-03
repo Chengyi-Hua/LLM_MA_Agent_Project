@@ -4,8 +4,8 @@ pipeline.py — main entry point for the LLM Multi-Agent RAG pipeline.
 Usage (always run from project root):
     python pipeline.py --input data/Surtsey_rag_context.json
     python pipeline.py --input "data/Nishinoshima_(Ogasawara)_rag_context.json"  
-    python pipeline.py --input data/Hawaii_rag_context.json --method method3
-    python pipeline.py --input data/Surtsey_rag_context.json --method all
+    python pipeline.py --input data/Surtsey_rag_context.json --method method3
+    python pipeline.py --input data/Nishinoshima_(Ogasawara)_rag_context.json --method all
 """
 
 import argparse
