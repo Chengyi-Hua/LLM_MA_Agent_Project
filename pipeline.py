@@ -5,7 +5,7 @@ Usage (always run from project root):
     python pipeline.py --input data/Surtsey_rag_context.json
     python pipeline.py --input "data/Nishinoshima_(Ogasawara)_rag_context.json"  
     python pipeline.py --input data/Surtsey_rag_context.json --method method3
-    python pipeline.py --input data/Surtsey_rag_context.json --method all
+    python pipeline.py --input "data/Hunga_Tonga–Hunga_Haʻapai_rag_context.json" --method all
 """
 
 import argparse
@@ -55,7 +55,7 @@ def save_output(results: dict, method_name: str, input_path: str):
     output_path = f"data/outputs/result_{method_name}_{island_tag}_{timestamp}.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-    print(f"\n✅ Output saved to {output_path}")
+    print(f"\n Output saved to {output_path}")
 
 
 def main():
@@ -83,7 +83,7 @@ def main():
             try:
                 results[name] = run(name, input_data, config)
             except Exception as e:
-                print(f"\n[{name}] ❌ Failed: {e}")
+                print(f"\n[{name}]  Failed: {e}")
                 results[name] = {"error": str(e)}
         save_output(results, "all", args.input)
 

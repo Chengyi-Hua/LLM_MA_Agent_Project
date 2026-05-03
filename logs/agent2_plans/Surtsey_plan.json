@@ -1,0 +1,31 @@
+{
+    "status": "success",
+    "island": "Surtsey",
+    "order": [
+        "Geology",
+        "Recent development",
+        "Biology",
+        "Human impact"
+    ],
+    "dependency": {
+        "Geology": [],
+        "Recent development": [
+            "Geology"
+        ],
+        "Biology": [
+            "Geology",
+            "Recent development"
+        ],
+        "Human impact": [
+            "Geology",
+            "Recent development",
+            "Biology"
+        ]
+    },
+    "summaries": {
+        "Geology": "Surtsey is a volcanic oceanic island about 32 km south of Iceland’s coast, formed by eruptions from 1963 to 1967; because it was protected from human interference from the moment it emerged, it has served as a pristine natural laboratory for studying island formation and primary ecological succession, including the arrival of seeds by ocean currents and the subsequent colonization by microbes, fungi, and vascular plants.",
+        "Recent development": "Recent development includes continued annual scientific monitoring of Surtsey’s ecological succession and wildlife status, with an annual summer visit by scientists to maintain the 60-year-long study. The Surtsey Research Society coordinates ongoing research and has published 15 reports on scientific work on its website, with the newest report published in 2022. The 2025 IUCN World Heritage Outlook assessment describes the research trend as highly effective and the state and trend of values for ongoing scientific research as good with improving trend.",
+        "Biology": "",
+        "Human impact": "Surtsey is free of human interference and, in a normal year, is visited by a single group of about 10 scientists, with monitoring of ecological succession and the status of wildlife and flora carried out through low-impact annual studies by scientists and the site manager; it has been protected since its birth and remains a pristine natural laboratory because ongoing ecological processes have remained unaffected by human activities."
+    }
+}
