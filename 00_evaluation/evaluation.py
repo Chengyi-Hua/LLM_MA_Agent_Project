@@ -38,7 +38,8 @@ Examples:
 
     python 00_evaluation/full_evaluation.py ^
       --input data/outputs/result_all_Hawaii_20260502_150004.json ^
-      --skip-nli
+      --skip-nli ^
+      --skip-cscs
 
 Expected reference files:
     00_evaluation/references/Hawaii.txt
@@ -79,13 +80,13 @@ DEFAULT_CONTEXT_DIR = os.path.join(PROJECT_ROOT, "data")
 DEFAULT_PLANS_DIR = os.path.join(PROJECT_ROOT, "logs", "agent2_plans")
 
 
-# ---------------------------------------------------------------------
+ 
 # General helpers
-# ---------------------------------------------------------------------
+ 
 
 def safe_name(text: str) -> str:
     text = str(text).strip()
-    text = re.sub(r"[^A-Za-z0-9._-]+", "_", text)
+    text = re.sub(r"[^A-Za-z0-9._()'-]+", "_", text)
     return text.strip("_")
 
 
@@ -106,8 +107,12 @@ def split_sentences(text: str) -> List[str]:
     Lightweight sentence splitter that keeps citation markers attached.
     Good enough for evaluation; replace with spaCy later if needed.
     """
+    if not text:
+        return []
+
     text = re.sub(r"\n+", " ", text)
     text = re.sub(r"==.*?==", " ", text)
+
     parts = re.split(r"(?<=[.!?])\s+", text)
     sentences = [p.strip() for p in parts if len(strip_citations(p).strip()) > 5]
     return sentences
@@ -121,12 +126,53 @@ def extract_citation_numbers(sentence: str) -> List[int]:
 def normalize_url(url: str) -> str:
     if not url:
         return ""
+
     return str(url).strip().rstrip("/")
 
 
-# ---------------------------------------------------------------------
+def clean_reference_article(text: str) -> str:
+    """
+    Remove Wikipedia maintenance/reference sections that generated articles
+    are not expected to reproduce.
+
+    This prevents ROUGE-L and METEOR from comparing generated articles against
+    sections such as:
+      - See also
+      - References
+      - External links
+      - Further reading
+    """
+    if not text:
+        return ""
+
+    cutoff_headings = [
+        "See also",
+        "Notes",
+        "Footnotes",
+        "References",
+        "Sources",
+        "Bibliography",
+        "Further reading",
+        "External links",
+    ]
+
+    pattern = (
+        r"\n==\s*("
+        + "|".join(re.escape(h) for h in cutoff_headings)
+        + r")\s*=="
+    )
+
+    match = re.search(pattern, text, flags=re.IGNORECASE)
+
+    if match:
+        text = text[:match.start()]
+
+    return text.strip()
+
+
+ 
 # Input result normalization
-# ---------------------------------------------------------------------
+ 
 
 def normalize_result_file(path: str) -> List[dict]:
     """
@@ -149,36 +195,46 @@ def normalize_result_file(path: str) -> List[dict]:
 
     rows = []
 
-    # Shape B
+    # Shape B: batch_experiments output
     if isinstance(data, dict) and "metadata" in data and "result" in data:
         metadata = data.get("metadata", {})
         result = data.get("result", {})
 
-        rows.append({
-            "source_file": path,
-            "input_json": metadata.get("input_json", ""),
-            "island_name": metadata.get("island") or result.get("island_name") or "unknown",
-            "method": metadata.get("method") or result.get("method") or "unknown",
-            "generated_article": result.get("generated_article", ""),
-            "sections": result.get("sections", []),
-        })
+        rows.append(
+            {
+                "source_file": path,
+                "input_json": metadata.get("input_json", ""),
+                "island_name": metadata.get("island")
+                or result.get("island_name")
+                or "unknown",
+                "method": metadata.get("method")
+                or result.get("method")
+                or "unknown",
+                "generated_article": result.get("generated_article", ""),
+                "sections": result.get("sections", []),
+            }
+        )
+
         return rows
 
-    # Shape A
+    # Shape A: full_pipeline --method all output
     for method_name, result in data.items():
         if not isinstance(result, dict):
             continue
+
         if "generated_article" not in result:
             continue
 
-        rows.append({
-            "source_file": path,
-            "input_json": "",
-            "island_name": result.get("island_name", "unknown"),
-            "method": method_name,
-            "generated_article": result.get("generated_article", ""),
-            "sections": result.get("sections", []),
-        })
+        rows.append(
+            {
+                "source_file": path,
+                "input_json": "",
+                "island_name": result.get("island_name", "unknown"),
+                "method": method_name,
+                "generated_article": result.get("generated_article", ""),
+                "sections": result.get("sections", []),
+            }
+        )
 
     return rows
 
@@ -191,12 +247,14 @@ def discover_input_files(input_path: Optional[str], input_dir: Optional[str]) ->
 
     if input_dir:
         input_dir = os.path.abspath(input_dir)
+
         for fname in sorted(os.listdir(input_dir)):
             if fname.endswith(".json"):
                 files.append(os.path.join(input_dir, fname))
 
     seen = set()
     unique = []
+
     for f in files:
         if f not in seen:
             unique.append(f)
@@ -205,17 +263,29 @@ def discover_input_files(input_path: Optional[str], input_dir: Optional[str]) ->
     return unique
 
 
-# ---------------------------------------------------------------------
+ 
 # Reference loading for ROUGE-L / METEOR
-# ---------------------------------------------------------------------
+ 
 
-def load_reference_article(island_name: str, references_dir: str) -> Tuple[Optional[str], str]:
+def load_reference_article(
+    island_name: str,
+    references_dir: str,
+) -> Tuple[Optional[str], str]:
     """
     Looks for:
       references/Hawaii.txt
       references/Hawaii.json
       references/Hawaii_Island.txt
       references/Hawaii_Island.json
+
+    JSON reference can contain:
+      reference_article
+      article
+      content
+      text
+      generated_article
+
+    The returned article is cleaned to remove reference/maintenance sections.
     """
     candidates = [
         island_name,
@@ -228,25 +298,33 @@ def load_reference_article(island_name: str, references_dir: str) -> Tuple[Optio
 
     for base in candidates:
         txt_path = os.path.join(references_dir, f"{base}.txt")
+
         if os.path.exists(txt_path):
             with open(txt_path, "r", encoding="utf-8") as f:
-                return f.read(), txt_path
+                return clean_reference_article(f.read()), txt_path
 
         json_path = os.path.join(references_dir, f"{base}.json")
+
         if os.path.exists(json_path):
             with open(json_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
-            for key in ["reference_article", "article", "content", "text", "generated_article"]:
+            for key in [
+                "reference_article",
+                "article",
+                "content",
+                "text",
+                "generated_article",
+            ]:
                 if isinstance(data, dict) and data.get(key):
-                    return str(data[key]), json_path
+                    return clean_reference_article(str(data[key])), json_path
 
     return None, ""
 
 
-# ---------------------------------------------------------------------
+ 
 # Informativeness: ROUGE-L and METEOR
-# ---------------------------------------------------------------------
+ 
 
 def lcs_length(a: List[str], b: List[str]) -> int:
     """
@@ -259,11 +337,13 @@ def lcs_length(a: List[str], b: List[str]) -> int:
 
     for x in a:
         curr = [0]
+
         for j, y in enumerate(b, start=1):
             if x == y:
                 curr.append(prev[j - 1] + 1)
             else:
                 curr.append(max(prev[j], curr[-1]))
+
         prev = curr
 
     return prev[-1]
@@ -295,6 +375,9 @@ def meteor_score(generated: str, reference: str) -> float:
 
     Tries NLTK's METEOR first. If unavailable, falls back to a simple
     unigram F-mean approximation.
+
+    For final reporting, install NLTK:
+        pip install nltk
     """
     gen_tokens = tokenize(generated)
     ref_tokens = tokenize(reference)
@@ -304,8 +387,10 @@ def meteor_score(generated: str, reference: str) -> float:
 
     try:
         from nltk.translate.meteor_score import meteor_score as nltk_meteor_score
+
         score = nltk_meteor_score([ref_tokens], gen_tokens)
         return round(100 * score, 4)
+
     except Exception:
         gen_set = set(gen_tokens)
         ref_set = set(ref_tokens)
@@ -317,7 +402,7 @@ def meteor_score(generated: str, reference: str) -> float:
         precision = overlap / len(gen_set)
         recall = overlap / len(ref_set)
 
-        # METEOR-like: recall weighted higher than precision
+        # METEOR-like fallback: recall weighted higher than precision.
         alpha = 0.9
         denom = alpha * precision + (1 - alpha) * recall
 
@@ -345,9 +430,9 @@ def compute_informativeness(generated: str, reference: Optional[str]) -> dict:
     }
 
 
-# ---------------------------------------------------------------------
+ 
 # NLI evaluator for Verifiability and CSCS
-# ---------------------------------------------------------------------
+ 
 
 class NLIEvaluator:
     def __init__(
@@ -368,8 +453,10 @@ class NLIEvaluator:
 
         try:
             from sentence_transformers import CrossEncoder
+
             print(f"Loading NLI model: {model_name}")
             self.model = CrossEncoder(model_name)
+
         except Exception as e:
             raise RuntimeError(
                 "Could not load sentence-transformers CrossEncoder. "
@@ -396,6 +483,7 @@ class NLIEvaluator:
         raw = self.model.predict([(premise, hypothesis)])
 
         scores = raw[0]
+
         if not isinstance(scores, (list, tuple)):
             try:
                 scores = scores.tolist()
@@ -411,9 +499,9 @@ class NLIEvaluator:
         return entail_prob >= self.threshold
 
 
-# ---------------------------------------------------------------------
+ 
 # Context loading for citation verification
-# ---------------------------------------------------------------------
+ 
 
 def infer_context_path(island_name: str, input_json: str, context_dir: str) -> str:
     if input_json and os.path.exists(input_json):
@@ -427,6 +515,7 @@ def infer_context_path(island_name: str, input_json: str, context_dir: str) -> s
 
     for fname in candidates:
         path = os.path.join(context_dir, fname)
+
         if os.path.exists(path):
             return path
 
@@ -440,12 +529,14 @@ def collect_url_texts(obj: Any, url_to_texts: Dict[str, List[str]]):
     """
     if isinstance(obj, dict):
         url = None
+
         for key in ["url", "source_url", "link", "href"]:
             if obj.get(key):
                 url = normalize_url(obj.get(key))
                 break
 
         text_parts = []
+
         for key in ["content", "text", "chunk", "body", "snippet", "summary"]:
             if obj.get(key) and isinstance(obj.get(key), str):
                 text_parts.append(obj.get(key))
@@ -474,9 +565,9 @@ def load_url_text_map(context_path: str) -> Dict[str, List[str]]:
     return url_to_texts
 
 
-# ---------------------------------------------------------------------
+ 
 # Verifiability: citation recall, precision, rate
-# ---------------------------------------------------------------------
+ 
 
 def get_section_text_map(sections: List[dict], article: str) -> Dict[str, str]:
     section_map = {}
@@ -485,6 +576,7 @@ def get_section_text_map(sections: List[dict], article: str) -> Dict[str, str]:
         for sec in sections:
             name = sec.get("section_name", "")
             content = sec.get("content", "")
+
             if name:
                 section_map[name.strip().lower()] = content
 
@@ -493,6 +585,7 @@ def get_section_text_map(sections: List[dict], article: str) -> Dict[str, str]:
 
     # Fallback: parse ==Section== blocks
     parts = re.split(r"==(.+?)==", article)
+
     for i in range(1, len(parts), 2):
         name = parts[i].strip()
         content = parts[i + 1].strip() if i + 1 < len(parts) else ""
@@ -503,7 +596,7 @@ def get_section_text_map(sections: List[dict], article: str) -> Dict[str, str]:
 
 def verify_sentence_with_citations(
     sentence: str,
-    citations: List[str],
+    citations: List[int],
     section_citations: List[str],
     url_to_texts: Dict[str, List[str]],
     nli: Optional[NLIEvaluator],
@@ -627,7 +720,9 @@ def compute_verifiability(
     return {
         "citation_recall": round(recall_sum / total_sentences, 4),
         "citation_precision": round(precision_sum / total_sentences, 4),
-        "citation_rate": round(weighted_recall_sum / total_words, 4) if total_words else 0.0,
+        "citation_rate": round(weighted_recall_sum / total_words, 4)
+        if total_words
+        else 0.0,
         "num_sentences": total_sentences,
         "num_cited_sentences": cited_sentences,
         "num_citations": total_citations,
@@ -637,9 +732,9 @@ def compute_verifiability(
     }
 
 
-# ---------------------------------------------------------------------
+ 
 # CSCS
-# ---------------------------------------------------------------------
+ 
 
 def load_agent2_plan(island_name: str, plans_dir: str) -> Tuple[Optional[dict], str]:
     candidates = [
@@ -650,6 +745,7 @@ def load_agent2_plan(island_name: str, plans_dir: str) -> Tuple[Optional[dict], 
 
     for fname in candidates:
         path = os.path.join(plans_dir, fname)
+
         if os.path.exists(path):
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f), path
@@ -684,7 +780,6 @@ def compute_cscs(
 
     dependency = plan.get("dependency", {}) or {}
     summaries = plan.get("summaries", {}) or {}
-
     section_map = get_section_text_map(sections, article)
 
     checked = 0
@@ -701,6 +796,7 @@ def compute_cscs(
             edge_count += 1
 
             fact_source = summaries.get(upstream, "")
+
             if not fact_source:
                 fact_source = section_map.get(upstream.strip().lower(), "")
 
@@ -738,9 +834,9 @@ def compute_cscs(
     }
 
 
-# ---------------------------------------------------------------------
+ 
 # Output
-# ---------------------------------------------------------------------
+ 
 
 def write_csv(output_path: str, rows: List[dict]):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -796,9 +892,9 @@ def write_csv(output_path: str, rows: List[dict]):
         writer.writerows(rows)
 
 
-# ---------------------------------------------------------------------
+ 
 # Main evaluation
-# ---------------------------------------------------------------------
+ 
 
 def evaluate(args):
     input_files = discover_input_files(args.input, args.input_dir)
@@ -814,10 +910,12 @@ def evaluate(args):
     config = load_config()
 
     writing_evaluator = None
+
     if not args.skip_writing:
         writing_evaluator = Agent4Evaluator(config=config)
 
     nli = None
+
     if not args.skip_nli:
         nli_model = args.nli_model
 
@@ -932,11 +1030,16 @@ def evaluate(args):
                 except Exception as e:
                     row["writing_status"] = "failed"
                     row["writing_error"] = str(e)
+
             else:
                 row["writing_status"] = "skipped"
 
             # 2. Informativeness
-            reference, reference_file = load_reference_article(island, args.references_dir)
+            reference, reference_file = load_reference_article(
+                island,
+                args.references_dir,
+            )
+
             row["reference_file"] = reference_file
 
             info = compute_informativeness(article, reference)
@@ -948,21 +1051,26 @@ def evaluate(args):
                 input_json=item.get("input_json", ""),
                 context_dir=args.context_dir,
             )
+
             row["context_file"] = context_path
 
             if args.skip_nli:
                 row["verifiability_status"] = "skipped"
                 row["verifiability_error"] = "NLI skipped."
+
             else:
                 try:
                     url_to_texts = load_url_text_map(context_path)
+
                     verif = compute_verifiability(
                         sections=sections,
                         article=article,
                         url_to_texts=url_to_texts,
                         nli=nli,
                     )
+
                     row.update(verif)
+
                 except Exception as e:
                     row["verifiability_status"] = "failed"
                     row["verifiability_error"] = str(e)
@@ -974,6 +1082,7 @@ def evaluate(args):
             if args.skip_cscs:
                 row["cscs_status"] = "skipped"
                 row["cscs_error"] = "CSCS skipped."
+
             else:
                 try:
                     cscs = compute_cscs(
@@ -983,7 +1092,9 @@ def evaluate(args):
                         nli=nli,
                         max_facts_per_edge=args.cscs_max_facts,
                     )
+
                     row.update(cscs)
+
                 except Exception as e:
                     row["cscs_status"] = "failed"
                     row["cscs_error"] = str(e)
@@ -1014,8 +1125,17 @@ def main():
         description="Full evaluation driver for generated Wikipedia-style articles."
     )
 
-    parser.add_argument("--input", default=None, help="Path to one result JSON file.")
-    parser.add_argument("--input-dir", default=None, help="Directory of result JSON files.")
+    parser.add_argument(
+        "--input",
+        default=None,
+        help="Path to one result JSON file.",
+    )
+
+    parser.add_argument(
+        "--input-dir",
+        default=None,
+        help="Directory of result JSON files.",
+    )
 
     parser.add_argument(
         "--references-dir",

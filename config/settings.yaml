@@ -36,8 +36,6 @@ llm:
   agent4:
     provider: "openrouter"
     model: "openrouter/free"
-    temperature: 0.0
-    max_tokens: 900
 
 api_keys:
   openai_env: "OPENAI_API_KEY"          

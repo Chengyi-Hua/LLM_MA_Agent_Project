@@ -1,0 +1,262 @@
+"""
+Verifiability metrics:
+  - citation_recall
+  - citation_precision
+  - citation_rate
+
+Definitions used here:
+  citation_rate      = cited sentences / total sentences
+  citation_precision = supported citation links / total citation links
+  citation_recall    = supported cited sentences / total sentences
+"""
+
+import json
+import math
+import os
+from collections import defaultdict
+from typing import Any, Dict, List, Optional, Tuple
+
+from eval_utils import (
+    extract_citation_numbers,
+    normalize_url,
+    safe_name,
+    split_sentences,
+    strip_citations,
+)
+
+
+class NLIEvaluator:
+    def __init__(
+        self,
+        model_name: str = "cross-encoder/nli-deberta-v3-base",
+        entailment_index: int = 1,
+        threshold: float = 0.5,
+    ):
+        from sentence_transformers import CrossEncoder
+
+        print(f"Loading NLI model: {model_name}")
+        self.model = CrossEncoder(model_name)
+        self.entailment_index = entailment_index
+        self.threshold = threshold
+
+    @staticmethod
+    def _softmax(values: List[float]) -> List[float]:
+        m = max(values)
+        exps = [math.exp(v - m) for v in values]
+        total = sum(exps)
+        return [v / total for v in exps]
+
+    def entails(self, premise: str, hypothesis: str) -> bool:
+        if not premise or not hypothesis:
+            return False
+
+        premise = premise[:4000]
+        hypothesis = hypothesis[:1000]
+
+        raw = self.model.predict([(premise, hypothesis)])
+        scores = raw[0]
+
+        if not isinstance(scores, (list, tuple)):
+            try:
+                scores = scores.tolist()
+            except Exception:
+                scores = [float(scores)]
+
+        if len(scores) == 1:
+            return float(scores[0]) >= self.threshold
+
+        probs = self._softmax([float(s) for s in scores])
+        entail_prob = probs[self.entailment_index]
+
+        return entail_prob >= self.threshold
+
+
+def infer_context_path(island_name: str, input_json: str, context_dir: str) -> str:
+    if input_json and os.path.exists(input_json):
+        return input_json
+
+    candidates = [
+        f"{safe_name(island_name)}_rag_context.json",
+        f"{island_name.replace(' ', '_')}_rag_context.json",
+        f"{island_name}_rag_context.json",
+    ]
+
+    for fname in candidates:
+        path = os.path.join(context_dir, fname)
+
+        if os.path.exists(path):
+            return path
+
+    return ""
+
+
+def collect_url_texts(obj: Any, url_to_texts: Dict[str, List[str]]):
+    if isinstance(obj, dict):
+        url = None
+
+        for key in ["url", "source_url", "link", "href"]:
+            if obj.get(key):
+                url = normalize_url(obj.get(key))
+                break
+
+        text_parts = []
+
+        for key in ["content", "text", "chunk", "body", "snippet", "summary"]:
+            if obj.get(key) and isinstance(obj.get(key), str):
+                text_parts.append(obj.get(key))
+
+        if url and text_parts:
+            url_to_texts[url].append("\n".join(text_parts))
+
+        for value in obj.values():
+            collect_url_texts(value, url_to_texts)
+
+    elif isinstance(obj, list):
+        for item in obj:
+            collect_url_texts(item, url_to_texts)
+
+
+def load_url_text_map(context_path: str) -> Dict[str, List[str]]:
+    url_to_texts = defaultdict(list)
+
+    if not context_path or not os.path.exists(context_path):
+        return url_to_texts
+
+    with open(context_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    collect_url_texts(data, url_to_texts)
+    return url_to_texts
+
+
+def verify_sentence_with_citations(
+    sentence: str,
+    citation_numbers: List[int],
+    section_citations: List[str],
+    url_to_texts: Dict[str, List[str]],
+    nli: NLIEvaluator,
+) -> Tuple[int, int, bool]:
+    """
+    Returns:
+      supported_links
+      total_links
+      sentence_supported
+    """
+    if not citation_numbers:
+        return 0, 0, False
+
+    hypothesis = strip_citations(sentence)
+
+    supported_links = 0
+    total_links = 0
+
+    for citation_num in citation_numbers:
+        idx = citation_num - 1
+
+        if idx < 0 or idx >= len(section_citations):
+            total_links += 1
+            continue
+
+        url = normalize_url(section_citations[idx])
+        passages = url_to_texts.get(url, [])
+
+        if not passages:
+            for known_url, texts in url_to_texts.items():
+                if normalize_url(known_url) == url:
+                    passages = texts
+                    break
+
+        total_links += 1
+
+        if not passages:
+            continue
+
+        premise = "\n".join(passages)
+
+        try:
+            if nli.entails(premise, hypothesis):
+                supported_links += 1
+        except Exception:
+            pass
+
+    sentence_supported = supported_links > 0
+
+    return supported_links, total_links, sentence_supported
+
+
+def compute_verifiability(
+    sections: List[dict],
+    article: str,
+    url_to_texts: Dict[str, List[str]],
+    nli: NLIEvaluator,
+) -> dict:
+    if not sections:
+        sections = [{"section_name": "article", "content": article, "citations": []}]
+
+    total_sentences = 0
+    cited_sentences = 0
+    supported_cited_sentences = 0
+
+    total_citation_links = 0
+    supported_citation_links = 0
+
+    for sec in sections:
+        content = sec.get("content", "")
+        section_citations = sec.get("citations", []) or []
+
+        for sentence in split_sentences(content):
+            total_sentences += 1
+
+            citation_numbers = extract_citation_numbers(sentence)
+
+            if citation_numbers:
+                cited_sentences += 1
+
+            supported_links, total_links, sentence_supported = verify_sentence_with_citations(
+                sentence=sentence,
+                citation_numbers=citation_numbers,
+                section_citations=section_citations,
+                url_to_texts=url_to_texts,
+                nli=nli,
+            )
+
+            total_citation_links += total_links
+            supported_citation_links += supported_links
+
+            if sentence_supported:
+                supported_cited_sentences += 1
+
+    if total_sentences == 0:
+        return {
+            "verifiability_status": "no_sentences",
+            "citation_recall": "",
+            "citation_precision": "",
+            "citation_rate": "",
+            "num_sentences": 0,
+            "num_cited_sentences": 0,
+            "num_citation_links": 0,
+            "num_supported_citation_links": 0,
+            "verifiability_error": "No sentences found.",
+        }
+
+    citation_rate = cited_sentences / total_sentences
+
+    citation_recall = supported_cited_sentences / total_sentences
+
+    citation_precision = (
+        supported_citation_links / total_citation_links
+        if total_citation_links > 0
+        else 0.0
+    )
+
+    return {
+        "verifiability_status": "success",
+        "citation_recall": round(citation_recall, 4),
+        "citation_precision": round(citation_precision, 4),
+        "citation_rate": round(citation_rate, 4),
+        "num_sentences": total_sentences,
+        "num_cited_sentences": cited_sentences,
+        "num_citation_links": total_citation_links,
+        "num_supported_citation_links": supported_citation_links,
+        "verifiability_error": "",
+    }

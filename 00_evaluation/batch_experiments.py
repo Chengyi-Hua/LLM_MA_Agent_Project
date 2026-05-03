@@ -356,7 +356,7 @@ def run_batch(args):
                         "error": "",
                     }
 
-                    print(f"✅ Saved: {result_path}")
+                    print(f" Saved: {result_path}")
 
                 except Exception as e:
                     seconds = round(time.time() - start, 2)
