@@ -5,7 +5,7 @@ Usage (always run from project root):
     python pipeline.py --input data/Surtsey_rag_context.json
     python pipeline.py --input "data/Nishinoshima_(Ogasawara)_rag_context.json"  
     python pipeline.py --input data/Surtsey_rag_context.json --method method3
-    python pipeline.py --input data/Nishinoshima_(Ogasawara)_rag_context.json --method all
+    python pipeline.py --input "data/Hunga_Tonga–Hunga_Haʻapai_rag_context.json" --method all
 """
 
 import argparse

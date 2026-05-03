@@ -1,0 +1,27 @@
+{
+    "status": "success",
+    "island": "Hunga Tonga–Hunga Haʻapai",
+    "order": [
+        "Volcano and caldera",
+        "Geography",
+        "Eruptions",
+        "Footnotes"
+    ],
+    "dependency": {
+        "Volcano and caldera": [],
+        "Geography": [
+            "Volcano and caldera"
+        ],
+        "Eruptions": [
+            "Volcano and caldera",
+            "Geography"
+        ],
+        "Footnotes": []
+    },
+    "summaries": {
+        "Volcano and caldera": "Hunga Tonga-Hunga Haʻapai is an undersea volcano in Tonga that erupted violently on 15 January 2022, producing massive explosions and tsunamis. Seafloor surveys mapped its caldera and found major post-eruption changes: the caldera floor deepened from about 500 feet below sea level in November 2015 to 2,800 feet below sea level in May 2022, with an estimated 1.5 cubic miles of material missing since 2015. The surveys also detected minor eruptions and signs of continuing volcanic activity in the caldera.",
+        "Geography": "The Hunga-Tonga Hunga-Ha′apai volcano is situated in the South Pacific Ocean about 1000 km south of Fiji and Samoa islands. It erupted on January 15, 2022, creating the biggest atmospheric explosion ever recorded and triggering a tsunami that affected Tonga, Fiji, American Samoa, Vanuatu, New Zealand, Japan, the United States, the Russian Far East, Chile, and Peru.",
+        "Eruptions": "The Hunga Tonga-Hunga Ha’apai submarine volcanic eruption on January 15, 2022, injected up to 150 Tg of water into the stratosphere and produced the largest underwater explosion ever recorded by modern scientific instruments. The eruption caused vertically overlapping but slightly displaced mid-stratospheric enhancements in H2O and aerosols in the tropical southern hemisphere, with the water vapor layer slightly above the aerosol layer near 26 km. A month after the eruption, a distinct aerosol and water vapor layer persisted and slowly separated in altitude through the end of June. Observations show the H2O layer slowly rising while the aerosol layer descended, consistent with residual vertical velocity for water vapor and gravitational settling for aerosols. A cold temperature anomaly of about -4.1 K coincident with the H2O enhancement was attributed to thermal adjustment from additional infrared cooling by the enhanced water vapor, and a simple model of volcanic water injection and plume spreading reproduced the observed vertical distribution.",
+        "Footnotes": "No relevant information regarding Footnotes is available."
+    }
+}
