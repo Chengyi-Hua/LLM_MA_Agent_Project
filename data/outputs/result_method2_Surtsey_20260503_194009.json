@@ -1,0 +1,50 @@
+{
+  "method2": {
+    "method": "method2",
+    "island_name": "Surtsey",
+    "metadata": {
+      "reranker": "bm25",
+      "rerank_strategy": "per-section",
+      "use_top_l": true,
+      "top_l": 5,
+      "top_l_applied_at": "per-section"
+    },
+    "generated_article": "==Geology==\nSurtsey is a volcanic island off the southern coast of Iceland that formed during eruptions and lava flows from 1963 to 1967.[1][3][5] Its emergence from the ocean provided scientists with a rare chance to observe an island-building process in real time, including the interaction of magma, seawater, ash, and lava.[2][4] The island rose from explosive underwater volcanic activity, with ash and volcanic rock building the initial landmass.[4] Lava flows later spread across parts of the island and helped protect it from being eroded away by wind and waves.[4]  \n\nBecause Surtsey has been protected from human disturbance since it formed, it has served as a natural laboratory for studying how new volcanic land weathers and evolves.[1][3][5] The island has been especially valuable for understanding the transformation of volcanic glass and basalt beneath the surface, including the development of mineral cements in drill cores.[1] Studies comparing drill cores from 1979 and 2017 have shown mineralogical and microstructural changes over 54 years, revealing alteration processes occurring within the young basalt.[1] Research on Surtsey has also helped improve understanding of how volcanic islands and other volcanically created landmasses are formed and modified over time.[3][4]\n\n==Recent development==\nRecent research has continued to use Surtsey as a natural laboratory for studying both ecological succession and geological change. [1][2][3]\n\nA 2024 study reported that many of the vascular plant species that colonized the island did not possess the traits usually associated with long-distance seed dispersal, suggesting that seabirds have played a much larger role in bringing life to Surtsey than previously assumed. [1][5]\n\nGeological studies have also used drill cores from Surtsey to examine how volcanic glass and basalt alter over time, providing rare insight into the development of mineral cements in young oceanic crust. [2]\n\nThe island’s protected status and limited access have allowed scientists to maintain a long-running record of colonization and succession, with annual monitoring continuing as part of its conservation and research regime. [3][5]\n\nIn 2025, the IUCN World Heritage Outlook described the island’s conservation outlook as good and its trend as improving, noting that ongoing scientific research remains central to its outstanding universal value. [3]\n\n==Biology==\nI’m missing the actual documents for Surtsey’s Biology section. Please provide the source documents (with their document numbers), and I’ll write the section with a citation on every sentence.\n\n==Human impact==\nSurtsey has been deliberately kept free of human interference since its formation, and access is tightly restricted to protect it as a natural laboratory.[1][4] In a normal year, only a single small group of scientists visits the island, and their monitoring is carried out using low-impact methods.[1] This long-term protection has allowed researchers to study ecological succession on newly formed land without the confounding effects of regular human activity.[1][4] As a result, Surtsey is regarded as a UNESCO World Heritage Site and a strict nature reserve whose ongoing natural processes remain largely unaffected by people.[1][4]",
+    "sections": [
+      {
+        "section_name": "Geology",
+        "content": "Surtsey is a volcanic island off the southern coast of Iceland that formed during eruptions and lava flows from 1963 to 1967.[1][3][5] Its emergence from the ocean provided scientists with a rare chance to observe an island-building process in real time, including the interaction of magma, seawater, ash, and lava.[2][4] The island rose from explosive underwater volcanic activity, with ash and volcanic rock building the initial landmass.[4] Lava flows later spread across parts of the island and helped protect it from being eroded away by wind and waves.[4]  \n\nBecause Surtsey has been protected from human disturbance since it formed, it has served as a natural laboratory for studying how new volcanic land weathers and evolves.[1][3][5] The island has been especially valuable for understanding the transformation of volcanic glass and basalt beneath the surface, including the development of mineral cements in drill cores.[1] Studies comparing drill cores from 1979 and 2017 have shown mineralogical and microstructural changes over 54 years, revealing alteration processes occurring within the young basalt.[1] Research on Surtsey has also helped improve understanding of how volcanic islands and other volcanically created landmasses are formed and modified over time.[3][4]",
+        "citations": [
+          "https://als.lbl.gov/surtsey-volcano-a-rare-window-into-earths-oceanic-crust/",
+          "https://sandyriverreview.com/2025/04/04/what-an-island-can-teach-about-life-the-fascinating-case-of-surtsey-island/",
+          "https://whc.unesco.org/en/list/1267/",
+          "https://www.kathysullivanexplores.com/podcast/surtsey-island",
+          "https://www.britannica.com/video/eruption-seafloor-lava-ash-coast-island-Surtsey-November-1963/-68321"
+        ]
+      },
+      {
+        "section_name": "Recent development",
+        "content": "Recent research has continued to use Surtsey as a natural laboratory for studying both ecological succession and geological change. [1][2][3]\n\nA 2024 study reported that many of the vascular plant species that colonized the island did not possess the traits usually associated with long-distance seed dispersal, suggesting that seabirds have played a much larger role in bringing life to Surtsey than previously assumed. [1][5]\n\nGeological studies have also used drill cores from Surtsey to examine how volcanic glass and basalt alter over time, providing rare insight into the development of mineral cements in young oceanic crust. [2]\n\nThe island’s protected status and limited access have allowed scientists to maintain a long-running record of colonization and succession, with annual monitoring continuing as part of its conservation and research regime. [3][5]\n\nIn 2025, the IUCN World Heritage Outlook described the island’s conservation outlook as good and its trend as improving, noting that ongoing scientific research remains central to its outstanding universal value. [3]",
+        "citations": [
+          "https://als.lbl.gov/surtsey-volcano-a-rare-window-into-earths-oceanic-crust/",
+          "https://www.kathysullivanexplores.com/podcast/surtsey-island",
+          "https://sandyriverreview.com/2025/04/04/what-an-island-can-teach-about-life-the-fascinating-case-of-surtsey-island/",
+          "https://whc.unesco.org/en/list/1267/"
+        ]
+      },
+      {
+        "section_name": "Biology",
+        "content": "I’m missing the actual documents for Surtsey’s Biology section. Please provide the source documents (with their document numbers), and I’ll write the section with a citation on every sentence.",
+        "citations": []
+      },
+      {
+        "section_name": "Human impact",
+        "content": "Surtsey has been deliberately kept free of human interference since its formation, and access is tightly restricted to protect it as a natural laboratory.[1][4] In a normal year, only a single small group of scientists visits the island, and their monitoring is carried out using low-impact methods.[1] This long-term protection has allowed researchers to study ecological succession on newly formed land without the confounding effects of regular human activity.[1][4] As a result, Surtsey is regarded as a UNESCO World Heritage Site and a strict nature reserve whose ongoing natural processes remain largely unaffected by people.[1][4]",
+        "citations": [
+          "https://als.lbl.gov/surtsey-volcano-a-rare-window-into-earths-oceanic-crust/",
+          "https://www.britannica.com/video/eruption-seafloor-lava-ash-coast-island-Surtsey-November-1963/-68321"
+        ]
+      }
+    ]
+  }
+}

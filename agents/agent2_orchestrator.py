@@ -61,6 +61,8 @@ class GraphAwareRAG(BaseRAG):
         self.nli_model = CrossEncoder(model_name)
         print("✅ Agent 2 initialised.")
 
+    '''
+
     # ── Override _init_llm to use agent2's own llm config block ───────────────
 
 
@@ -83,7 +85,7 @@ class GraphAwareRAG(BaseRAG):
         )
         return response.choices[0].message.content
 
-
+'''
     # ==========================================
     # 这里我改变了rerank的方法 我选择了一种会尽量避免挑选有重复内容的chunks的方法
     def _rerank_chunks_with_mmr(self, raw_chunks: list, query: str, top_k: int = 5, lambda_mult: float = 0.5) -> list:
@@ -367,20 +369,31 @@ Output your final paragraph below:"""
             # 3. 让 LLM 生成摘要
             summaries[section] = self._generate_quick_summary(section, best_chunks)
 
-            print(f"   ⏳ [{section}] 摘要生成完毕。为防止 API 限流，休眠 15 秒...")
-            time.sleep(30)  # 停顿 15 秒。如果还报错，可以改成 20 或 30 秒。
+            print(f"   ⏳ [{section}] 摘要生成完毕。")
+
 
 
         print("\n🚀 阶段 2：正在分析 NLI 逻辑依赖...")
         plan = self._build_nli_graph(summaries)
 
 
-        return {
-            "status": "success",
-            "order": plan["order"],
+        output_payload = {
+            "status"    : "success",
+            "island"    : island_name,
+            "order"     : plan["order"],
             "dependency": plan["map"],
-            "summaries": summaries
+            "summaries" : summaries
         }
+        save_dir = "logs/agent2_plans"
+        os.makedirs(save_dir, exist_ok=True)
+        
+        save_path = os.path.join(save_dir, f"{island_name}_plan.json")
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(output_payload, f, ensure_ascii=False, indent=4)
+        
+        print(f"💾 [Agent 2] Plan saved to: {save_path}")
+
+        return output_payload
 
 # 修改点 增加evaluation的文件
 def evaluate_graph_metrics(blueprint_path):
@@ -433,6 +446,7 @@ def evaluate_graph_metrics(blueprint_path):
         json.dump(evaluation_report, f, indent=4, ensure_ascii=False)
 
     print(f"✅ 图谱测评报告已生成: {report_filename}")
+    
     print(json.dumps(evaluation_report, indent=4, ensure_ascii=False))
     return evaluation_report
 

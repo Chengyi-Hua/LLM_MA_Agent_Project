@@ -53,7 +53,7 @@ def get_or_fetch_data(island: str, force_refresh: bool = False) -> tuple:
             break
 
     if cached_path and not force_refresh:
-        print(f"✅ Found cached data: {cached_path}")
+        print(f"Found cached data: {cached_path}")
         print("   (Use --force-refresh to re-fetch from Tavily)\n")
         with open(cached_path, "r", encoding="utf-8") as f:
             return json.load(f), cached_path
@@ -101,7 +101,7 @@ def save_output(results: dict, method_name: str, island: str):
     output_path = f"data/outputs/result_{method_name}_{safe_island}_{timestamp}.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-    print(f"\n✅ Output saved to {output_path}")
+    print(f"\nOutput saved to {output_path}")
     return output_path
 
 
@@ -148,7 +148,7 @@ def main():
             try:
                 results[name] = run_method(name, input_data, config)
             except Exception as e:
-                print(f"\n[{name}] ❌ Failed: {e}")
+                print(f"\n[{name}]  Failed: {e}")
                 results[name] = {"error": str(e)}
         save_output(results, "all", args.island)
 
