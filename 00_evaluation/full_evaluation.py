@@ -527,9 +527,34 @@ def evaluate(args):
             # ---------------------------------------------------------
             # 8. CSCS
             # ---------------------------------------------------------
+            method_key = str(method).strip().lower()
+
             if args.skip_cscs:
                 row["cscs_status"] = "skipped"
+                row["cscs"] = ""
+                row["cscs_edges"] = ""
+                row["cscs_checked_facts"] = ""
                 row["cscs_error"] = "CSCS skipped."
+
+            elif method_key != "method3":
+                row["cscs_status"] = "not_applicable"
+                row["cscs"] = ""
+                row["cscs_edges"] = ""
+                row["cscs_checked_facts"] = ""
+                row["cscs_error"] = (
+                    "CSCS is only applicable to method3 because only method3 "
+                    "uses the Agent 2 dependency graph during generation."
+                )
+
+            elif nli is None:
+                row["cscs_status"] = "missing_nli"
+                row["cscs"] = ""
+                row["cscs_edges"] = ""
+                row["cscs_checked_facts"] = ""
+                row["cscs_error"] = (
+                    "Proposal-aligned CSCS requires NLI. Do not use --skip-nli "
+                    "if you want CSCS for method3."
+                )
 
             else:
                 try:
@@ -545,6 +570,9 @@ def evaluate(args):
 
                 except Exception as e:
                     row["cscs_status"] = "failed"
+                    row["cscs"] = ""
+                    row["cscs_edges"] = ""
+                    row["cscs_checked_facts"] = ""
                     row["cscs_error"] = str(e)
 
             # ---------------------------------------------------------
@@ -575,6 +603,7 @@ def evaluate(args):
                 f"context_coverage={row['context_chunk_coverage']} | "
                 f"plan_edges={row['plan_edge_count']} | "
                 f"planned_coverage={row['planned_section_coverage']} | "
+                f"CSCS_status={row['cscs_status']} | "
                 f"CSCS={row['cscs']}"
             )
 

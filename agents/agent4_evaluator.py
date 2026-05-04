@@ -30,14 +30,12 @@ Other metrics are implemented separately:
   - artifact diagnostics
 """
 
-import argparse
-import csv
+
 import json
 import os
 import re
 import sys
 import time
-from datetime import datetime
 from typing import Any, List, Optional
 
 from dotenv import load_dotenv
@@ -48,9 +46,6 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, PROJECT_ROOT)
 
 from methods.base_rag import load_config
-
-
-DEFAULT_OUTPUT_DIR = os.path.join(PROJECT_ROOT, "00_evaluation", "evaluations")
 
 
 # ---------------------------------------------------------------------
@@ -67,6 +62,9 @@ Do not compare the article against a reference article.
 Do not reward the article simply for being long.
 Do not punish the article for missing facts unless that affects writing structure or organization.
 
+Do not explain step by step.
+Do not include reasoning.
+Return only the final JSON object.
 Return only valid JSON.
 """.strip()
 
@@ -118,7 +116,7 @@ Return ONLY valid JSON in this exact format:
   "fluency_score": 0,
   "structure_score": 0,
   "organization_score": 0,
-  "brief_rationale": "one or two concise sentences explaining the scores"
+  "brief_rationale": "one concise sentence explaining the scores"
 }}
 
 Article:
@@ -145,6 +143,9 @@ Do not require exact wording from the reference article.
 Do not reward unnecessary length.
 Do not punish different but reasonable section names if the key concepts are covered.
 
+Do not explain step by step.
+Do not include reasoning.
+Return only the final JSON object.
 Return only valid JSON.
 """.strip()
 
@@ -205,13 +206,6 @@ Return ONLY valid JSON in this exact format:
   "concept_accuracy_score": 0,
   "concept_relevance_score": 0,
   "concept_organization_score": 0,
-  "missing_key_concepts": [
-    "short phrase for an important missing concept"
-  ],
-  "inaccurate_or_unsupported_concepts": [
-    "short phrase for an inaccurate, distorted, or unsupported concept"
-  ],
-  "brief_rationale": "one or two concise sentences explaining the concept scores"
 }}
 
 Reference Wikipedia article:
@@ -230,7 +224,7 @@ class Agent4Evaluator:
     """
     Agent 4: LLM-as-a-Judge evaluator.
 
-    Main public methods:
+    Public methods:
       - evaluate_article(...)   -> writing evaluation
       - evaluate_concepts(...)  -> concept-based reference evaluation
     """
@@ -252,9 +246,8 @@ class Agent4Evaluator:
             self.llm_config.get("temperature", 0.0),
         )
 
-        self.max_tokens = self.agent_config.get("max_tokens", 900)
+        self.max_tokens = self.agent_config.get("max_tokens", 700)
 
-        # Keep prompt sizes bounded for free/routed models.
         self.generated_article_max_chars = self.agent_config.get(
             "generated_article_max_chars",
             18000,
@@ -303,8 +296,11 @@ class Agent4Evaluator:
         if len(text) <= max_chars:
             return text
 
-        head = text[: int(max_chars * 0.65)]
-        tail = text[-int(max_chars * 0.35):]
+        head_len = int(max_chars * 0.65)
+        tail_len = int(max_chars * 0.35)
+
+        head = text[:head_len]
+        tail = text[-tail_len:]
 
         return (
             head
@@ -321,11 +317,9 @@ class Agent4Evaluator:
         """
         Calls the judge model with bounded retry.
 
-        Reason:
-        - openrouter/free can be unstable or routed to different providers.
-        - Some endpoints reject reasoning options.
-        - Odd attempts try reasoning.exclude=True.
-        - Even attempts use a plain request.
+        This version avoids provider-specific reasoning options because some
+        endpoints reject them, while others require reasoning. The prompts
+        already instruct the model to return only final JSON.
         """
         last_error = None
 
@@ -341,27 +335,35 @@ class Agent4Evaluator:
                     "max_tokens": self.max_tokens,
                 }
 
-                if attempt % 2 == 1:
-                    request_kwargs["extra_body"] = {
-                        "reasoning": {
-                            "exclude": True
-                        }
-                    }
-
                 response = self.client.chat.completions.create(**request_kwargs)
-                content = response.choices[0].message.content
+
+                choices = getattr(response, "choices", None)
+
+                if not choices:
+                    raise ValueError(f"Judge returned no choices. Raw response: {response}")
+
+                choice = choices[0]
+                message = getattr(choice, "message", None)
+                finish_reason = getattr(choice, "finish_reason", "")
+
+                if message is None:
+                    raise ValueError(
+                        f"Judge returned no message. finish_reason={finish_reason}. "
+                        f"Raw response: {response}"
+                    )
+
+                content = getattr(message, "content", None)
 
                 if content is None or not str(content).strip():
                     raise ValueError(
-                        f"Judge returned empty content. "
-                        f"finish_reason={response.choices[0].finish_reason}"
+                        f"Judge returned empty content. finish_reason={finish_reason}"
                     )
 
-                return content.strip()
+                return str(content).strip()
 
             except Exception as e:
                 last_error = e
-                wait_seconds = min(3 * attempt, 20)
+                wait_seconds = min(3 * attempt, 30)
 
                 print(
                     f"! Agent 4 judge call failed on attempt "
@@ -379,7 +381,7 @@ class Agent4Evaluator:
         if text is None:
             raise ValueError("Cannot parse JSON from None.")
 
-        text = text.strip()
+        text = str(text).strip()
 
         fenced = re.search(
             r"```(?:json)?\s*(.*?)```",
@@ -396,10 +398,55 @@ class Agent4Evaluator:
             pass
 
         match = re.search(r"\{.*\}", text, flags=re.DOTALL)
+
         if match:
             return json.loads(match.group(0))
 
         raise ValueError(f"Could not parse JSON from judge response:\n{text}")
+    
+    def _call_parse_normalize(
+        self,
+        prompt: str,
+        system_prompt: str,
+        normalizer,
+        retries: int = 5,
+    ):
+        """
+        Calls the judge, parses JSON, validates all required scores,
+        and retries if the response is invalid or incomplete.
+        """
+        last_error = None
+        raw_response = ""
+
+        for attempt in range(1, retries + 1):
+            try:
+                raw_response = self._call_judge(
+                    prompt=prompt,
+                    system_prompt=system_prompt,
+                    retries=1,
+                )
+
+                parsed = self._extract_json(raw_response)
+                scores = normalizer(parsed)
+
+                return raw_response, scores
+
+            except Exception as e:
+                last_error = e
+                wait_seconds = min(2 * attempt, 15)
+
+                print(
+                    f"! Agent 4 JSON/score validation failed on attempt "
+                    f"{attempt}/{retries}: {e}"
+                )
+                print(f"   Waiting {wait_seconds}s before retrying...")
+
+                time.sleep(wait_seconds)
+
+        raise RuntimeError(
+            f"Agent 4 failed to produce complete valid scores after "
+            f"{retries} attempts: {last_error}"
+        )
 
     @staticmethod
     def _clamp_score(value: Any) -> Optional[float]:
@@ -410,6 +457,7 @@ class Agent4Evaluator:
 
         if score < 0:
             return 0.0
+
         if score > 5:
             return 5.0
 
@@ -427,8 +475,10 @@ class Agent4Evaluator:
             return []
 
         cleaned = []
+
         for item in value:
             item = str(item).strip()
+
             if item:
                 cleaned.append(item)
 
@@ -439,16 +489,10 @@ class Agent4Evaluator:
         structure = self._clamp_score(data.get("structure_score"))
         organization = self._clamp_score(data.get("organization_score"))
 
-        valid_scores = [
-            s for s in [fluency, structure, organization]
-            if s is not None
-        ]
+        if None in [fluency, structure, organization]:
+            raise ValueError(f"Writing judge returned incomplete scores: {data}")
 
-        writing_score = (
-            round(sum(valid_scores) / len(valid_scores), 2)
-            if valid_scores
-            else None
-        )
+        writing_score = round((fluency + structure + organization) / 3, 2)
 
         return {
             "fluency_score": fluency,
@@ -464,15 +508,12 @@ class Agent4Evaluator:
         relevance = self._clamp_score(data.get("concept_relevance_score"))
         organization = self._clamp_score(data.get("concept_organization_score"))
 
-        valid_scores = [
-            s for s in [coverage, accuracy, relevance, organization]
-            if s is not None
-        ]
+        if None in [coverage, accuracy, relevance, organization]:
+            raise ValueError(f"Concept judge returned incomplete scores: {data}")
 
-        concept_score = (
-            round(sum(valid_scores) / len(valid_scores), 2)
-            if valid_scores
-            else None
+        concept_score = round(
+            (coverage + accuracy + relevance + organization) / 4,
+            2,
         )
 
         return {
@@ -503,8 +544,7 @@ class Agent4Evaluator:
         method_name: str,
     ) -> dict:
         """
-        Backward-compatible writing evaluator.
-        full_evaluation.py already calls this method.
+        Writing evaluator used by full_evaluation.py.
         """
         if article is None or not article.strip():
             raise ValueError("Generated article is empty.")
@@ -520,13 +560,11 @@ class Agent4Evaluator:
             article=clipped_article,
         )
 
-        raw_response = self._call_judge(
+        raw_response, scores = self._call_parse_normalize(
             prompt=prompt,
             system_prompt=AGENT4_WRITING_SYSTEM_PROMPT,
+            normalizer=self._normalize_writing_scores,
         )
-
-        parsed = self._extract_json(raw_response)
-        scores = self._normalize_writing_scores(parsed)
 
         return {
             "status": "success",
@@ -579,13 +617,11 @@ class Agent4Evaluator:
             generated_article=clipped_generated,
         )
 
-        raw_response = self._call_judge(
+        raw_response, scores = self._call_parse_normalize(
             prompt=prompt,
             system_prompt=AGENT4_CONCEPT_SYSTEM_PROMPT,
+            normalizer=self._normalize_concept_scores,
         )
-
-        parsed = self._extract_json(raw_response)
-        scores = self._normalize_concept_scores(parsed)
 
         return {
             "status": "success",
@@ -598,263 +634,3 @@ class Agent4Evaluator:
             "scores": scores,
             "raw_response": raw_response,
         }
-
-    # ------------------------------------------------------------------
-    # Existing CLI helpers: writing-only evaluation
-    # ------------------------------------------------------------------
-
-    def evaluate_file(self, input_path: str) -> List[dict]:
-        with open(input_path, "r", encoding="utf-8") as f:
-            result_data = json.load(f)
-
-        return self.evaluate_result_dict(result_data, source_file=input_path)
-
-    def evaluate_result_dict(self, result_data: dict, source_file: str = "") -> List[dict]:
-        items = self._normalize_result_dict(result_data, source_file=source_file)
-        evaluations = []
-
-        for item in items:
-            island_name = item["island_name"]
-            method_name = item["method"]
-            article = item["generated_article"]
-
-            print(f"Agent 4 evaluating writing: {island_name} | {method_name}")
-
-            try:
-                evaluation = self.evaluate_article(
-                    article=article,
-                    island_name=island_name,
-                    method_name=method_name,
-                )
-
-            except Exception as e:
-                evaluation = {
-                    "status": "failed",
-                    "agent": "agent4",
-                    "task": "writing_evaluation",
-                    "island_name": island_name,
-                    "method": method_name,
-                    "judge_provider": self.provider,
-                    "judge_model": self.model,
-                    "scores": {},
-                    "raw_response": "",
-                    "error": str(e),
-                }
-
-            evaluation["source_file"] = source_file
-            evaluations.append(evaluation)
-
-        return evaluations
-
-    def _normalize_result_dict(self, data: dict, source_file: str = "") -> List[dict]:
-        rows = []
-
-        # Shape B: batch_experiments output
-        # {
-        #   "metadata": {...},
-        #   "result": {...}
-        # }
-        if isinstance(data, dict) and "metadata" in data and "result" in data:
-            metadata = data.get("metadata", {})
-            result = data.get("result", {})
-
-            rows.append(
-                {
-                    "source_file": source_file,
-                    "island_name": metadata.get("island")
-                    or result.get("island_name")
-                    or "unknown",
-                    "method": metadata.get("method")
-                    or result.get("method")
-                    or "unknown",
-                    "generated_article": result.get("generated_article", ""),
-                }
-            )
-
-            return rows
-
-        # Shape A: full_pipeline --method all output
-        # {
-        #   "method0": {...},
-        #   "method1": {...}
-        # }
-        for method_name, method_result in data.items():
-            if not isinstance(method_result, dict):
-                continue
-
-            if "generated_article" not in method_result:
-                continue
-
-            rows.append(
-                {
-                    "source_file": source_file,
-                    "island_name": method_result.get("island_name", "unknown"),
-                    "method": method_name,
-                    "generated_article": method_result.get("generated_article", ""),
-                }
-            )
-
-        return rows
-
-
-def flatten_evaluation(evaluation: dict) -> dict:
-    scores = evaluation.get("scores", {})
-
-    return {
-        "timestamp": datetime.now().isoformat(timespec="seconds"),
-        "source_file": evaluation.get("source_file", ""),
-        "island_name": evaluation.get("island_name", ""),
-        "method": evaluation.get("method", ""),
-        "status": evaluation.get("status", ""),
-        "judge_provider": evaluation.get("judge_provider", ""),
-        "judge_model": evaluation.get("judge_model", ""),
-        "fluency_score": scores.get("fluency_score", ""),
-        "structure_score": scores.get("structure_score", ""),
-        "organization_score": scores.get("organization_score", ""),
-        "writing_score": scores.get("writing_score", ""),
-        "brief_rationale": scores.get("brief_rationale", ""),
-        "error": evaluation.get("error", ""),
-    }
-
-
-def write_csv(output_path: str, rows: List[dict]):
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-    fieldnames = [
-        "timestamp",
-        "source_file",
-        "island_name",
-        "method",
-        "status",
-        "judge_provider",
-        "judge_model",
-        "fluency_score",
-        "structure_score",
-        "organization_score",
-        "writing_score",
-        "brief_rationale",
-        "error",
-    ]
-
-    file_exists = os.path.exists(output_path)
-
-    with open(output_path, "a", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-
-        if not file_exists:
-            writer.writeheader()
-
-        writer.writerows(rows)
-
-
-def discover_input_files(input_path: Optional[str], input_dir: Optional[str]) -> List[str]:
-    files = []
-
-    if input_path:
-        files.append(os.path.abspath(input_path))
-
-    if input_dir:
-        input_dir = os.path.abspath(input_dir)
-
-        for fname in sorted(os.listdir(input_dir)):
-            if fname.endswith(".json"):
-                files.append(os.path.join(input_dir, fname))
-
-    seen = set()
-    unique_files = []
-
-    for path in files:
-        if path not in seen:
-            unique_files.append(path)
-            seen.add(path)
-
-    return unique_files
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="Agent 4: LLM-as-a-Judge evaluator for writing quality."
-    )
-
-    parser.add_argument(
-        "--input",
-        default=None,
-        help="Path to one result JSON file.",
-    )
-
-    parser.add_argument(
-        "--input-dir",
-        default=None,
-        help="Directory containing result JSON files.",
-    )
-
-    parser.add_argument(
-        "--output",
-        default=None,
-        help="Output CSV path. Defaults to 00_evaluation/evaluations/.",
-    )
-
-    parser.add_argument(
-        "--sleep",
-        type=float,
-        default=0.5,
-        help="Seconds to sleep between files. Default: 0.5.",
-    )
-
-    args = parser.parse_args()
-
-    input_files = discover_input_files(args.input, args.input_dir)
-
-    if not input_files:
-        raise FileNotFoundError("No input JSON files found. Use --input or --input-dir.")
-
-    output_path = args.output or os.path.join(
-        DEFAULT_OUTPUT_DIR,
-        f"agent4_writing_scores_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
-    )
-
-    evaluator = Agent4Evaluator()
-
-    print("\n" + "=" * 80)
-    print("Agent 4 Writing Evaluation")
-    print("=" * 80)
-    print(f"Judge provider: {evaluator.provider}")
-    print(f"Judge model:    {evaluator.model}")
-    print(f"Input files:    {len(input_files)}")
-    print(f"Output CSV:     {output_path}")
-    print("=" * 80 + "\n")
-
-    for input_file in input_files:
-        print(f"\nReading: {input_file}")
-
-        evaluations = evaluator.evaluate_file(input_file)
-        rows = [flatten_evaluation(e) for e in evaluations]
-        write_csv(output_path, rows)
-
-        for row in rows:
-            if row["status"] == "success":
-                print(
-                    f"{row['island_name']} | {row['method']} | "
-                    f"writing={row['writing_score']} "
-                    f"fluency={row['fluency_score']} "
-                    f"structure={row['structure_score']} "
-                    f"organization={row['organization_score']}"
-                )
-            else:
-                print(
-                    f"{row['island_name']} | {row['method']} | "
-                    f"{row['error']}"
-                )
-
-        if args.sleep > 0:
-            time.sleep(args.sleep)
-
-    print("\n" + "=" * 80)
-    print("Agent 4 writing evaluation complete")
-    print("=" * 80)
-    print(f"Saved to: {output_path}")
-    print("=" * 80 + "\n")
-
-
-if __name__ == "__main__":
-    main()

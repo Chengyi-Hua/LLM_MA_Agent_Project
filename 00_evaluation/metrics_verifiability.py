@@ -70,15 +70,71 @@ class NLIEvaluator:
 
         return entail_prob >= self.threshold
 
-
 def infer_context_path(island_name: str, input_json: str, context_dir: str) -> str:
+    """
+    Find the matching *_rag_context.json file with alias support.
+
+    Handles cases like:
+      Hashima  -> Hashima_Island_rag_context.json
+      Howland  -> Howland_Island_rag_context.json
+      Jarvis   -> Jarvis_Island_rag_context.json
+      Tromelin -> Tromelin_Island_rag_context.json
+    """
     if input_json and os.path.exists(input_json):
         return input_json
 
+    alias_map = {
+        "Hashima": ["Hashima", "Hashima Island", "Hashima_Island"],
+        "Hashima Island": ["Hashima Island", "Hashima_Island", "Hashima"],
+
+        "Howland": ["Howland", "Howland Island", "Howland_Island"],
+        "Howland Island": ["Howland Island", "Howland_Island", "Howland"],
+
+        "Jarvis": ["Jarvis", "Jarvis Island", "Jarvis_Island"],
+        "Jarvis Island": ["Jarvis Island", "Jarvis_Island", "Jarvis"],
+
+        "Tromelin": ["Tromelin", "Tromelin Island", "Tromelin_Island"],
+        "Tromelin Island": ["Tromelin Island", "Tromelin_Island", "Tromelin"],
+
+        "Nishinoshima": [
+            "Nishinoshima",
+            "Nishinoshima (Ogasawara)",
+            "Nishinoshima_(Ogasawara)",
+        ],
+        "Nishinoshima (Ogasawara)": [
+            "Nishinoshima (Ogasawara)",
+            "Nishinoshima_(Ogasawara)",
+            "Nishinoshima",
+        ],
+
+        "Hunga Tonga–Hunga Haʻapai": [
+            "Hunga Tonga–Hunga Haʻapai",
+            "Hunga_Tonga–Hunga_Ha_apai",
+            "Hunga_Tonga_Hunga_Ha_apai",
+            "Hunga_Tonga_Hunga_Haapai",
+            "Hunga Tonga Hunga Haapai",
+            "Hunga Tonga Hunga Ha apai",
+        ],
+    }
+
+    names = [island_name]
+    names.extend(alias_map.get(island_name, []))
+
+    candidates = []
+
+    for name in names:
+        candidates.extend(
+            [
+                f"{safe_name(name)}_rag_context.json",
+                f"{str(name).replace(' ', '_')}_rag_context.json",
+                f"{name}_rag_context.json",
+            ]
+        )
+
+    seen = set()
     candidates = [
-        f"{safe_name(island_name)}_rag_context.json",
-        f"{island_name.replace(' ', '_')}_rag_context.json",
-        f"{island_name}_rag_context.json",
+        c for c in candidates
+        if c and not (c in seen or seen.add(c))
     ]
 
     for fname in candidates:

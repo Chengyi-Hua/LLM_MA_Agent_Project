@@ -166,15 +166,18 @@ def discover_input_files(input_path: Optional[str], input_dir: Optional[str]) ->
 
     return unique
 
-
 def load_reference_article(
     island_name: str,
     references_dir: str,
 ) -> Tuple[Optional[str], str]:
     """
-    Looks for:
-      references/Surtsey.txt
-      references/Surtsey.json
+    Loads the human-written Wikipedia reference article.
+
+    Supports aliases such as:
+      Hashima -> Hashima.txt / Hashima_Island.txt
+      Howland -> Howland.txt / Howland_Island.txt
+      Jarvis -> Jarvis.txt / Jarvis_Island.txt
+      Tromelin -> Tromelin.txt / Tromelin_Island.txt
 
     JSON reference can contain:
       reference_article
@@ -183,14 +186,59 @@ def load_reference_article(
       text
       generated_article
     """
-    candidates = [
-        island_name,
-        safe_name(island_name),
-        island_name.replace(" ", "_"),
-    ]
+    alias_map = {
+        "Hashima": ["Hashima", "Hashima Island", "Hashima_Island"],
+        "Hashima Island": ["Hashima Island", "Hashima_Island", "Hashima"],
 
+        "Howland": ["Howland", "Howland Island", "Howland_Island"],
+        "Howland Island": ["Howland Island", "Howland_Island", "Howland"],
+
+        "Jarvis": ["Jarvis", "Jarvis Island", "Jarvis_Island"],
+        "Jarvis Island": ["Jarvis Island", "Jarvis_Island", "Jarvis"],
+
+        "Tromelin": ["Tromelin", "Tromelin Island", "Tromelin_Island"],
+        "Tromelin Island": ["Tromelin Island", "Tromelin_Island", "Tromelin"],
+
+        "Nishinoshima": [
+            "Nishinoshima",
+            "Nishinoshima (Ogasawara)",
+            "Nishinoshima_(Ogasawara)",
+        ],
+        "Nishinoshima (Ogasawara)": [
+            "Nishinoshima (Ogasawara)",
+            "Nishinoshima_(Ogasawara)",
+            "Nishinoshima",
+        ],
+
+        "Hunga Tonga–Hunga Haʻapai": [
+            "Hunga Tonga–Hunga Haʻapai",
+            "Hunga_Tonga_Hunga_Ha_apai",
+            "Hunga_Tonga_Hunga_Haapai",
+            "Hunga_Tonga-Hunga_Ha'apai",
+            "Hunga Tonga Hunga Haapai",
+            "Hunga Tonga Hunga Ha apai",
+        ],
+    }
+
+    candidates = []
+
+    # Original name variants
+    candidates.append(island_name)
+    candidates.append(safe_name(island_name))
+    candidates.append(island_name.replace(" ", "_"))
+
+    # Alias variants
+    for alias in alias_map.get(island_name, []):
+        candidates.append(alias)
+        candidates.append(safe_name(alias))
+        candidates.append(alias.replace(" ", "_"))
+
+    # Deduplicate while preserving order
     seen = set()
-    candidates = [c for c in candidates if not (c in seen or seen.add(c))]
+    candidates = [
+        c for c in candidates
+        if c and not (c in seen or seen.add(c))
+    ]
 
     for base in candidates:
         txt_path = os.path.join(references_dir, f"{base}.txt")
