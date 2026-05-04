@@ -1,0 +1,14 @@
+{
+    "graph_analysis": {
+        "total_sections": 7,
+        "orphan_nodes_count": 4,
+        "orphan_nodes_list": [
+            "Flora and fauna",
+            "Economics",
+            "History",
+            "Image gallery"
+        ],
+        "orphan_node_ratio": "57.14%",
+        "max_graph_depth": 4
+    }
+}

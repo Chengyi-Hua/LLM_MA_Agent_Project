@@ -1,0 +1,12 @@
+{
+    "graph_analysis": {
+        "total_sections": 6,
+        "orphan_nodes_count": 2,
+        "orphan_nodes_list": [
+            "Etymology",
+            "Access"
+        ],
+        "orphan_node_ratio": "33.33%",
+        "max_graph_depth": 5
+    }
+}
