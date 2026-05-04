@@ -1,0 +1,24 @@
+{
+    "status": "success",
+    "island": "Kavachi",
+    "order": [
+        "Geography",
+        "Eruptions",
+        "Marine life"
+    ],
+    "dependency": {
+        "Geography": [],
+        "Eruptions": [
+            "Geography"
+        ],
+        "Marine life": [
+            "Geography",
+            "Eruptions"
+        ]
+    },
+    "summaries": {
+        "Geography": "Kavachi is a submarine volcano in the Solomon Islands arc, located in the Solomon Sea south of Gatokae and Vangunu Islands in Western Province, around 9.02° S, 158.00° E. It rises from about 1 km water depth with a summit roughly 20 m below sea level, and has no permanent surface island because eruptions repeatedly build temporary islands that are quickly eroded. Its activity is episodic but highly frequent, with phreatomagmatic eruptions producing discolored water plumes, steam, ash, and occasional small tsunamis, while crater waters are highly acidic and mineral-rich.",
+        "Eruptions": "Kavachi is one of the most active submarine volcanoes in the Pacific and is known for frequent, lengthy, nearly continuous phreatomagmatic and subaerial eruptions that generate airborne steam and ash, an underwater plume, and occasional ephemeral island emergence. Reports of eruptions have been common since at least the 1930s, with multiple islands forming and eroding over the past century, and a notable subaerial eruption occurred in 2014. The volcano’s explosive behavior and remote location have limited direct scientific observation of its summit crater.",
+        "Marine life": "The Kavachi Seascape is a marine biodiversity hotspot in the Coral Triangle, with unique biological and geological features and strong connectivity between montane forests and the deep abyss. National Geographic surveys identified the first records of macrofauna, including sharks and pelagic fish, using an active submarine volcano as habitat. A marine protected area is being established within the Kavachi Seascape, centered on the submarine volcano, as part of the Kavachi Marine Management Area."
+    }
+}

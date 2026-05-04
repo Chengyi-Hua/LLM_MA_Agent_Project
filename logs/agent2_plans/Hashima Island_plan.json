@@ -1,0 +1,42 @@
+{
+    "status": "success",
+    "island": "Hashima Island",
+    "order": [
+        "Etymology",
+        "History",
+        "Current status",
+        "Access",
+        "World Heritage Site approval controversy",
+        "In popular culture"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "History": [
+            "Etymology"
+        ],
+        "Current status": [
+            "Etymology",
+            "History"
+        ],
+        "Access": [],
+        "World Heritage Site approval controversy": [
+            "Etymology",
+            "History",
+            "Current status"
+        ],
+        "In popular culture": [
+            "Etymology",
+            "History",
+            "Current status",
+            "World Heritage Site approval controversy"
+        ]
+    },
+    "summaries": {
+        "Etymology": "Hashima means \"island\" or \"peninsula\" in Japanese. The name likely refers to the city's historical geographical features, which may have once been surrounded by water or protruded into a body of water. The etymology of the name is rooted in the Japanese language.",
+        "History": "Hashima Island is described as a former coal mining facility developed by Mitsubishi in the late 19th century, once a densely populated industrial hub for miners and their families, with mining operations closing in 1974 and the island later abandoned and left to decay. It is now accessible by boat from Nagasaki and is presented as a Japanese ghost island with a dark history, known as Gunkanjima or “warship island,” and recognized as a UNESCO World Heritage Site.",
+        "Current status": "Hashima Island is currently completely deserted and serves as a dark tourism destination open to visitors through twice-daily boat tours after cleanup and reinforcement work. It lies off Japan’s west coast in Nagasaki Prefecture and is a UNESCO World Heritage Site, though disputes over its wartime labor history remain unresolved in international forums.",
+        "Access": "No relevant information regarding Access is available.",
+        "World Heritage Site approval controversy": "Hashima Island’s World Heritage approval was controversial because Japan’s nomination emphasized Meiji-era industrialization and technological progress while critics in South Korea and China objected that it obscured wartime forced labor. UNESCO granted the listing in 2015 only after Japan agreed to acknowledge that “a large number of Koreans and others” had been brought against their will and forced to work under harsh conditions, but critics still considered the acknowledgment insufficient or too vague.",
+        "In popular culture": "Hashima Island appears in popular culture and tourism contexts as a haunted “Ghost Island” or “Battleship Island,” attracting paranormal tourists and featuring ghost-town imagery, abandoned ruins, and museum exhibits that emphasize nostalgic portrayals of life during Japan’s high-growth period rather than its forced-labor history."
+    }
+}

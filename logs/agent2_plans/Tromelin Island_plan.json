@@ -1,0 +1,34 @@
+{
+    "status": "success",
+    "island": "Tromelin Island",
+    "order": [
+        "Etymology",
+        "Description",
+        "Fauna and flora",
+        "History",
+        "Climate"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Description": [],
+        "Fauna and flora": [
+            "Description"
+        ],
+        "History": [
+            "Description",
+            "Fauna and flora"
+        ],
+        "Climate": [
+            "Description",
+            "Fauna and flora",
+            "History"
+        ]
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Description": "Tromelin Island is a small coral reef island in the Indian Ocean, about 0.1 km² in area, located approximately 440 km east of Madagascar and 580 km north of Réunion. It is a very low-lying, remote island with a coastline of less than 4 km, a highest point about 7 meters above sea level, sparse vegetation, and no shade. It lies in the cyclone corridor of the southwest Indian Ocean, where severe storms can devastate birds, turtles, and low-lying parts of the island. After invasive rats damaged the ecosystem, eradication efforts in 2005 helped native plants recover and brought back three bird species.",
+        "Fauna and flora": "Tromelin Island's fauna is dominated by seabirds, with nesting green sea turtles (Chelonia mydas) as the primary non-avian species; no native terrestrial mammals, reptiles, or amphibians occur. The island historically supported 6–8 seabird species in large numbers prior to invasive Norway rat (Rattus norvegicus) predation, but by 2005 only two booby species persisted with limited breeding success. After rat eradication in 2005, the seabird community recovered, with breeding populations including white terns, sooty terns, brown noddies, and wedge-tailed shearwaters; native plants previously decimated by rats also began growing back.",
+        "History": "Tromelin’s history centers on the 1761 shipwreck of the French slave ship Utile, after which enslaved Malagasy people were abandoned on the island and survived in extreme conditions for years before the last survivors were rescued in 1776. The story has become a memorial and political symbol of slavery, colonial neglect, and human endurance, documented in reports, archaeological work, and the film Tromelin, the Island of Forgotten Slaves.",
+        "Climate": "Tromelin Island exhibits a tropical savanna climate (Köppen Aw) with consistently warm temperatures and a distinct wet season from November to April influenced by the intertropical convergence zone. The average annual temperature is 26.7 °C, with daily highs averaging 26.4 °C and lows 25.5 °C, indicating limited seasonal variation due to its equatorial proximity. Annual precipitation is approximately 1,074 mm, concentrated in summer months, with February typically receiving around 120-140 mm, while drier conditions prevail from May to October. Prevailing southeast trade winds often exceed 8 m/s from directions between 100° and 140°, contributing to high evaporation rates. Tromelin Island lies within the southwest Indian Ocean cyclone corridor, with tropical cyclones mainly occurring between late October and May and bringing high winds, intense rainfall, and storm surges."
+    }
+}
