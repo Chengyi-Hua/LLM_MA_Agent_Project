@@ -6,7 +6,7 @@ Informativeness metrics:
 
 from typing import List, Optional
 
-from eval_utils import tokenize
+from eval_utils import tokenize, strip_citations
 
 
 def lcs_length(a: List[str], b: List[str]) -> int:
@@ -32,9 +32,12 @@ def lcs_length(a: List[str], b: List[str]) -> int:
 def rouge_l_f1(generated: str, reference: str) -> float:
     """
     ROUGE-L F1 on 0–100 scale.
+
+    Citation markers are removed before scoring so citation-heavy RAG
+    outputs are not penalized for tokens such as [1], [2], etc.
     """
-    gen_tokens = tokenize(generated)
-    ref_tokens = tokenize(reference)
+    gen_tokens = tokenize(strip_citations(generated))
+    ref_tokens = tokenize(strip_citations(reference))
 
     if not gen_tokens or not ref_tokens:
         return 0.0
@@ -53,12 +56,14 @@ def meteor_score(generated: str, reference: str) -> float:
     """
     METEOR on 0–100 scale.
 
+    Citation markers are removed before scoring so citation-heavy RAG
+    outputs are not penalized for tokens such as [1], [2], etc.
+
     Uses NLTK if available.
     Falls back to a simple unigram approximation if NLTK is unavailable.
     """
-    gen_tokens = tokenize(generated)
-    ref_tokens = tokenize(reference)
-
+    gen_tokens = tokenize(strip_citations(generated))
+    ref_tokens = tokenize(strip_citations(reference))
     if not gen_tokens or not ref_tokens:
         return 0.0
 

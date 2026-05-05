@@ -2,20 +2,26 @@
 Verifiability metrics:
   - citation_recall
   - citation_precision
+  - citation_link_precision
   - citation_rate
 
 Definitions used here:
-  citation_rate      = cited sentences / total sentences
-  citation_precision = supported citation links / total citation links
-  citation_recall    = supported cited sentences / total sentences
+  citation_rate           = cited sentences / total sentences
+  citation_precision      = supported cited sentences / cited sentences
+  citation_recall         = supported cited sentences / total sentences
+  citation_link_precision = supported citation links / total citation links
+
+Diagnostic counts:
+  num_citation_links
+  num_supported_citation_links
 """
 
 import json
 import math
 import os
+import re
 from collections import defaultdict
-from typing import Any, Dict, List, Optional, Tuple
-
+from typing import Any, Dict, List, Tuple
 from eval_utils import (
     extract_citation_numbers,
     normalize_url,
@@ -185,6 +191,74 @@ def load_url_text_map(context_path: str) -> Dict[str, List[str]]:
     return url_to_texts
 
 
+def split_claim_units(sentence: str, max_units: int = 6) -> List[str]:
+    """
+    Split a sentence into smaller claim-like units.
+
+    This is used because a citation may support one factual clause in a
+    sentence even when it does not entail the entire sentence.
+    """
+    text = strip_citations(sentence)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    if not text:
+        return []
+
+    units = [text]
+
+    parts = re.split(
+        r"\s*(?:;|:|—|–)\s*|\s+\b(?:but|while|whereas|although|though|however)\b\s+",
+        text,
+        flags=re.IGNORECASE,
+    )
+
+    for part in parts:
+        part = part.strip(" ,.;:-")
+
+        if len(part.split()) >= 4:
+            units.append(part)
+
+    # Remove duplicates while preserving order.
+    seen = set()
+    unique_units = []
+
+    for unit in units:
+        key = unit.lower()
+
+        if key not in seen:
+            unique_units.append(unit)
+            seen.add(key)
+
+        if len(unique_units) >= max_units:
+            break
+
+    return unique_units
+
+
+def citation_supports_any_claim(
+    passages: List[str],
+    claim_units: List[str],
+    nli: NLIEvaluator,
+) -> bool:
+    """
+    Return True if any retrieved passage entails at least one claim unit.
+
+    This avoids concatenating all passages from the same URL and then losing
+    relevant evidence because of the 4000-character NLI truncation.
+    """
+    for passage in passages:
+        if not passage or not str(passage).strip():
+            continue
+
+        for claim in claim_units:
+            try:
+                if nli.entails(str(passage), claim):
+                    return True
+            except Exception:
+                pass
+
+    return False
+
 def verify_sentence_with_citations(
     sentence: str,
     citation_numbers: List[int],
@@ -197,11 +271,22 @@ def verify_sentence_with_citations(
       supported_links
       total_links
       sentence_supported
+
+    A citation link is counted as supported if its source passage entails
+    either:
+      - the full sentence, or
+      - at least one smaller claim unit inside the sentence.
+
+    This avoids unfairly marking multi-claim sentences as unsupported when
+    the citation supports one factual part of the sentence.
     """
     if not citation_numbers:
         return 0, 0, False
 
-    hypothesis = strip_citations(sentence)
+    claim_units = split_claim_units(sentence)
+
+    if not claim_units:
+        return 0, 0, False
 
     supported_links = 0
     total_links = 0
@@ -227,13 +312,14 @@ def verify_sentence_with_citations(
         if not passages:
             continue
 
-        premise = "\n".join(passages)
+        citation_supports_sentence = citation_supports_any_claim(
+            passages=passages,
+            claim_units=claim_units,
+            nli=nli,
+        )
 
-        try:
-            if nli.entails(premise, hypothesis):
-                supported_links += 1
-        except Exception:
-            pass
+        if citation_supports_sentence:
+            supported_links += 1
 
     sentence_supported = supported_links > 0
 
@@ -287,6 +373,7 @@ def compute_verifiability(
             "verifiability_status": "no_sentences",
             "citation_recall": "",
             "citation_precision": "",
+            "citation_link_precision": "",
             "citation_rate": "",
             "num_sentences": 0,
             "num_cited_sentences": 0,
@@ -299,7 +386,15 @@ def compute_verifiability(
 
     citation_recall = supported_cited_sentences / total_sentences
 
+    # Sentence-level citation precision:
+    # Among cited sentences, how many are supported by at least one citation?
     citation_precision = (
+        supported_cited_sentences / cited_sentences
+        if cited_sentences > 0
+        else 0.0
+    )
+
+    citation_link_precision = (
         supported_citation_links / total_citation_links
         if total_citation_links > 0
         else 0.0
@@ -309,6 +404,7 @@ def compute_verifiability(
         "verifiability_status": "success",
         "citation_recall": round(citation_recall, 4),
         "citation_precision": round(citation_precision, 4),
+        "citation_link_precision": round(citation_link_precision, 4),
         "citation_rate": round(citation_rate, 4),
         "num_sentences": total_sentences,
         "num_cited_sentences": cited_sentences,

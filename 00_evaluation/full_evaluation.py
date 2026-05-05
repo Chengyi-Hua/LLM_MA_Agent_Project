@@ -6,10 +6,9 @@ Full evaluation:
   2. Concept-based LLM evaluation via Agent 4
   3. ROUGE-L
   4. METEOR
-  5. Citation recall / precision / rate
-  6. CSCS
+  5. Citation recall / precision / link precision / rate
+  6. CSCS 
   7. Artifact / pipeline diagnostics
-
 Run from project root:
 
     python 00_evaluation/full_evaluation.py ^
@@ -117,6 +116,7 @@ def write_csv(output_path: str, rows: list):
         "verifiability_status",
         "citation_recall",
         "citation_precision",
+        "citation_link_precision",
         "citation_rate",
         "num_sentences",
         "num_cited_sentences",
@@ -128,6 +128,7 @@ def write_csv(output_path: str, rows: list):
         "cscs_status",
         "cscs",
         "cscs_edges",
+        "cscs_checked_edges",
         "cscs_checked_facts",
         "cscs_error",
 
@@ -254,10 +255,10 @@ def make_empty_row(item: dict, island: str, method: str) -> dict:
         "concept_rationale": "",
         "concept_error": "",
 
-        # Verifiability
         "verifiability_status": "",
         "citation_recall": "",
         "citation_precision": "",
+        "citation_link_precision": "",
         "citation_rate": "",
         "num_sentences": "",
         "num_cited_sentences": "",
@@ -269,6 +270,7 @@ def make_empty_row(item: dict, island: str, method: str) -> dict:
         "cscs_status": "",
         "cscs": "",
         "cscs_edges": "",
+        "cscs_checked_edges": "",
         "cscs_checked_facts": "",
         "cscs_error": "",
 
@@ -533,6 +535,7 @@ def evaluate(args):
                 row["cscs_status"] = "skipped"
                 row["cscs"] = ""
                 row["cscs_edges"] = ""
+                row["cscs_checked_edges"] = ""
                 row["cscs_checked_facts"] = ""
                 row["cscs_error"] = "CSCS skipped."
 
@@ -540,6 +543,7 @@ def evaluate(args):
                 row["cscs_status"] = "not_applicable"
                 row["cscs"] = ""
                 row["cscs_edges"] = ""
+                row["cscs_checked_edges"] = ""
                 row["cscs_checked_facts"] = ""
                 row["cscs_error"] = (
                     "CSCS is only applicable to method3 because only method3 "
@@ -550,6 +554,7 @@ def evaluate(args):
                 row["cscs_status"] = "missing_nli"
                 row["cscs"] = ""
                 row["cscs_edges"] = ""
+                row["cscs_checked_edges"] = ""
                 row["cscs_checked_facts"] = ""
                 row["cscs_error"] = (
                     "Proposal-aligned CSCS requires NLI. Do not use --skip-nli "
@@ -572,6 +577,7 @@ def evaluate(args):
                     row["cscs_status"] = "failed"
                     row["cscs"] = ""
                     row["cscs_edges"] = ""
+                    row["cscs_checked_edges"] = ""
                     row["cscs_checked_facts"] = ""
                     row["cscs_error"] = str(e)
 
@@ -598,12 +604,15 @@ def evaluate(args):
                 f"ROUGE-L={row['rouge_l']} | "
                 f"METEOR={row['meteor']} | "
                 f"citation_rate={row['citation_rate']} | "
+                f"citation_precision={row['citation_precision']} | "
+                f"citation_link_precision={row['citation_link_precision']} | "
                 f"citation_validity={row['citation_index_validity']} | "
                 f"error_sections={row['generated_error_section_count']} | "
                 f"context_coverage={row['context_chunk_coverage']} | "
                 f"plan_edges={row['plan_edge_count']} | "
                 f"planned_coverage={row['planned_section_coverage']} | "
                 f"CSCS_status={row['cscs_status']} | "
+                f"CSCS_edges={row['cscs_checked_edges']} | "
                 f"CSCS={row['cscs']}"
             )
 

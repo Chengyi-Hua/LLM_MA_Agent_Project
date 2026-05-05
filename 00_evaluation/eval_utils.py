@@ -23,8 +23,20 @@ def word_count(text: str) -> int:
 
 
 def strip_citations(text: str) -> str:
-    return re.sub(r"\[\d+\]", "", str(text)).strip()
+    """
+    Remove numeric citation markers from text.
 
+    Supports:
+      [1]
+      [1][2]
+      [1, 2]
+      [1,2,4]
+      [1-3]
+      [1–3]
+    """
+    text = str(text)
+    text = re.sub(r"\[[0-9,\s\-–—]+\]", "", text)
+    return re.sub(r"\s+", " ", text).strip()
 
 def split_sentences(text: str) -> List[str]:
     if not text:
@@ -36,10 +48,48 @@ def split_sentences(text: str) -> List[str]:
     parts = re.split(r"(?<=[.!?])\s+", text)
     return [p.strip() for p in parts if len(strip_citations(p).strip()) > 5]
 
-
 def extract_citation_numbers(sentence: str) -> List[int]:
-    nums = re.findall(r"\[(\d+)\]", sentence)
-    return [int(n) for n in nums]
+    """
+    Extract citation numbers from citation markers.
+
+    Supports:
+      [1]
+      [1][2]
+      [1, 2]
+      [1,2,4]
+      [1-3]
+      [1–3]
+    """
+    numbers = []
+
+    # Capture bracket contents that look citation-like.
+    bracket_contents = re.findall(r"\[([0-9,\s\-–—]+)\]", str(sentence))
+
+    for content in bracket_contents:
+        parts = re.split(r"\s*,\s*", content.strip())
+
+        for part in parts:
+            part = part.strip()
+
+            # Handle ranges such as 1-3 or 1–3.
+            range_match = re.fullmatch(r"(\d+)\s*[-–—]\s*(\d+)", part)
+
+            if range_match:
+                start = int(range_match.group(1))
+                end = int(range_match.group(2))
+
+                if start <= end:
+                    numbers.extend(range(start, end + 1))
+                else:
+                    numbers.extend(range(start, end - 1, -1))
+
+                continue
+
+            # Handle single citation number.
+            if re.fullmatch(r"\d+", part):
+                numbers.append(int(part))
+
+    return numbers
 
 
 def normalize_url(url: str) -> str:

@@ -110,7 +110,7 @@ def compute_artifact_usage(
 
     The plan may exist for the island, but method0 did not use it.
     """
-    method_name = str(method_name or "").strip()
+    method_name = str(method_name or "").strip().lower()
 
     uses_retrieval_context = method_name in METHODS_USING_RETRIEVAL_CONTEXT
     uses_agent2_plan = method_name in METHODS_USING_AGENT2_PLAN
@@ -298,7 +298,28 @@ def compute_plan_diagnostics(plan: Optional[dict]) -> dict:
     dependency = plan.get("dependency", {}) or {}
     summaries = plan.get("summaries", {}) or {}
 
-    nodes = list(order) if order else list(dependency.keys())
+    # Build a robust node list.
+    # Prefer Agent 2 order, but include any dependency children, parents,
+    # or summary keys that may be missing from the order list.
+    nodes = list(order)
+
+    seen_nodes = set(nodes)
+
+    for child, parents in dependency.items():
+        if child not in seen_nodes:
+            nodes.append(child)
+            seen_nodes.add(child)
+
+        for parent in parents or []:
+            if parent not in seen_nodes:
+                nodes.append(parent)
+                seen_nodes.add(parent)
+
+    for node in summaries.keys():
+        if node not in seen_nodes:
+            nodes.append(node)
+            seen_nodes.add(node)
+
     node_count = len(nodes)
 
     edge_count = sum(len(v or []) for v in dependency.values())

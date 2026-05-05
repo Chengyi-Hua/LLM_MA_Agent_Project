@@ -345,6 +345,7 @@ def compute_cscs(
             "cscs_status": "missing_plan",
             "cscs": "",
             "cscs_edges": 0,
+            "cscs_checked_edges": 0,
             "cscs_checked_facts": 0,
             "cscs_error": "No Agent 2 plan found.",
         }
@@ -359,6 +360,7 @@ def compute_cscs(
             "cscs_status": "no_edges_in_plan",
             "cscs": "",
             "cscs_edges": 0,
+            "cscs_checked_edges": 0,
             "cscs_checked_facts": 0,
             "cscs_error": "Agent 2 plan contains no dependency edges.",
         }
@@ -400,10 +402,14 @@ def compute_cscs(
                 missing_parent_fact_edges += 1
                 continue
 
-            # Missing child means the upstream facts are not reflected.
+            # Missing child means the upstream facts are checked but receive score 0.
             if not child_text:
                 missing_child_edges += 1
-                checked_facts += len(parent_facts)
+
+                for _ in parent_facts:
+                    checked_facts += 1
+                    fact_score_sum += 0.0
+
                 continue
 
             for fact in parent_facts:
@@ -423,6 +429,7 @@ def compute_cscs(
             "cscs_status": "no_facts_checked",
             "cscs": "",
             "cscs_edges": total_edges,
+            "cscs_checked_edges": checked_edges,
             "cscs_checked_facts": 0,
             "cscs_error": (
                 "No parent facts could be checked against child sections. "
@@ -435,6 +442,7 @@ def compute_cscs(
         "cscs_status": "success",
         "cscs": round(fact_score_sum / checked_facts, 4),
         "cscs_edges": total_edges,
+        "cscs_checked_edges": checked_edges,
         "cscs_checked_facts": checked_facts,
         "cscs_error": "",
     }
