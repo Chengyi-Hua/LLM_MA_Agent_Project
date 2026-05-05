@@ -20,20 +20,18 @@ This project builds a multi-agent RAG pipeline to automatically generate Wikiped
 LLM_MA_Agent_Project/
 ├── 00_evaluation/
 │   ├── __pycache__/
-│   ├── evaluations/                 # Evaluation CSV outputs are saved here
-│   ├── experiments/                 # Optional experiment files or intermediate runs
-│   ├── references/                  # Human Wikipedia reference articles
-│   ├── batch_experiments.py         # Runs batch generation/evaluation experiments
-│   ├── eval_utils.py                # Shared evaluation helpers
-│   ├── evaluate_basic.py            # Basic writing + informativeness evaluation
-│   ├── evaluation.py                # Older/general evaluation entry point
-│   ├── fetch_wikipedia_references.py # Fetches original Wikipedia articles for references/
-│   ├── full_evaluation.py           # Main full evaluation pipeline
-│   ├── metrics_artifact_diagnostics.py # Artifact and pipeline diagnostic metrics
-│   ├── metrics_cscs.py              # Cross-Sectional Consistency Score
-│   ├── metrics_informativeness.py   # ROUGE-L and METEOR
-│   └── metrics_verifiability.py     # Citation recall, precision, rate, and NLI support checking
-│
+│   ├── evaluations/                          # Evaluation CSV outputs and aggregated summaries
+│   ├── references/                           # Human Wikipedia reference articles
+│   ├── eval_utils.py                         # Shared helpers for loading files, references, citations, and text normalization
+│   ├── evaluate_basic.py                     # Basic evaluation: Agent 4 writing + ROUGE-L + METEOR
+│   ├── fetch_wikipedia_references.py         # Fetches original Wikipedia articles for references/
+│   ├── full_evaluation.py                    # Main full evaluation pipeline
+│   ├── compute_non_agent4_metrics_if_needed  # Recomputes non-Agent-4 metrics while preserving writing/concept scores
+│   ├── aggregate_evaluations.py              # Aggregates per-island evaluation CSVs into method-level summaries
+│   ├── metrics_artifact_diagnostics.py       # Artifact, output, citation-index, context, and plan diagnostics
+│   ├── metrics_cscs.py                       # Cross-Sectional Consistency Score for method3
+│   ├── metrics_informativeness.py            # ROUGE-L and METEOR with citation markers removed
+│   └── metrics_verifiability.py              # Citation rate, sentence support, link precision, and NLI checking
 ├── methods/
 │   ├── __init__.py
 │   ├── base_rag.py              # Shared logic: LLM init, reranking, output format
@@ -252,7 +250,7 @@ The project compares four generation methods:
 | `method0` | Pure generation baseline | No | No |
 | `method1` | Naive RAG | Yes | No |
 | `method2` | Hierarchical RAG | Yes | No |
-| `method3` | Agent 2 + Agent 3 context-aware generation | Yes | Yes |
+| `method3` | Agent 2 + Agent 3 context-| `method3` | Agent 2 dependency planning + Agent 3 context-aware generation | Yes | Yes | generation | Yes | Yes |
 
 The Agent 2 plan is an island-level artifact. It is available during evaluation for all methods, but it is only used during generation by `method3`. For the other methods, it is used only as an external comparison reference for alignment and cross-section diagnostics.
 
@@ -262,7 +260,25 @@ The Agent 2 plan is an island-level artifact. It is available during evaluation 
 
 The evaluation code is organized under `00_evaluation/` and `agents/`.
 
-### Main evaluation driver
+### Main Evaluation Scripts
+
+| File | Purpose |
+|---|---|
+| `00_evaluation/full_evaluation.py` | Runs the full evaluation pipeline. |
+| `00_evaluation/evaluate_basic.py` | Runs writing, ROUGE-L, and METEOR only. |
+| `00_evaluation/recompute_non_agent4_metrics.py` | Recomputes all non-Agent-4 metrics while preserving existing writing and concept scores. |
+| `00_evaluation/aggregate_evaluations.py` | Aggregates per-island CSVs into method-level summaries. |
+
+### Metric Implementation Files
+
+| File | Purpose |
+|---|---|
+| `00_evaluation/metrics_informativeness.py` | Computes ROUGE-L and METEOR. |
+| `00_evaluation/metrics_verifiability.py` | Computes citation and verifiability metrics. |
+| `00_evaluation/metrics_cscs.py` | Computes CSCS for `method3`. |
+| `00_evaluation/metrics_artifact_diagnostics.py` | Computes diagnostic metrics for outputs, context, plans, and citations. |
+| `00_evaluation/eval_utils.py` | Shared utilities for loading results, references, citation parsing, and normalization. |
+| `agents/agent4_evaluator.py` | LLM-as-a-judge evaluator for writing and concept-based scores. |
 
 
 
@@ -331,7 +347,7 @@ These metrics compare the generated article against the original Wikipedia artic
 | `meteor` | The generated article covers more reference-like content at the token level. |
 
 These metrics are useful but imperfect because a good article may use different wording than the reference.
-
+Before computing ROUGE-L and METEOR, numeric citation markers such as `[1]`, `[1, 2]`, and `[1-3]` are removed. This prevents citation-heavy RAG outputs from being unfairly penalized for citation tokens that do not appear in the reference article.
 ---
 
 ### 1.2.2 Concept-Based Informativeness
@@ -366,18 +382,22 @@ Optional explanatory fields:
 | 5 | Excellent coverage of the key reference concepts |
 
 ---
-
 ## 1.3 Verifiability
 
 Verifiability evaluates whether the generated article’s cited claims are supported by the cited retrieved documents.
 
 This evaluation uses the generated citation markers, the section-level citation lists, the RAG context file, and an NLI model.
 
-| Metric | Scale | Description |
-|---|---:|---|
-| `citation_recall` | 0–1 | Fraction of all generated sentences that are supported by at least one citation. |
-| `citation_precision` | 0–1 | Fraction of citation links that actually support the sentence they cite. |
-| `citation_rate` | 0–1 | Fraction of generated sentences that contain citation markers. |
+Supported citation formats include `[1]`, `[1][2]`, `[1, 2]`, and `[1-3]`.
+
+| Metric | Scale | Definition | Description |
+|---|---:|---|---|
+| `citation_rate` | 0–1 | cited sentences / total sentences | Fraction of generated sentences that contain at least one citation marker. |
+| `citation_precision` | 0–1 | supported cited sentences / cited sentences | Among cited sentences, fraction judged supported by at least one citation. |
+| `citation_recall` | 0–1 | supported cited sentences / total sentences | Fraction of all generated sentences that are both cited and supported. |
+| `citation_link_precision` | 0–1 | supported citation links / total citation links | Among individual citation links, fraction judged to support at least one claim unit. |
+
+In this project, `citation_recall` means supported sentence coverage. It is not classical information-retrieval recall.
 
 Additional count fields:
 
@@ -386,7 +406,23 @@ Additional count fields:
 | `num_sentences` | Number of generated sentences evaluated. |
 | `num_cited_sentences` | Number of generated sentences that contain at least one citation marker. |
 | `num_citation_links` | Total number of citation links, including multiple citations in one sentence. |
-| `num_supported_citation_links` | Number of citation links judged as supporting the cited sentence. |
+| `num_supported_citation_links` | Number of citation links judged as supporting at least one claim unit. |
+
+### Interpretation
+
+| Metric | Higher Means |
+|---|---|
+| `citation_rate` | More sentences contain citations. |
+| `citation_precision` | Cited sentences are more likely to be supported. |
+| `citation_recall` | More of the whole article is citation-supported. |
+| `citation_link_precision` | Individual citation links are more likely to be useful and relevant. |
+
+Notes:
+
+- `method0` usually receives zero citation scores because it does not generate citations.
+- A high `citation_rate` does not imply citation correctness.
+- Low `citation_precision` means that cited sentences are often not supported by the cited evidence.
+- The NLI checker can produce false positives or false negatives, so citation scores should be interpreted as approximate grounding indicators.
 
 ### Interpretation
 
@@ -403,13 +439,66 @@ Notes:
 - The NLI checker is strict, so scores may be conservative.
 
 ---
-
 ## 1.4 Cross-Sectional Consistency
 
 Cross-sectional consistency is measured using the project-specific **CSCS** metric.
 
-```text
-CSCS = Cross-Sectional Consistency Score
+`CSCS` stands for **Cross-Sectional Consistency Score**.
 
-```text
-00_evaluation/full_evaluation.py
+CSCS evaluates whether dependency information from upstream sections is preserved or appropriately reflected in downstream sections.
+
+The metric uses the Agent 2 dependency graph. For each dependency edge, `child_section -> parent_section`, the evaluator checks whether key facts from the generated parent section are reflected in the generated child section.
+
+CSCS is computed only for `method3`, because only `method3` uses the Agent 2 dependency graph during generation.
+
+For `method0`, `method1`, and `method2`, CSCS is marked as `not_applicable`, not as zero.
+
+| Metric | Scale | Description |
+|---|---:|---|
+| `cscs` | 0–1 | Average parent-child dependency reflection score across checked parent facts. |
+| `cscs_edges` | count | Number of dependency edges in the Agent 2 plan. |
+| `cscs_checked_edges` | count | Number of dependency edges checked by the evaluator. |
+| `cscs_checked_facts` | count | Number of parent facts checked against child sections. |
+
+### Interpretation
+
+| Score | Meaning |
+|---:|---|
+| 0.0 | Downstream sections do not reflect upstream dependency information. |
+| ~0.5 | Moderate semantic reflection of upstream information. |
+| 1.0 | Strong entailment or preservation of upstream facts. |
+
+CSCS uses NLI entailment where possible. If NLI does not identify entailment, semantic similarity is used as a soft fallback. Therefore, intermediate CSCS values should be interpreted as soft semantic reflection rather than strict logical entailment.
+
+
+---
+
+# 2. Diagnostic Metrics
+
+Diagnostic metrics help explain pipeline behavior. They are not treated as main quality scores.
+
+| Diagnostic Group | Example Fields | Purpose |
+|---|---|---|
+| Artifact usage | `uses_retrieval_context`, `uses_agent2_plan` | Shows which artifacts each method actually used. |
+| Output diagnostics | `generated_section_count`, `generated_error_section_count` | Checks generated article structure and obvious generation errors. |
+| Citation index diagnostics | `citation_marker_count`, `citation_index_validity` | Checks whether citation markers point to valid citation entries. |
+| RAG context diagnostics | `context_chunk_coverage`, `context_avg_chunks_per_section` | Describes the available retrieval context. |
+| Agent 2 plan diagnostics | `plan_edge_count`, `plan_graph_density`, `plan_order_violation_count` | Describes the dependency plan artifact. |
+| Plan-output alignment | `planned_section_coverage`, `missing_planned_sections` | Compares generated sections with planned sections. |
+
+---
+
+# 3. Interpretation Principles
+
+The evaluation should be interpreted as a multi-dimensional comparison rather than a single ranking.
+
+Key principles:
+
+- High writing quality does not imply factual grounding.
+- High citation rate does not imply citation correctness.
+- ROUGE-L and METEOR measure lexical overlap, not full semantic equivalence.
+- Concept scores measure reference-based content quality, not citation support.
+- Citation precision measures whether cited sentences are supported.
+- Citation link precision measures whether individual citation links are useful.
+- CSCS applies only to `method3`.
+- Diagnostic metrics explain behavior but are not main quality scores.
