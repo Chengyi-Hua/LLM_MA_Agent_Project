@@ -12,13 +12,15 @@ Reuses from inheritance chain:
 New logic added here:
   - generate()                  : DAG-ordered loop with context injection
   - _generate_section()         : override — uses context prompt when deps exist
-  - _build_dependency_context() : formats dep summaries into hard-context block
+  - _summarize_generated_section(): summarizes Agent 3's own generated section
+  - _build_dependency_context() : formats generated summaries into hard-context block
   - SECTION_WITH_CONTEXT_PROMPT : extended prompt template for sections with deps
 
 Note on summaries:
-  Agent 2 (GraphAwareRAG) already generates a quick summary per section
-  as part of its NLI pipeline. Agent 3 receives these via agent2_output["summaries"]
-  and uses them directly as injection context — no re-summarization needed.
+  Agent 2 (GraphAwareRAG) still provides the DAG order and dependency map.
+  Agent 3 does NOT inject Agent 2's quick summaries. Instead, after Agent 3
+  generates each section, it summarizes its own generated section text and
+  injects those generated-section summaries into dependent sections.
 """
 
 from methods.hierarchical_rag import HierarchicalRAG, SYSTEM_PROMPT, SECTION_PROMPT
@@ -47,13 +49,24 @@ Do NOT write a "References", "See also", or "External links" section.
 """
 
 
+GENERATED_SECTION_SUMMARY_PROMPT = """\
+Summarize the generated "{section}" section from a Wikipedia article about {island_name}.
+
+Generated section text:
+{section_text}
+
+Write one concise paragraph that captures only the key facts already written in this generated section.
+Do not add new facts. Do not include citations. Do not use bullet points.
+"""
+
+
 class Agent3Generator(HierarchicalRAG):
     """
     Agent 3: Context-Aware Generation Agent.
 
     Key difference from HierarchicalRAG (Method 2):
     - Follows DAG execution order from Agent 2 (not Eden's original section order)
-    - Injects Agent 2's pre-built summaries of dependency sections as hard context
+    - Injects summaries of Agent 3's already generated dependency sections
     - Only declared dependencies (from dependency_map) are injected — not all prior sections
     """
 
@@ -68,8 +81,7 @@ class Agent3Generator(HierarchicalRAG):
             "agent2_output" : {
                 "status"    : "success",
                 "order"     : list[str],          # DAG topological order
-                "dependency": dict[str, list[str]], # section → list of dependency sections
-                "summaries" : dict[str, str]       # section → pre-built summary from Agent 2
+                "dependency": dict[str, list[str]] # section → list of dependency sections
             }
         }
 
@@ -85,24 +97,24 @@ class Agent3Generator(HierarchicalRAG):
         agent2_output  = input_data["agent2_output"]
         execution_order = agent2_output["order"]        # Agent 2 key: "order"
         dependency_map  = agent2_output["dependency"]   # Agent 2 key: "dependency"
-        dep_summaries   = agent2_output["summaries"]    # Agent 2 pre-built summaries — reuse directly
 
-        full_article_parts = []
-        all_used_chunks    = []
+        full_article_parts    = []
+        all_used_chunks       = []
+        generated_summaries   = {}
 
         for section_name in execution_order:
 
-            # Build hard context from declared dependencies only
+            # Build hard context from Agent 3 summaries of generated dependencies only
             declared_deps = dependency_map.get(section_name, [])
-            context_block = self._build_dependency_context(declared_deps, dep_summaries)
+            context_block = self._build_dependency_context(declared_deps, generated_summaries)
 
             # Log what is being injected
             if declared_deps:
-                injected = [d for d in declared_deps if d in dep_summaries]
-                missing  = [d for d in declared_deps if d not in dep_summaries]
-                print(f"  [{section_name}] injecting context from: {injected}")
+                injected = [d for d in declared_deps if d in generated_summaries]
+                missing  = [d for d in declared_deps if d not in generated_summaries]
+                print(f"  [{section_name}] injecting generated context from: {injected}")
                 if missing:
-                    print(f"  [{section_name}] WARNING — deps missing from Agent 2 summaries: {missing}")
+                    print(f"  [{section_name}] WARNING — deps missing from Agent 3 generated summaries: {missing}")
             else:
                 print(f"  [{section_name}] no dependencies — generating independently")
 
@@ -123,6 +135,12 @@ class Agent3Generator(HierarchicalRAG):
 
             full_article_parts.append(f"=={section_name}==\n{section_text}")
             all_used_chunks.extend(top_chunks)
+            generated_summaries[section_name] = self._summarize_generated_section(
+                island_name=island_name,
+                section=section_name,
+                section_text=section_text
+            )
+            print(f"  [{section_name}] generated-section summary saved for downstream context")
 
         article_text = "\n\n".join(full_article_parts)
 
@@ -147,7 +165,7 @@ class Agent3Generator(HierarchicalRAG):
         Override of HierarchicalRAG._generate_section.
 
         No context  → uses base SECTION_PROMPT         (identical to Method 2)
-        With context → uses SECTION_WITH_CONTEXT_PROMPT (injects dep summaries)
+        With context → uses SECTION_WITH_CONTEXT_PROMPT (injects generated dep summaries)
 
         Reuses from BaseRAG:
           _rerank_chunks()            — BM25 or cross-encoder chunk selection
@@ -178,13 +196,34 @@ class Agent3Generator(HierarchicalRAG):
 
     # ── New helper ────────────────────────────────────────────────────────────
 
+    def _summarize_generated_section(
+        self,
+        island_name: str,
+        section: str,
+        section_text: str
+    ) -> str:
+        """
+        Summarize Agent 3's own generated section text for downstream context.
+
+        This intentionally does not use Agent 2's quick NLI summaries.
+        """
+        if not section_text.strip():
+            return ""
+
+        prompt = GENERATED_SECTION_SUMMARY_PROMPT.format(
+            island_name=island_name,
+            section=section,
+            section_text=section_text
+        )
+        return self._call_llm(prompt, system=SYSTEM_PROMPT)
+
     def _build_dependency_context(
         self,
         declared_deps: list,
-        dep_summaries: dict
+        generated_summaries: dict
     ) -> str:
         """
-        Format Agent 2's pre-built summaries of dependency sections
+        Format Agent 3's generated-section summaries of dependency sections
         into a hard-context block for prompt injection.
 
         Only includes declared deps that have a summary available.
@@ -194,9 +233,9 @@ class Agent3Generator(HierarchicalRAG):
             return ""
 
         available = {
-            dep: dep_summaries[dep]
+            dep: generated_summaries[dep]
             for dep in declared_deps
-            if dep in dep_summaries
+            if dep in generated_summaries
         }
         if not available:
             return ""
