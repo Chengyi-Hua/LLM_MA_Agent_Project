@@ -60,8 +60,7 @@ pipeline_config:
 
 # Methods config — used by methods 1, 2, and 3
 methods:
-  use_top_l: true
-  top_l: 5
-  reranker_type: "bm25"          # "bm25", "cross-encoder", or "none"
-                                  # tip: use "bm25" locally — cross-encoder is slow
-  rerank_scope: "per-section"    # "global" or "per-section"
+  top_l: 5                          # number of chunks MMR selects per section
+  reranker_type: "bm25+mmr"         # "bm25+mmr", "cross-encoder+mmr", or "none"
+  rerank_scope: "per-section"       # "global" or "per-section"
+  lambda_mult: 0.5                  # MMR balance: 0.0 = max diversity, 1.0 = max relevance

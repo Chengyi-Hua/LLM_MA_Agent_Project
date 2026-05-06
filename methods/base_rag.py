@@ -31,14 +31,10 @@ class BaseRAG:
     def __init__(self, config: Optional[dict] = None):
         self.config = config or load_config()
         self.llm_client, self.model_name = self._init_llm()
-        # only read from config if not already overridden by subclass
-        if not hasattr(self.__class__, 'use_top_l'):
-            self.use_top_l = self.config["methods"]["use_top_l"]
-            self.top_l = self.config["methods"]["top_l"]
-        else:
-            self.top_l = self.config["methods"]["top_l"]
+        self.top_l = self.config["methods"]["top_l"]
         self.rerank_scope = self.config["methods"].get("rerank_scope", "per-section")
-        self.reranker_type = self.config["methods"].get("reranker_type", "bm25")
+        self.reranker_type = self.config["methods"].get("reranker_type", "bm25+mmr")
+        self.lambda_mult = self.config["methods"].get("lambda_mult", 0.5)
 
     # ------------------------------------------------------------------
     # LLM setup
@@ -109,23 +105,19 @@ class BaseRAG:
     # ------------------------------------------------------------------
 
     def _rerank_chunks(self, chunks: list[dict], query: str) -> list[dict]:
-        """
-        Rerank chunks by relevance to query.
-        Applies top_l truncation if use_top_l is True.
-        """
         if self.reranker_type == "none" or not chunks:
             return chunks
 
-        if self.reranker_type == "bm25":
+        if self.reranker_type in ("bm25", "bm25+mmr"):
             ranked = self._rerank_bm25(chunks, query)
-        elif self.reranker_type == "cross-encoder":
+        elif self.reranker_type in ("cross-encoder", "cross-encoder+mmr"):
             ranked = self._rerank_cross_encoder(chunks, query)
         else:
             raise ValueError(f"Unknown reranker: {self.reranker_type}")
 
-        if self.use_top_l:
-            return ranked[:self.top_l]
-        return ranked
+        if "+mmr" in self.reranker_type:
+            return self._apply_mmr_selection(ranked, top_l=self.top_l, lambda_mult=self.lambda_mult)
+        return ranked[:self.top_l]
 
     def _rerank_bm25(self, chunks: list[dict], query: str) -> list[dict]:
         from rank_bm25 import BM25Okapi
@@ -133,6 +125,8 @@ class BaseRAG:
         bm25 = BM25Okapi(tokenized_corpus)
         scores = bm25.get_scores(query.lower().split())
         ranked = sorted(zip(scores, chunks), key=lambda x: x[0], reverse=True)
+        for score, chunk in ranked:
+            chunk["relevance_score"] = float(score)
         return [c for _, c in ranked]
 
     def _rerank_cross_encoder(self, chunks: list[dict], query: str) -> list[dict]:
@@ -141,7 +135,48 @@ class BaseRAG:
         pairs = [[query, c["text"]] for c in chunks]
         scores = model.predict(pairs)
         ranked = sorted(zip(scores, chunks), key=lambda x: x[0], reverse=True)
+        for score, chunk in ranked:
+            chunk["relevance_score"] = float(score)
         return [c for _, c in ranked]
+    
+    def _apply_mmr_selection(self, scored_chunks: list, top_l: int, lambda_mult: float = 0.5) -> list:
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        from sklearn.metrics.pairwise import cosine_similarity
+
+        if not scored_chunks or top_l <= 0:
+            return []
+
+        candidates = scored_chunks[:40]
+
+        if len(candidates) <= top_l:
+            return candidates
+
+        raw_scores = [c.get("relevance_score", 0) for c in candidates]
+        lo, hi = min(raw_scores), max(raw_scores)
+        if hi == lo:
+            norm_scores = [1.0] * len(candidates)
+        else:
+            norm_scores = [(s - lo) / (hi - lo) for s in raw_scores]
+
+        texts = [c["text"] for c in candidates]
+        tfidf_matrix = TfidfVectorizer().fit_transform(texts)
+        sim_matrix = cosine_similarity(tfidf_matrix)
+
+        selected = [0]
+        remaining = list(range(1, len(candidates)))
+
+        while len(selected) < top_l and remaining:
+            best_score, best_idx = -float("inf"), -1
+            for idx in remaining:
+                rel = norm_scores[idx]
+                redundancy = max(sim_matrix[idx][sel] for sel in selected)
+                mmr = lambda_mult * rel - (1 - lambda_mult) * redundancy
+                if mmr > best_score:
+                    best_score, best_idx = mmr, idx
+            selected.append(best_idx)
+            remaining.remove(best_idx)
+
+        return [candidates[i] for i in selected]
 
     def _format_chunks_for_prompt(self, chunks: list[dict]) -> str:
         """Format chunks into numbered documents for LLM prompt."""
@@ -191,8 +226,7 @@ class BaseRAG:
         island_name: str,
         article_text: str,
         chunks: list[dict],
-        rerank_strategy: str = "none",
-        top_l_applied_at: str = "none"
+        rerank_strategy: str = "none"
     ) -> dict:
         """Standard output format consumed by Chengyi's evaluator."""
         return {
@@ -201,9 +235,7 @@ class BaseRAG:
             "metadata": {
                 "reranker": self.reranker_type,
                 "rerank_strategy": rerank_strategy,
-                "use_top_l": self.use_top_l,
-                "top_l": self.top_l if self.use_top_l else None,
-                "top_l_applied_at": top_l_applied_at  # "none", "global", "per-section"
+                "top_l": self.top_l,
             },
             "generated_article": article_text,
             "sections": self._parse_article_to_sections(article_text, chunks)
