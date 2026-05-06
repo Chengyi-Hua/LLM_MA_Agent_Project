@@ -132,7 +132,6 @@ class Agent3Generator(HierarchicalRAG):
             article_text=article_text,
             chunks=all_used_chunks,
             rerank_strategy=self.rerank_scope,
-            top_l_applied_at=self.rerank_scope if self.use_top_l else "none"
         )
 
     # ── Override: _generate_section ───────────────────────────────────────────

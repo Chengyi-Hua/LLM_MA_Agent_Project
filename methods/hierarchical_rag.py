@@ -65,7 +65,6 @@ class HierarchicalRAG(BaseRAG):
             article_text=article_text,
             chunks=all_used_chunks,
             rerank_strategy=rerank_strategy,
-            top_l_applied_at=rerank_strategy if self.use_top_l else "none"
         )
 
     def _generate_section(
