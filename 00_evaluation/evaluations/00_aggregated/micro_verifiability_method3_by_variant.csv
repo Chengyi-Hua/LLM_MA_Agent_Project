@@ -1,0 +1,11 @@
+comparison_label,variant_name,variant_type,num_islands,total_sentences,total_cited_sentences,total_supported_cited_sentences,micro_citation_recall,micro_citation_precision,micro_citation_rate
+agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,10,72,67,9,0.125,0.1343,0.9306
+agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,10,70,66,12,0.1714,0.1818,0.9429
+agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,10,70,66,14,0.2,0.2121,0.9429
+agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,10,104,90,22,0.2115,0.2444,0.8654
+agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,10,80,77,11,0.1375,0.1429,0.9625
+agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,10,78,71,9,0.1154,0.1268,0.9103
+rerank_scope global,rerank_scope global,method3_ablation,10,63,59,9,0.1429,0.1525,0.9365
+reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,10,77,72,25,0.3247,0.3472,0.9351
+threshold 0.3,threshold 0.3,method3_ablation,10,75,69,15,0.2,0.2174,0.92
+threshold 0.6,threshold 0.6,method3_ablation,10,65,59,14,0.2154,0.2373,0.9077

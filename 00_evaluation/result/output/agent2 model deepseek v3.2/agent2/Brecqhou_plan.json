@@ -1,0 +1,48 @@
+{
+    "status": "success",
+    "island": "Brecqhou",
+    "order": [
+        "Name",
+        "Geography",
+        "Fort Brecqhou",
+        "Flag and stamps",
+        "Public visits",
+        "Notes and references",
+        "Feudal relationship with Sark"
+    ],
+    "dependency": {
+        "Name": [],
+        "Geography": [
+            "Name"
+        ],
+        "Feudal relationship with Sark": [
+            "Geography",
+            "Name",
+            "Fort Brecqhou"
+        ],
+        "Fort Brecqhou": [
+            "Name",
+            "Geography"
+        ],
+        "Flag and stamps": [],
+        "Public visits": [
+            "Geography",
+            "Fort Brecqhou"
+        ],
+        "Notes and references": [
+            "Name",
+            "Geography"
+        ]
+    },
+    "summaries": {
+        "Name": "The name \"Sark’ refers to the island of Sark, which to the islands of Sark and Brecqhou collectively, while the name \"Brecqhou\" specifically refers to the smaller private island of Brecqhou. The Sark/Brecqhou dyad illustrates a context where geographical proximity and historical contestation might complicate perceptions of jurisdiction. Even the term \"Sark Tenement\" historically bestowed upon Brecqhou the status of a Sark Tenement together with the seat in Chief Pleas. However, Brecqhou is not a \"tenement of Sark. The comment implies an historical positioning of the jurisdictional status of Brecqhou when its governance was earlier contested. The Sark/Brecqhou dyad offers an example where perceptions of jurisdiction and space may have changed historically through reinterpretation and possible distortion of historical knowledge, as historiography does not represent facts neutrally and objectively. Brecqhou was advertised for sale in 1929 with complete possession and with no notice mentioning that the owner is entitled \"to a [...] several significant points that help in comprehending this particular case of inter- intra-island dynamics.",
+        "Geography": "Sark is a Channel Island located in the English Channel, 7 miles east of Guernsey and about 25 miles west of France's Cherbourg Peninsula. It is 3 miles long and 1.5 miles wide at its broadest point, consisting of two components, Great Sark and Little Sark, connected by a narrow isthmus called La Coupée. The smaller, privately owned island of Brecqhou is separated from Great Sark by the narrow Le Gouliot Channel. Sark is essentially a plateau rising to 375 feet with a coast encircled by cliffs. The island's area, including Brecqhou, is 2.1 square miles.",
+        "Feudal relationship with Sark": "The historical and legal status of Brecqhou's feudal relationship with Sark is contested. Dame Sibyl Hathaway bestowed upon Brecqhou the status of a Sark Tenement with a seat in Chief Pleas, an act considered illegal by some sources. Legal opinions historically varied, with some viewing Brecqhou as a dependency of Sark with a tenement-like perpetual tenure, while others, like Dawes, argued it was not a \"tenement of Sark.\" A 1949 legal note described the owner as a tenant enjoying a de facto freehold, a \"manorial freehold.\" The Barclay brothers, owners of Brecqhou, financed *Sark News* and campaigned against Sark's feudal regime, leading to the Privy Council agreeing to end it and introduce universal voting rights. The dyad represents a case of contested jurisdiction, where historical interpretations, politics, and power influence perceptions of the feudal relationship.",
+        "Fort Brecqhou": "Fort Brecqhou is the largest house built in Britain in the last 200 years, constructed as a granite-clad castellated Gothic-style castle on a quadrangular plan with circular turrets at the four corners and giant twisted chimneys, designed by architect John Quinlan Terry during 1994-1996 for Sir David and Sir Frederick Barclay, who purchased the island in 1993 for £2.3 million, with the house and outbuildings estimated at £90 million, located on Brecqhou Island in the Channel Islands, which are part of an archipelago with one of the largest intertidal ranges in the world at around 12 meters around the coast of Jersey, though a precise typo-chronology for the islands is problematic due to regional variation in Northern France, and the fort on the adjacent Rozel headland, Câtel de Rozel, has ramparts constructed in the late Bronze Age/Early Iron Age over an earlier bank of possibly late Neolithic/Early Bronze Age date.",
+        "Flag and stamps": "The topic of \" stamps is not addressed in the provided source documents. The documents focus on the jurisdictional politics, branding, and identity construction within island territories like Sark and Brecqhou in the Bailiwick of Guernsey, and on the symbolic meanings of colors and flags in various national and protest contexts. There is no information concerning the production, issuance, or design of postage stamps for the island of Brecqhou.",
+        "Public visits": "No relevant information regarding Public visits is available.",
+        "Notes and references": "The provided references include Baal (1933) on birds of the Ecrehous, Baldacchino (2012) on island power relations, Bassett (1885) on sea legends, Borwick (1989) on Lihou Island, and Bouet (1973) on Mont Saint-Michel."
+    },
+    "plan_path": "logs/agent2_plans/Brecqhou_plan_20260509_162812.json",
+    "created_at": "20260509_162812"
+}

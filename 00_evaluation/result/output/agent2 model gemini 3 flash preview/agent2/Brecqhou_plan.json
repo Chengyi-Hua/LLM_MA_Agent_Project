@@ -1,0 +1,52 @@
+{
+    "status": "success",
+    "island": "Brecqhou",
+    "order": [
+        "Name",
+        "Geography",
+        "Flag and stamps",
+        "Public visits",
+        "Notes and references",
+        "Feudal relationship with Sark",
+        "Fort Brecqhou"
+    ],
+    "dependency": {
+        "Name": [],
+        "Geography": [],
+        "Feudal relationship with Sark": [
+            "Geography",
+            "Name",
+            "Flag and stamps",
+            "Notes and references"
+        ],
+        "Fort Brecqhou": [
+            "Name",
+            "Geography",
+            "Feudal relationship with Sark",
+            "Notes and references",
+            "Flag and stamps",
+            "Public visits"
+        ],
+        "Flag and stamps": [
+            "Name",
+            "Geography"
+        ],
+        "Public visits": [],
+        "Notes and references": [
+            "Name",
+            "Geography",
+            "Flag and stamps"
+        ]
+    },
+    "summaries": {
+        "Name": "Brecqhou is a 74-acre private island located in the English Channel that forms part of the jurisdiction of Sark within the Bailiwick of Guernsey. It is separated from Great Sark by the narrow Le Gouliot Channel and is characterized as a smaller land mass with a tiny population compared to the island of Sark. Historically, the jurisdictional status of Brecqhou has been contested, with debates regarding whether it constitutes a tenement of Sark or a separate entity, including reports of the Barclay twins seeking a unilateral declaration of independence for the island. While Dame Sibyl Hathaway bestowed upon Brecqhou the status of a Sark Tenement and a seat in Chief Pleas, this designation has been challenged as an illegal or distorted interpretation of historical knowledge. The island was advertised for sale in 1929 and is currently part of the Sark/Brecqhou dyad, a term used to emphasize the distinct physical, political, and social binaries between the two islands. Brecqhou is included in the 2.1 square mile total area of Sark, where automobiles and airplanes are prohibited, and access is restricted to boat travel.",
+        "Geography": "Sark is one of the Channel Islands located in the English Channel, situated 7 miles east of Guernsey and approximately 25 miles west of the Cherbourg Peninsula of France. The island is 3 miles long and 1.5 miles wide at its broadest point, consisting of two components, Great Sark and Little Sark, which are connected by a 300-foot-long isthmus known as La Coupée. The total area including the island of Brecqhou is 2.1 square miles. Sark is characterized as a plateau rising to 375 feet with a coastline encircled by precipitous cliffs. The smaller, privately owned island of Brecqhou is separated from Great Sark by the narrow Le Gouliot Channel. The jurisdiction of Sark encompasses the island of Sark, the island of Brecqhou, and other surrounding islets and rocks. Human settlement is scattered across the island, and approximately one-third of the land is used for farming, including tillage and dairying. Access to the island is restricted to boats as airplanes are banned, and automobiles are prohibited on the roads.",
+        "Feudal relationship with Sark": "Brecqhou is considered a dependency of the Island of Sark with a jurisdictional status that has been historically contested and subject to varying legal interpretations. Dame Sibyl Hathaway bestowed upon Brecqhou the status of a Sark Tenement and a seat in Chief Pleas, though some historical analysis suggests it may not strictly be a tenement of Sark. The tenure of Brecqhou is described as similar to other Sark tenements where the owner is a tenant in perpetuity holding a manorial freehold, yet the island also maintains distinct characteristics. The Barclay brothers, owners of Brecqhou, have engaged in long-running legal challenges against Sark's feudal regime, leading to a Privy Council decision to introduce universal voting rights and a 28-member assembly to replace the traditional feudal system. The relationship between the two islands is characterized by a dyad where perceptions of jurisdiction and space have shifted through the reinterpretation of historical knowledge and political pressure for democratic reform.",
+        "Fort Brecqhou": "Fort Brecqhou is a granite-clad castle on Brecqhou Island in Guernsey, designed by British architect Quinlan Terry for Sir David and Sir Frederick Barclay. Constructed between 1994 and 1996 at an estimated cost of £90 million, it is the largest house built in Britain in the last 200 years. The structure is a private home built in the castellated Gothic style on a quadrangular plan, featuring circular corner turrets and giant twisted chimneys characteristic of the reign of Henry VIII. The Barclay brothers purchased the tenement of Brecqhou in 1993 for £2.3 million. The house is not listed and is not open to the public, though the grounds may be visited by appointment. The island of Brecqhou itself is part of an archipelago in the Normanno-Breton gulf near Sark and Herm.",
+        "Flag and stamps": "The Bailiwick of Guernsey and its constituent islands, including Alderney and Sark, have constructed a sense of place and local identity by utilizing symbols associated with nation building, specifically including flags and postage stamps. These symbols are used to brand autonomous and anomalous island territories within the framework of jurisdictional politics. Whitney Smith's research files contain extensive documentation on flags and stamps, including personal flags, vexillological association flags, youth organization flags, and national flag colors such as tribars, black, red, blue, and green. Specific flag categories mentioned include neutrality flags, safe-conduct flags, white flags, theatre flags, bond drive flags, and flags representing various organizations like the American Cancer Society, environmental groups, and labor organizations. The collection also includes records on the history of the red flag, religious colors, yellow ribbons, and specific regional flags such as the Bonnie Blue, British flags of Bastia and Calvi, the Irish flag, and flags of the Maldives. Additional philatelic and vexillological references include symbols of belief, Masonic symbols, diving and swimming flags, and the use of flags in political symbolism as explored in Whitney Smith's 1968 dissertation.",
+        "Public visits": "No relevant information regarding Public visits is available.",
+        "Notes and references": "The provided references include Baal (1933) on the birds of the Ecrehous in the Société Jersiaise Annual Bulletin, Baldacchino (2012) regarding the lure of the island and power relations in the Journal of Marine and Island Cultures, Bassett (1885) on sea legends and superstitions, Borwick (1989) concerning Lihou Island published by The Guernsey Press, and Bouet (1973) regarding the monastic millennium of Mont Saint-Michel in Cahiers de Civilisation Médiévale. Additional citations mentioned in the text include Coysh (1985) regarding Guernsey’s islets, reefs, and rocks. The article was accepted on June 02, 2024."
+    },
+    "plan_path": "logs/agent2_plans/Brecqhou_plan_20260509_171358.json",
+    "created_at": "20260509_171358"
+}

@@ -1,0 +1,73 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+main,agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,8,6,10,0.600000,4,0.400000,3,0.300000,0,0.000000,4,4,0
+main,agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,method3,,Citation and verifiability,Citation support failure,,16,9,10,0.900000,6,0.600000,5,0.500000,0,0.000000,9,7,0
+main,agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,method3,,Content quality,Content omission,,6,4,10,0.400000,2,0.200000,2,0.200000,0,0.000000,3,3,0
+main,agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,method3,,Content quality,Content quality error,,1,1,10,0.100000,0,0.000000,1,0.100000,0,0.000000,0,1,0
+main,agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,2,0.200000,3,0.300000,0,0.000000,2,3,0
+main,agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,method3,,Planning and graph,Graph coherence failure,,3,3,10,0.300000,0,0.000000,3,0.300000,0,0.000000,0,3,0
+main,agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,8,6,10,0.600000,5,0.500000,3,0.300000,0,0.000000,5,3,0
+main,agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,method3,,Citation and verifiability,Citation support failure,,13,7,10,0.700000,6,0.600000,2,0.200000,0,0.000000,11,2,0
+main,agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,method3,,Content quality,Content omission,,5,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,2,3,0
+main,agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,1,0.100000,4,0.400000,0,0.000000,1,4,0
+main,agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,method3,,Planning and graph,Graph coherence failure,,5,5,10,0.500000,1,0.100000,4,0.400000,0,0.000000,1,4,0
+main,agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,7,5,10,0.500000,3,0.300000,3,0.300000,0,0.000000,3,4,0
+main,agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,method3,,Citation and verifiability,Citation support failure,,12,8,10,0.800000,4,0.400000,4,0.400000,0,0.000000,6,6,0
+main,agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,method3,,Content quality,Content omission,,4,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,2,2,0
+main,agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,method3,,Planning and graph,Graph coherence failure,,5,5,10,0.500000,1,0.100000,4,0.400000,0,0.000000,1,4,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,9,6,10,0.600000,4,0.400000,3,0.300000,0,0.000000,4,5,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Citation and verifiability,Citation support failure,,13,7,10,0.700000,6,0.600000,4,0.400000,0,0.000000,8,5,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Content quality,Content omission,,3,2,10,0.200000,0,0.000000,2,0.200000,0,0.000000,0,3,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Content quality,Content organization error,,1,1,10,0.100000,1,0.100000,0,0.000000,0,0.000000,1,0,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Content quality,Content substitution,,8,8,10,0.800000,0,0.000000,8,0.800000,0,0.000000,0,8,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Planning and graph,Graph coherence failure,,3,3,10,0.300000,2,0.200000,1,0.100000,0,0.000000,2,1,0
+main,agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,method3,,Writing quality,Writing error,,3,1,10,0.100000,1,0.100000,0,0.000000,0,0.000000,3,0,0
+main,agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,8,7,10,0.700000,6,0.600000,2,0.200000,0,0.000000,6,2,0
+main,agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,method3,,Citation and verifiability,Citation support failure,,15,8,10,0.800000,6,0.600000,2,0.200000,0,0.000000,12,3,0
+main,agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,method3,,Content quality,Content omission,,7,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,3,4,0
+main,agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,method3,,Content quality,Content substitution,,8,8,10,0.800000,0,0.000000,8,0.800000,0,0.000000,0,8,0
+main,agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,method3,,Planning and graph,Graph coherence failure,,4,4,10,0.400000,2,0.200000,2,0.200000,0,0.000000,2,2,0
+main,agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,method3,,Writing quality,Writing error,,2,1,10,0.100000,1,0.100000,1,0.100000,0,0.000000,1,1,0
+main,agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,9,7,10,0.700000,5,0.500000,3,0.300000,0,0.000000,6,3,0
+main,agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,method3,,Citation and verifiability,Citation support failure,,15,9,10,0.900000,7,0.700000,2,0.200000,0,0.000000,12,3,0
+main,agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,method3,,Content quality,Content omission,,4,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,1,3,0
+main,agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,method3,,Content quality,Content substitution,,6,6,10,0.600000,1,0.100000,5,0.500000,0,0.000000,1,5,0
+main,agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,method3,,Planning and graph,Graph coherence failure,,3,3,10,0.300000,0,0.000000,3,0.300000,0,0.000000,0,3,0
+main,default_method0,default,default_all_methods,method0,,Citation and verifiability,Citation coverage failure,,20,10,10,1.000000,10,1.000000,0,0.000000,0,0.000000,20,0,0
+main,default_method0,default,default_all_methods,method0,,Citation and verifiability,Citation support failure,,20,10,10,1.000000,10,1.000000,0,0.000000,0,0.000000,20,0,0
+main,default_method0,default,default_all_methods,method0,,Content quality,Content omission,,2,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,1,1,0
+main,default_method0,default,default_all_methods,method0,,Content quality,Content substitution,,1,1,10,0.100000,1,0.100000,0,0.000000,0,0.000000,1,0,0
+main,default_method1,default,default_all_methods,method1,,Citation and verifiability,Citation coverage failure,,7,6,10,0.600000,2,0.200000,4,0.400000,0,0.000000,2,5,0
+main,default_method1,default,default_all_methods,method1,,Citation and verifiability,Citation support failure,,12,7,10,0.700000,3,0.300000,5,0.500000,0,0.000000,5,7,0
+main,default_method1,default,default_all_methods,method1,,Content quality,Content omission,,13,7,10,0.700000,4,0.400000,4,0.400000,0,0.000000,7,6,0
+main,default_method1,default,default_all_methods,method1,,Content quality,Content substitution,,8,8,10,0.800000,0,0.000000,8,0.800000,0,0.000000,0,8,0
+main,default_method2,default,default_all_methods,method2,,Citation and verifiability,Citation coverage failure,,7,6,10,0.600000,3,0.300000,3,0.300000,0,0.000000,4,3,0
+main,default_method2,default,default_all_methods,method2,,Citation and verifiability,Citation support failure,,12,7,10,0.700000,5,0.500000,3,0.300000,0,0.000000,8,4,0
+main,default_method2,default,default_all_methods,method2,,Content quality,Content omission,,5,3,10,0.300000,2,0.200000,1,0.100000,0,0.000000,3,2,0
+main,default_method2,default,default_all_methods,method2,,Content quality,Content quality error,,1,1,10,0.100000,0,0.000000,1,0.100000,0,0.000000,0,1,0
+main,default_method2,default,default_all_methods,method2,,Content quality,Content substitution,,7,7,10,0.700000,1,0.100000,6,0.600000,0,0.000000,1,6,0
+main,default_method3,default,default_all_methods,method3,,Citation and verifiability,Citation coverage failure,,7,5,10,0.500000,3,0.300000,3,0.300000,0,0.000000,3,4,0
+main,default_method3,default,default_all_methods,method3,,Citation and verifiability,Citation support failure,,12,8,10,0.800000,6,0.600000,2,0.200000,0,0.000000,9,3,0
+main,default_method3,default,default_all_methods,method3,,Content quality,Content omission,,5,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,2,3,0
+main,default_method3,default,default_all_methods,method3,,Content quality,Content substitution,,4,4,10,0.400000,0,0.000000,4,0.400000,0,0.000000,0,4,0
+main,default_method3,default,default_all_methods,method3,,Planning and graph,Graph coherence failure,,4,4,10,0.400000,1,0.100000,3,0.300000,0,0.000000,1,3,0
+main,rerank_scope global,rerank_scope global,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,8,6,10,0.600000,6,0.600000,2,0.200000,0,0.000000,6,2,0
+main,rerank_scope global,rerank_scope global,method3_ablation,method3,,Citation and verifiability,Citation support failure,,13,8,10,0.800000,5,0.500000,3,0.300000,0,0.000000,10,3,0
+main,rerank_scope global,rerank_scope global,method3_ablation,method3,,Content quality,Content omission,,7,4,10,0.400000,2,0.200000,3,0.300000,0,0.000000,3,4,0
+main,rerank_scope global,rerank_scope global,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,rerank_scope global,rerank_scope global,method3_ablation,method3,,Planning and graph,Graph coherence failure,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,4,4,10,0.400000,1,0.100000,3,0.300000,0,0.000000,1,3,0
+main,reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,method3,,Citation and verifiability,Citation support failure,,6,4,10,0.400000,2,0.200000,3,0.300000,0,0.000000,3,3,0
+main,reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,method3,,Content quality,Content omission,,4,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,2,2,0
+main,reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,method3,,Planning and graph,Graph coherence failure,,3,3,10,0.300000,2,0.200000,1,0.100000,0,0.000000,2,1,0
+main,threshold 0.3,threshold 0.3,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,7,6,10,0.600000,3,0.300000,4,0.400000,0,0.000000,3,4,0
+main,threshold 0.3,threshold 0.3,method3_ablation,method3,,Citation and verifiability,Citation support failure,,11,7,10,0.700000,5,0.500000,3,0.300000,0,0.000000,8,3,0
+main,threshold 0.3,threshold 0.3,method3_ablation,method3,,Content quality,Content omission,,5,3,10,0.300000,1,0.100000,3,0.300000,0,0.000000,1,4,0
+main,threshold 0.3,threshold 0.3,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,threshold 0.3,threshold 0.3,method3_ablation,method3,,Planning and graph,Graph coherence failure,,6,6,10,0.600000,2,0.200000,4,0.400000,0,0.000000,2,4,0
+main,threshold 0.6,threshold 0.6,method3_ablation,method3,,Citation and verifiability,Citation coverage failure,,7,6,10,0.600000,3,0.300000,3,0.300000,0,0.000000,4,3,0
+main,threshold 0.6,threshold 0.6,method3_ablation,method3,,Citation and verifiability,Citation support failure,,9,5,10,0.500000,4,0.400000,3,0.300000,0,0.000000,6,3,0
+main,threshold 0.6,threshold 0.6,method3_ablation,method3,,Content quality,Content omission,,4,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,2,2,0
+main,threshold 0.6,threshold 0.6,method3_ablation,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,threshold 0.6,threshold 0.6,method3_ablation,method3,,Planning and graph,Graph coherence failure,,3,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,1,2,0

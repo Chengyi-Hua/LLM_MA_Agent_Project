@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "island": "Nishinoshima (Ogasawara)",
+    "order": [
+        "Etymology",
+        "Geology",
+        "Ecology"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Geology": [
+            "Etymology"
+        ],
+        "Ecology": [
+            "Etymology",
+            "Geology"
+        ]
+    },
+    "summaries": {
+        "Etymology": "The name Nishinoshima translates directly to \"western island,\" a designation that reflects its geographical positioning relative to neighboring landmasses within the Ogasawara Island chain.",
+        "Geology": "Nishinoshima is an andesitic volcanic island situated at the summit of a large submarine volcano approximately 30 kilometers in diameter, located at 27°14'49\" N, 140°52'28\" E within the Ogasawara Island chain. The island measures approximately 650 meters in length, 200 meters in width, covers an area of roughly 77,000 square meters, and reaches an elevation of 25 meters. Its geological history is characterized by frequent volcanic activity, beginning with a recorded undersea phreatomagmatic explosion in May 1973 that formed new landmasses which subsequently merged with the original island through lava flows and volcanic block deposition. The ejected material exhibits a SiO2 content ranging from 51.8 to 60.1 weight percent, and while severe erosion has degraded individual volcanic edifices, accumulated deposits have altered coastal morphology, including the closure of a bay mouth in 1982. Ongoing eruptions continue to reshape the island's topography and periodically reset its surface environment.",
+        "Ecology": "The Ogasawara Islands exhibit exceptionally high endemism rates as flora and fauna evolved independently from mainland Asia, providing continuous examples of speciation and ecological succession in isolation. Nishinoshima Island, created by a 1973 submarine volcanic eruption, functions as a real-time case study for island colonization and ecosystem development, where frequent volcanic activity periodically eliminates vegetation and has caused local extinctions like that of the native purslane. Scientific investigations in the region focus on the ecology of Ardisia dominant forests, the ecological impact of feral goats, mesic forest regeneration following typhoons, competitive dynamics between native and introduced tree species, ecological release mechanisms, and the ongoing formation of marine ecosystems."
+    },
+    "plan_path": "logs/agent2_plans/Nishinoshima (Ogasawara)_plan_20260509_195955.json",
+    "created_at": "20260509_195955"
+}

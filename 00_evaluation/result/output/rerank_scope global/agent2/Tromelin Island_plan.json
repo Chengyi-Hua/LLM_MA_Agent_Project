@@ -1,0 +1,32 @@
+{
+    "status": "success",
+    "island": "Tromelin Island",
+    "order": [
+        "Etymology",
+        "Description",
+        "Fauna and flora",
+        "History",
+        "Climate"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Description": [],
+        "Fauna and flora": [
+            "Description"
+        ],
+        "History": [
+            "Description",
+            "Fauna and flora"
+        ],
+        "Climate": []
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Description": "Tromelin Island is a small, remote volcanic outcrop located in the southwest Indian Ocean at coordinates 15° 52' 36\" S, 54° 30' 51\" E, classified as a Possession and administratively part of France, associated with Réunion as a dependent state. The island is an almond-shaped speck of sand and coral, barely 1,700 metres at its longest point and 700 metres at its widest, with its highest point reaching only 7 metres above sea level and a total coastline of less than 4 kilometres, making it practically invisible from the sea. It is sparsely vegetated, with plant growth kept small by constant wind, and offers no shade or shelter from the elements, with observers describing the experience of being there as akin to standing on the deck of a stationary ship. The island serves as a laying ground for sea turtles and a breeding ground for various bird species, though its ecosystem suffered significantly after the accidental introduction of rats, which caused six of eight native bird species to disappear and devastated native plant life. Tromelin Island lies within the cyclone corridor of the southwest Indian Ocean and is at risk from major storms between late October and May, with recorded wind speeds reaching 230 km/hr and gusts up to 287 km/hr, causing floodwaters to cover low-lying areas and devastating nesting populations of birds and turtles. European discovery of the island is believed to have occurred possibly as late as 1722, when the French ship Diane recorded its position.",
+        "Fauna and flora": "Tromelin Island's fauna is dominated by seabirds, with nesting green sea turtles (Chelonia mydas) as the primary non-avian species, and no native terrestrial mammals, reptiles, or amphibians present on the island. The island historically supported 6–8 seabird species in large numbers prior to invasive Norway rat (Rattus norvegicus) predation, but by 2005, only two booby species persisted with limited breeding success; following rat eradication in 2005, the seabird community expanded to seven breeding species by 2022, with total breeding pairs rising from 353 to 4,758, reflecting improved nesting success rather than immigration. Key breeding seabirds include the masked booby (Sula dactylatra melanops), an endemic subspecies, as well as red-footed boobies. The flora of Tromelin Island is characterized by sparse, low-lying vegetation adapted to harsh tropical coralline atoll conditions including strong winds, salt spray, and limited freshwater. Prior to invasive species impacts, the native plant community consisted primarily of a single littoral shrub species, Tournefortia argentea (synonym Heliotropium foertherianum, known as tree heliotrope), alongside fewer than 10 herbaceous species, with no native trees present, reflecting the island's isolation and exposure which limits diversity to resilient, salt-tolerant pioneer species. Norway rats severely suppressed native vegetation by consuming seeds, seedlings, and foliage, but following eradication, native plants have been growing back and three bird species returned to the island, which is now considered an important reference ecosystem for environmental research in the Western Indian Ocean.",
+        "History": "The documentary \"Tromelin, the Island of Forgotten Slaves,\" directed by Daniel Vigne and broadcast on Arte, provides a detailed and illustrated account of historical events related to Tromelin Island, with the story also explored in a Slate article titled \"Abandoned on a Deserted Island: The Tragedy of Tromelin's Forgotten Slaves,\" which examines the memorial and political dimensions of the island's history involving forgotten slaves. Archaeological and historical research on the island has been conducted by Max Guérout, a former naval officer and archaeologist, whose reports document living conditions on Tromelin during the period in question. The island's history as a site of human tragedy and abandonment has given it significance as a historical symbol, with its story carrying cultural and political weight beyond its small, remote geography off the coast of Madagascar.",
+        "Climate": "No relevant information regarding Climate is available."
+    },
+    "plan_path": "logs/agent2_plans/Tromelin Island_plan_20260509_153211.json",
+    "created_at": "20260509_153211"
+}

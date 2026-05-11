@@ -1,0 +1,31 @@
+{
+    "status": "success",
+    "island": "Hunga Tonga–Hunga Haʻapai",
+    "order": [
+        "Volcano and caldera",
+        "Geography",
+        "Eruptions",
+        "Footnotes"
+    ],
+    "dependency": {
+        "Volcano and caldera": [],
+        "Geography": [
+            "Volcano and caldera"
+        ],
+        "Eruptions": [
+            "Volcano and caldera",
+            "Geography"
+        ],
+        "Footnotes": [
+            "Eruptions"
+        ]
+    },
+    "summaries": {
+        "Volcano and caldera": "The islands Hunga Tonga and Hunga Ha'apai are the visible remnants of the ridge around a large submarine caldera atop an active volcano, with a 4 by 2 kilometer, 150 meter deep depression marking the caldera location formed by explosive collapse. The January 2022 eruption was a once-in-1,000-years event for the Hunga caldera, with a potential volcanic explosivity index of 5.",
+        "Geography": "The Hunga Tonga-Hunga Ha'apai volcano is located along the Tonga segment of the Tonga-Kermadec intra-oceanic arc in the Pacific Ocean, a 2,550 km subduction system resulting from the Pacific Plate subducting beneath the Indo-Australian Plate. The volcano is over 1.8 km high and extends about 20 km across the seafloor, with a submerged 5 km diameter caldera; only two small portions of this caldera emerged as the uninhabited islands Hunga Tonga and Hunga Ha'apai. The 2014/15 eruption formed a new conjoined island, Hunga Tonga-Hunga Ha'apai, by depositing tephra that connected the two existing islands. The volcanic arc's study aids in understanding morphological erosion processes and provides analogs for planetary studies, such as similar features on Mars. Shockwaves from a 2022 eruption were felt in Fiji, New Zealand, and Alaska, with pressure waves traveling globally three times.",
+        "Eruptions": "Schoeberl et al. found that in the year following the Hunga eruption, the cooling effect from volcanic aerosols was stronger than the warming from water vapor, but most effects dissipated by the end of 2023, causing a global radiative flux decrease of less than 0.25 watts per square meter over two years. The eruption released 0.5 to 1.5 metric megatons of sulfur dioxide, producing sulfate aerosols that reflected sunlight, with effects mostly confined to the Southern Hemisphere in 2022 and 2023. The Hunga Tonga–Hunga Haʻapai eruption on 15 January 2022 was the largest recorded in 30 years, producing a plume over 30 km tall with overshooting tops above 55 km, and is estimated to be the largest underwater explosion ever recorded by modern instruments, with an energy release between 10 and 28 EJ, potentially larger than the 1991 Mt. Pinatubo eruption.",
+        "Footnotes": "No relevant information regarding Footnotes is available."
+    },
+    "plan_path": "logs/agent2_plans/Hunga Tonga–Hunga Haʻapai_plan_20260509_164259.json",
+    "created_at": "20260509_164259"
+}

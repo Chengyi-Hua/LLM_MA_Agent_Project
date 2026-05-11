@@ -1,0 +1,51 @@
+{
+    "status": "success",
+    "island": "Howland Island",
+    "order": [
+        "Flora and fauna",
+        "Economics",
+        "Time zone",
+        "History",
+        "Earhart Light",
+        "Image gallery",
+        "National Wildlife Refuge"
+    ],
+    "dependency": {
+        "Flora and fauna": [],
+        "Economics": [
+            "Flora and fauna"
+        ],
+        "Time zone": [],
+        "History": [
+            "Time zone",
+            "Flora and fauna"
+        ],
+        "National Wildlife Refuge": [
+            "Flora and fauna",
+            "History",
+            "Economics",
+            "Earhart Light",
+            "Image gallery"
+        ],
+        "Earhart Light": [
+            "Time zone",
+            "History"
+        ],
+        "Image gallery": [
+            "History",
+            "Earhart Light",
+            "Flora and fauna"
+        ]
+    },
+    "summaries": {
+        "Flora and fauna": "",
+        "Economics": "The main elements of the Federated States of Micronesia economy include subsistence farming, local fishing, the lease of fishing rights to foreign vessels, servicing fishing fleets, government employment, and tourism. The ocean is considered the country's most important resource, with tuna fishing licensing fees in the Exclusive Economic Zone generating between $18 million and $24 million annually. Tourism is identified as a potential source for near-term income generation due to natural and marine beauty, though it faces challenges from limited air transportation, land-use issues, and regional competition. Rising sea levels pose a threat to infrastructure and local economies in the Pacific Islands, while data gaps in socioeconomic records persist due to historical governance systems. The region's economic landscape is further defined by the management of exclusive economic zones and the vulnerabilities of livelihoods to climate impacts such as drought and sea level rise.",
+        "Time zone": "Howland and Baker Islands are located in the UTC-12:00 time zone, which is designated by the nautical letter Y (Yankee). This time zone is also referred to as the International Date Line West (IDLW) time zone. As the latest places on Earth where any given date remains valid, these islands are used to define the Anywhere on Earth (AoE) calendar designation, indicating that a period expires only when the date has passed in this specific region.",
+        "History": "Howland Island was discovered in 1791 by American sailor Edmund Fanning and later sighted in 1822 by George Worth, who named it Worth Island. In 1842, it was renamed Howland Island after a whaling ship's lookout. The United States claimed the island in 1857 under the Guano Act of 1856, and both the United States and Britain mined organic nitrate from the location prior to 1890. The island was colonized from Hawaii in 1935. In 1937, aviator Amelia Earhart disappeared while attempting to land on the island during her flight around the world. During World War II, the island served as a lookout point for the United States military. The guano deposits are now exhausted, and the island currently functions as a nature reserve within the U.S. National Wildlife Refuge system.",
+        "National Wildlife Refuge": "Howland Island is a U.S. National Wildlife Refuge and was designated part of the Pacific Remote Islands Marine National Monument in 2009. The island serves as a nature reserve and is part of the U.S. National Wildlife Refuge system, providing nesting areas and forage for a variety of birds and marine wildlife, including several species of migratory seabirds, shorebirds, and threatened and endangered sea turtles. Because it is a nature reserve, the island is not used for economic activities like farming or industry, but instead supports scientific research and ecological conservation efforts to protect coral reefs and unique bird species.",
+        "Earhart Light": "The Earhart Light is a small lighthouse and navigational beacon located on Howland Island that was constructed in 1937 in anticipation of Amelia Earhart's scheduled refueling stop during her transpacific flight. Although Earhart's radio broadcasts were heard on the island, she never reached the destination and is thought to have crashed in nearby waters. During World War II in 1941, the beacon was rendered useless after 14 Japanese planes dropped approximately 60 bombs on the island and a Japanese submarine fired 50 shells into the settlement of Itascatown. The station has been inactive since 1942 and the structure is now classified as a day beacon. In the years following the war, brief visits were made to the uninhabited island to restore the light beacon and add the names of two colonists killed during the 1941 attacks. The ruins of the lighthouse remain on the island, which was declared a National Wildlife Refuge in 1974 under the jurisdiction of the U.S. Fish and Wildlife Service.",
+        "Image gallery": "The image gallery for Howland Island includes a map of the island and a digital image designated as ISS010-E-09287, which was photographed on 3 December 2004 by an Expedition 10 crewmember aboard the International Space Station. This high-resolution photograph, titled View of Howland Island, was captured using a Kodak DCS760c Electronic Still Camera with an 800 mm focal length from an altitude of 192 nautical miles. The image shows the island composed of coral fragments surrounded by an active fringing reef, indicated by white breakers, and is used by the Earth Science and Remote Sensing Unit at the Lyndon B. Johnson Space Center to update geographic maps and assess the health of reef ecosystems."
+    },
+    "plan_path": "logs/agent2_plans/Howland Island_plan_20260509_171622.json",
+    "created_at": "20260509_171622"
+}

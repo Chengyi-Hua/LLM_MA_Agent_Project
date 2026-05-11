@@ -1,0 +1,11 @@
+{
+    "graph_analysis": {
+        "total_sections": 4,
+        "orphan_nodes_count": 1,
+        "orphan_nodes_list": [
+            "History"
+        ],
+        "orphan_node_ratio": "25.00%",
+        "max_graph_depth": 3
+    }
+}

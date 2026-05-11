@@ -1,0 +1,27 @@
+{
+    "status": "success",
+    "island": "Jethou",
+    "order": [
+        "History",
+        "Governance",
+        "Wildlife",
+        "Jethou in popular culture"
+    ],
+    "dependency": {
+        "History": [],
+        "Governance": [],
+        "Wildlife": [
+            "History",
+            "Governance"
+        ],
+        "Jethou in popular culture": []
+    },
+    "summaries": {
+        "History": "The source documents reference prehistoric sea-going vessels and the spread of civilisation across land and sea in the Channel Islands region, noting that Guernsey, Herm, and Sark are visible from the north-west coast of Jersey and in ideal conditions from the Cotentin peninsula, making the islands a constant visual presence attracting curiosity of land-based and sea-faring peoples. Palaeogeographic models of the Channel Islands span from 9000 BC to 4000 BC, with eustatic sea-level rise documented on Guernsey, and the prehistoric record includes funerary monuments, menhirs, Neolithic and Bronze Age pottery, polished stone rings, axe finds, and artefacts of flint and stone recovered across the island. The granite mass known as La Fauconnaire, nearly two hundred feet high and surmounted by a white stone beacon fifteen feet high, is joined to the mainland by a causeway of rocks at low water but becomes impassable at half-tide except by boat on a calm day. A vessel that had been to a Spanish port for cork and hemp ran upon the island of Jethou during a dense fog on her return voyage, surviving only because the sea was calm, with the narrative likening the granite islands to the Sirens who attempted to lure Ulysses, noting that ships rarely escape their deadly embrace. The chapter heading references the story of Alexander Selkirk, the original inspiration for Robinson Crusoe, in the context of a journey to Guernsey and a voyage to Jethou in the Channel Islands.",
+        "Governance": "Guernsey's first Biodiversity Strategy was adopted by the States of Guernsey in 2014, representing a government-level governance action for conservation. Herm, Jethou and The Humps were designated as a Ramsar site, a Wetland of International Importance under the Convention on Wetlands of International Importance, to which Guernsey is a signatory, with Guernsey holding two such designated sites: Lihou Island and L'Erée Headland, and Herm, Jethou and The Humps. Sites of Special Significance (SSS) are designated areas afforded protection within the Island Development Plan in recognition of their archaeological, botanical, geological, scientific, cultural, zoological or related value. The State of Nature report covering Guernsey, Lihou, Herm, Jethou and The Humps was produced to provide a benchmark for the natural environment to guide conservation efforts by government, industry, the third sector, businesses, and the general public, with governance actions categorized as government actions (red), NGO actions (green), national/international actions (blue), and collaborative actions (purple).",
+        "Wildlife": "The Herm, Jethou and The Humps Ramsar site was designated in 2015 as a wetland of international importance spanning 1,850 hectares of shallow marine ecosystems, including surrounding reefs, shipwrecks, and seabeds, with an exceptionally large tidal range of up to 10 metres. The area supports diverse habitats such as eelgrass (Zostera) beds and maerl gravel, serving as spawning and nursery grounds for fish like European sea bass (Dicentrarchus labrax) and Atlantic mackerel (Scomber scombrus). Globally threatened species found in the area include the green ormer (Haliotis tuberculata), Balearic shearwater (Puffinus mauretanicus), and marine mammals such as Atlantic grey seals and basking sharks, as well as Black Sea bream and nine species of bird including puffins. Wildlife experiences in the region include puffin-spotting trips available through Island Rib Voyages and Outdoor Guernsey, with visits to Herm plannable via herm.com. The Gouliot Headland on the west coast of Sark is also noted as a wildlife-relevant location.",
+        "Jethou in popular culture": "No relevant information regarding Jethou in popular culture is available."
+    },
+    "plan_path": "logs/agent2_plans/Jethou_plan_20260509_152346.json",
+    "created_at": "20260509_152346"
+}

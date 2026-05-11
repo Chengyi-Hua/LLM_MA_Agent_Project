@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "island": "Nishinoshima (Ogasawara)",
+    "order": [
+        "Etymology",
+        "Geology",
+        "Ecology"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Geology": [],
+        "Ecology": [
+            "Geology"
+        ]
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Geology": "Nishinoshima is an andesitic volcanic island located at the summit of a large submarine volcano approximately 30 km in diameter. The island's first recorded eruption occurred in May 1973 as an undersea phreatomagmatic explosion, forming a new island; subsequent eruptions in 1973-1974 created additional islands that eventually connected. The SiO2 content of ejecta ranges from 51.8 to 60.1 wt%. The island's frequent eruptions periodically reset its vegetation, providing a rare glimpse into early ecosystem development in an isolated environment.",
+        "Ecology": "Nishinoshima Island is a volcanic island in the Ogasawara Island chain about 600 miles south of Tokyo, formed by a submarine eruption in 1973, and its frequent volcanic eruptions nearly wipe out most plant life each time, leading to the extinction of the native purslane (Portulaca oleracea) after the 2019 eruption, with researchers from Tokyo Metropolitan University confirming its extinction on the island though the species is common in other tropical regions globally. The ecology of the Ogasawara Islands, including Nishinoshima, is characterized by high endemism due to long-term isolation from mainland Asia, with dominant forests influenced by factors like feral goats and typhoon disturbance, and studies on islands like ChichijimaRetto show human impacts. Research on these islands, including the Galapagos-like Scalesia forests, examines regeneration mechanisms, competitive relationships between tree species, এবং forest structure composition distribution, providing insights into ecological release, speciation, এবং island colonization processes. The ongoing volcanic activity on Nish inoshima offers a real-time case study for ecosystem development, species colonization, marine ecosystem formation."
+    },
+    "plan_path": "logs/agent2_plans/Nishinoshima (Ogasawara)_plan_20260509_164635.json",
+    "created_at": "20260509_164635"
+}

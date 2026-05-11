@@ -1,0 +1,33 @@
+{
+    "status": "success",
+    "island": "Surtsey",
+    "order": [
+        "Geology",
+        "Biology",
+        "Human impact",
+        "Recent development"
+    ],
+    "dependency": {
+        "Geology": [],
+        "Recent development": [
+            "Geology",
+            "Biology",
+            "Human impact"
+        ],
+        "Biology": [
+            "Geology"
+        ],
+        "Human impact": [
+            "Geology",
+            "Biology"
+        ]
+    },
+    "summaries": {
+        "Geology": "Surtsey is a new volcanic island formed by eruptions from 1963 to 1967. The 1963–67 eruption is the canonical example of shallow-to-emergent phreatomagmatic eruptions, demonstrating magma-water interaction dynamics. Geochemical analysis of eruptive products defines a Surtsey Magma Series and Surtsey Melt Series, with changes explained by mixing between alkalic basalt and primitive ridge-like basalt from a propagating ridge tip. In 1979, a 180.6-metre-deep borehole was drilled, with core recovery providing major-element analyses of sideromelane glass in tephras from 180.1 to 0.1 m depth, interpreted as representing the pre-emergent growth of the island.",
+        "Recent development": "In a recent study of drill cores from Surtsey, researchers used the Advanced Light Source to gain unique insights into the transformation of volcanic glass to form mineral cements in the basaltic rock of underwater volcanoes, providing a window into the oceanic crust and geologic processes that change at a human scale.",
+        "Biology": "Surtsey is a volcanic island formed in 1963-67 that serves as a pristine natural laboratory for studying primary succession and biological colonization, free from human interference. It provides a unique long-term scientific record of how plants, animals, and marine organisms colonize new land, with studies emphasizing real biological interactions like seed dispersal by birds. Vegetation now covers 1-2% of the island, including species such as smooth meadow-grass, arctic fescue, lyme grass, sea sandwort, and common mouse ear, with bryophytes also present. The island's ongoing ecological processes offer invaluable data on ecosystem development, adaptation, and evolution.",
+        "Human impact": "Surtsey has been legally protected from its birth, providing a pristine natural laboratory free from human interference, with its surface and ecology left to nature. Human impact is limited to only a few visits annually by scientists, with a single group of approximately ten scientists visiting in a normal year for low-impact studies. It is strictly prohibited to go ashore, dive by the island, disturb natural features, introduce organisms, minerals, or soils, or leave waste, and nearby construction is strictly controlled to ensure colonisation and succession processes remain as natural as possible. The ongoing ecological processes have remained unaffected by human activities, and the most significant management issue is retaining this level of control and protection from human influence."
+    },
+    "plan_path": "logs/agent2_plans/Surtsey_plan_20260509_164739.json",
+    "created_at": "20260509_164739"
+}

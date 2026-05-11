@@ -1,0 +1,38 @@
+{
+    "status": "success",
+    "island": "Tromelin Island",
+    "order": [
+        "Etymology",
+        "Description",
+        "Fauna and flora",
+        "History",
+        "Climate"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Description": [
+            "Etymology"
+        ],
+        "Fauna and flora": [
+            "Description"
+        ],
+        "History": [
+            "Description",
+            "Fauna and flora"
+        ],
+        "Climate": [
+            "Description",
+            "Fauna and flora",
+            "History"
+        ]
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Description": "Tromelin Island is a remote, low-lying volcanic outcrop of sand and coral located in the Indian Ocean off the coast of Madagascar. Measuring barely 1,700 meters at its longest point and 700 meters at its widest, the island features a coastline of less than four kilometers and a maximum elevation of only seven meters above sea level, making it practically invisible to passing vessels. The terrain consists of shifting sands at its northern end, sparse wind-stunted vegetation, and a complete lack of shade, creating an environment that feels more like a stationary ship deck than solid land. Situated in the southwest Indian Ocean cyclone corridor, the island is highly vulnerable to severe storms between late October and May, which frequently inundate its low-lying areas and devastate local wildlife. Historically a thriving habitat for native birds and plants, its ecosystem has suffered significant collapse due to the accidental introduction of invasive rats, though it remains a critical breeding ground for seabirds and a nesting site for sea turtles.",
+        "Fauna and flora": "Tromelin Island's fauna is dominated by seabirds, with nesting green sea turtles (Chelonia mydas) serving as the primary non-avian species and no native terrestrial mammals, reptiles, or amphibians present. Historically, the island supported six to eight seabird species, but invasive Norway rats reduced the population to just two booby species by 2005; following a successful rat eradication program that year, the seabird community naturally expanded to seven breeding species by 2022, with total breeding pairs increasing from 353 to 4,758, including the endemic masked booby subspecies. The island's flora consists of sparse, low-lying vegetation adapted to harsh tropical atoll conditions, historically dominated by the littoral shrub Tournefortia argentea and fewer than ten herbaceous species, with no native trees. Invasive rats severely suppressed this native plant community by consuming seeds, seedlings, and foliage, but post-eradication efforts have facilitated the recovery and regrowth of these resilient, salt-tolerant pioneer species.",
+        "History": "Tromelin Island possesses a documented historical narrative centered on the tragedy of forgotten slaves, which is detailed in the Arte documentary Tromelin, the Island of Forgotten Slaves directed by Daniel Vigne. Archaeological and naval reports by Max Guérout provide accounts of the living conditions endured on the island, while the story's memorial and political significance is analyzed in publications such as a Slate article. The island's ecological history further records a period of severe ecosystem degradation following the accidental introduction of rats, which decimated native bird and plant populations until a 2005 eradication initiative led by French scientists from Le Réunion Island successfully restored the environment.",
+        "Climate": "Invasive species removal is identified as a nature-based solution for climate resilience, with a newly published paper quantifying ecosystem resilience on restored islands. Restoration projects targeting key islets in Nukufetau Atoll are forecasted to deliver climate resilience and community benefits in Tuvalu. Island Conservation participates in Climate Week NYC to address climate-related environmental priorities, while concurrent research examines how dynamic coastlines influence island futures."
+    },
+    "plan_path": "logs/agent2_plans/Tromelin Island_plan_20260509_202526.json",
+    "created_at": "20260509_202526"
+}

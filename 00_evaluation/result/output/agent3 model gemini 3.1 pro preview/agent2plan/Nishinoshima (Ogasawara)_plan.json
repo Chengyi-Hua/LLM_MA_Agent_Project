@@ -1,0 +1,21 @@
+{
+    "status": "success",
+    "island": "Nishinoshima (Ogasawara)",
+    "order": [
+        "Etymology",
+        "Geology",
+        "Ecology"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Geology": [],
+        "Ecology": [
+            "Geology"
+        ]
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Geology": "Nishinoshima is an andesitic volcanic island located at latitude 27°14'49\" N and longitude 140°52'28\" E, situated at the summit of a large submarine volcano approximately 30 km in diameter, with the island itself measuring approximately 650 m long (southwest to northeast) and approximately 200 m wide, covering an area of approximately 77,000 m² with an elevation of 25 m and several reefs on its northeast side. The SiO2 content of ejecta ranges between 51.8 and 60.1 wt%, classifying the volcanic output as andesitic in composition. The first eruption in recorded history occurred in May 1973, originating on the seafloor approximately 400 m east of the southern tip of the island, beginning as an undersea phreatomagmatic explosion that moved semicircularly, with five craters ejecting volcanic blocks and lava flows. Successive eruptions in 1973 produced a new island first observed at 30 to 50 m in diameter in July, growing to approximately 150 m in diameter and 40 m in height by September, with additional new islands forming to the west and eventually connecting above sea level by October 10, 1973, with the combined landform named Nishinoshima Shinto on December 21, 1973. Each volcanic edifice experienced severe erosion, though removed deposits linked the old and new island, and the mouth of the bay became closed off by deposit movement in 1982. A major series of eruptions in 2013 destroyed nearly all vegetation on the island, and the island is part of the Ogasawara Island chain located approximately 1000 kilometers south of mainland Tokyo.",
+        "Ecology": "Nishinoshima Island, part of the Ogasawara Island chain approximately 600 miles south of Tokyo, serves as a significant ecological case study due to its frequent volcanic eruptions, which repeatedly devastate plant life and have led to the local extinction of a native purslane species (Portulaca oleracea) following a 2019 eruption. The island, formed by a submarine volcanic eruption in 1973, provides a real-time case study of island colonization, ecological succession, and ecosystem development in isolation. The Ogasawara Islands as a whole exhibit exceptionally high endemism rates, as flora and fauna have evolved independently from mainland Asia, offering ongoing examples of speciation and ecological succession. Research conducted in the region includes studies on forest structure, composition, and distribution with reference to ecological release and speciation, competitive relationships between native and introduced plant species, the influence of feral goats on Ardisia dominant forests, regeneration of mesic forest following typhoon disturbance, and the causal factors behind endangered plant species in the Bonin Islands. Scientists continue to conduct ongoing research on volcanic activity, species colonization, and marine ecosystem formation at Nishinoshima, while conservation efforts have included the extraction of native plant specimens, such as the purslane removed by Tokyo Metropolitan University researchers prior to the 2019 eruption, to preserve genetic material from species threatened by volcanic activity."
+    }
+}

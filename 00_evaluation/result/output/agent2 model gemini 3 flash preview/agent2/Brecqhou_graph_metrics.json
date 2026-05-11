@@ -1,0 +1,13 @@
+{
+    "graph_analysis": {
+        "total_sections": 7,
+        "orphan_nodes_count": 3,
+        "orphan_nodes_list": [
+            "Name",
+            "Geography",
+            "Public visits"
+        ],
+        "orphan_node_ratio": "42.86%",
+        "max_graph_depth": 5
+    }
+}

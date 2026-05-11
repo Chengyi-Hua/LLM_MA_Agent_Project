@@ -1,0 +1,11 @@
+{
+    "graph_analysis": {
+        "total_sections": 7,
+        "orphan_nodes_count": 1,
+        "orphan_nodes_list": [
+            "Flora and fauna"
+        ],
+        "orphan_node_ratio": "14.29%",
+        "max_graph_depth": 7
+    }
+}

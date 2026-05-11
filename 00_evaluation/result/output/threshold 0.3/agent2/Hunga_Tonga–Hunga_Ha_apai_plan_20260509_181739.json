@@ -1,0 +1,33 @@
+{
+    "status": "success",
+    "island": "Hunga Tonga–Hunga Haʻapai",
+    "order": [
+        "Volcano and caldera",
+        "Geography",
+        "Eruptions",
+        "Footnotes"
+    ],
+    "dependency": {
+        "Volcano and caldera": [],
+        "Geography": [
+            "Volcano and caldera"
+        ],
+        "Eruptions": [
+            "Volcano and caldera",
+            "Geography"
+        ],
+        "Footnotes": [
+            "Volcano and caldera",
+            "Geography",
+            "Eruptions"
+        ]
+    },
+    "summaries": {
+        "Volcano and caldera": "The January 2022 eruption site was near the uninhabited islands Hunga Tonga and Hunga Ha'apai, which are described as elongated remnants of the ridge around a large submarine caldera atop an active volcano, with the islands representing the visible northern and western remnants of that ridge. Samples from Hunga Tonga revealed alternating layers of andesitic lava flows and beds of scoria, lapilli, and ash dipping gently away from the center of a circle, supporting the hypothesis of a large submarine caldera. High-resolution multibeam sonar surveys confirmed a 4 × 2 kilometer, 150-meter-deep depression in the location of the anticipated submarine caldera, a feature formed by the explosive collapse of a previous volcanic structure during an earlier eruption. The 2022 eruption was described as a once-in-1,000-years event for the Hunga caldera and could rank as high as 5 on the zero-to-7 volcanic explosivity index (VEI). The hitherto joined islands of Hunga Tonga and Hunga Ha'apai, covering an area of just over 1 km² with a maximum altitude of 149 m, were blown apart by the eruption, with only very small fragments remaining at the western and eastern edges. The island itself had been created by undersea eruptions in December 2014 to January 2015 that connected the two separate islands, located about 30 km south of the submarine volcano of Fonuafoʻou and 65 km north of Tongatapu.",
+        "Geography": "Hunga volcano is located along the Tonga segment of the Tonga-Kermadec intra-oceanic arc in the Pacific Ocean, formed as a result of the subduction of the Pacific Plate beneath the Indo-Australian Plate, within a massive subduction system extending 2,550 km between New Zealand and Tonga. The volcano rises more than 1.8 km high and extends approximately 20 km across the seafloor, remaining mostly submerged, with its summit featuring a large caldera approximately 5 km in diameter, of which only two small ends emerge from the water to form the uninhabited islands of Hunga Tonga and Hunga Ha'apai. The 2014/15 eruption created a new conjoined island, Hunga Tonga-Hunga Ha'apai, formed when tephra from the eruption built up around a new volcanic cone connecting the two pre-existing islands. The January 2022 eruption generated shockwaves felt in Fiji approximately 500 kilometers to the northwest, in New Zealand 1,600–2,000 kilometers away, and in Alaska 9,370 kilometers northeast, with pressure waves traveling around the world three times before dissipating. The eruption released 0.4 teragrams of sulfur dioxide into the stratosphere, below the 5-teragram threshold required to produce observable climatic impacts.",
+        "Eruptions": "The Hunga Tonga–Hunga Haʻapai submarine volcano (20.54° S, 175.38° W) erupted on 15 January 2022, producing a vertical plume more than 30 km tall with overshooting tops above 55 km, a record in the satellite era, and spewing volcanic material up to 58 km into the atmosphere. The single-event energy release from the initial explosion is estimated at between 10 and 28 EJ, likely larger than the 1991 Mt Pinatubo eruption (around 10 EJ) and possibly comparable to Krakatoa in 1883 (around 30 EJ), making it the largest eruption recorded anywhere on the planet in 30 years and the largest underwater explosion ever recorded by modern scientific instruments. The eruption caused widespread destruction to the Pacific Island Nation of Tonga, brought a nearly 15 m tsunami that destroyed villages, and created a sonic boom that rippled around the world twice. It released between 0.5 and 1.5 metric megatons of sulfur dioxide into the stratosphere, producing sulfate aerosols that reflect sunlight and reduce surface radiative forcing, though this aerosol load was not very large compared to the 1991 eruption of Mount Pinatubo, which released about 20 metric megatons of sulfur dioxide. In the year following the eruption, the cooling effect from volcanic aerosols reflecting sunlight was stronger than the warming caused by water vapor trapping heat, but most effects had dissipated by the end of 2023, with the global decrease in radiative flux remaining less than 0.25 watt per square meter over the 2-year period, and the eruption's effects were mostly confined to the Southern Hemisphere in 2022 and 2023.",
+        "Footnotes": "Proudman J (1929) The effects on the sea of changes in atmospheric pressure. Geophy Suppl Monthly Notices Royal Astr Soc 2:197–209, Article Google Scholar. Risk Frontiers (2022a) Hunga Tonga-Hunga Ha'apai Eruption 15th of January 2022a. Risk Front Brief Note 458. Risk Frontiers (2022b) Why the Tonga tsunami arrived much earlier and much larger than expected. Risk Front Brief Note 460. RNZ (2022) Tonga eruption likely the world's largest in 30 years–scientist. Radio New Zealand. Accessed Jan 2022. Sekizawa S, Kohyama T (2022) Meteotsunami observed in Japan following the Hunga Tonga eruption in 2022 investigated using a one-dimensional shallow-water model. Sci Online Lett Atmos. Article Google Scholar. References also include proceedings from the Asia Oceania Geosciences Society (AOGS 2022 Hunga Tonga-hunga Ha'apai Volcanic Eruption, Atmospheric, Ocean Waves and Solid Earth, Session IG29 at the 19th annual meeting, Asia Oceania Geosciences Society, 1–5 August, 2022)."
+    },
+    "plan_path": "logs/agent2_plans/Hunga Tonga–Hunga Haʻapai_plan_20260509_181739.json",
+    "created_at": "20260509_181739"
+}

@@ -1,0 +1,50 @@
+{
+    "status": "success",
+    "island": "Hashima Island",
+    "order": [
+        "Etymology",
+        "History",
+        "Current status",
+        "Access",
+        "World Heritage Site approval controversy",
+        "In popular culture"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "History": [
+            "Etymology"
+        ],
+        "Current status": [
+            "Etymology",
+            "History"
+        ],
+        "Access": [
+            "Current status",
+            "Etymology",
+            "History"
+        ],
+        "World Heritage Site approval controversy": [
+            "Etymology",
+            "History",
+            "Current status",
+            "Access"
+        ],
+        "In popular culture": [
+            "Etymology",
+            "History",
+            "Current status",
+            "Access",
+            "World Heritage Site approval controversy"
+        ]
+    },
+    "summaries": {
+        "Etymology": "The name Hashima translates to \"island\" or \"peninsula\" in Japanese, with its etymology rooted in the Japanese language and likely referencing historical geographical features where the land was once surrounded by or protruded into a body of water. The location is also widely recognized by the nickname \"Gunkanjima\" (Battleship Island), a moniker derived from the visual resemblance of its densely packed, high-rise reinforced-concrete structures to the Imperial Japanese Navy battleship Tosa when observed from a distance.",
+        "History": "Hashima Island, commonly known as Gunkanjima or Battleship Island, off the coast of Nagasaki, condensed a century of industrial capitalism, imperial expansion, wartime mobilization, postwar prosperity, and postindustrial decline into a few engineered hectares. Its iconic concrete infrastructure, including apartment blocks, schools, hospitals, and entertainment facilities, was constructed in the early 20th century to house an influx of miners. By the 1950s, the island reached its peak population density with over 5,000 residents confined to just 16 acres under Mitsubishi Corporation's governance as a company town. The island's prosperity was intrinsically linked to Japan's coal industry, which collapsed in the 1960s as petroleum became the dominant energy source, leading Mitsubishi to close the mines in 1974 and abandon the settlement overnight. The site's historical narrative encompasses its function as a technology of concentration that organized labor and social life within hard boundaries, alongside its role in a broader imperial labor regime characterized by coercive wartime practices, recruitment channels, policing, and wage discipline.",
+        "Current status": "Hashima Island, abandoned in 1974, currently operates as a UNESCO World Heritage Site where its ruins are circulated as picturesque decay through tourism campaigns and serve as a focal point for immersive media and virtual reality projects. Kuldhara Village in Rajasthan currently holds the designation of a protected heritage site under the Archaeological Survey of India, remaining an uninhabited archaeological settlement that continues to attract cultural tourism and historical investigation.",
+        "Access": "Access to Hashima Island is exclusively available through authorized guided boat tours departing primarily from Nagasaki Port, which can be reached via a three-minute tram ride from Nagasaki Eki-mae Station to Ohato Station or a forty-minute bus ride from Nagasaki Airport. Visitor access is strictly limited to designated, controlled exterior routes, and free roaming through the abandoned structures is prohibited. Landings are highly dependent on strict weather and sea conditions mandated by Nagasaki City regulations, requiring wave heights under 0.5 meters, wind speeds below 5 meters per second, and visibility exceeding 500 meters, with final landing decisions resting with the boat captain. Due to these constraints, successful landings occur on approximately 100 days per year, making flexible itinerary planning essential. Unauthorized entry is strictly forbidden, and all visits must adhere to organized tour schedules focused on historical preservation.",
+        "World Heritage Site approval controversy": "The 2015 UNESCO World Heritage Committee approval of Japan's \"Sites of Japan's Meiji Industrial Revolution\" serial property, which included Hashima Island, formalized an international dispute regarding the commemoration of forced Korean and Chinese labor during World War II. To secure the inscription, Japan officially acknowledged that a large number of Koreans and others were brought against their will and forced to work under harsh conditions at multiple component sites, committing to implement interpretive measures that would allow visitors to understand the full history of the locations. Despite this acknowledgment, subsequent interpretive practices, particularly at the Tokyo-based Industrial Heritage Information Center, have remained highly contested, with UNESCO repeatedly determining that Japan's compliance with the interpretive obligations remains inadequate. The approval process effectively attached a global heritage framework to the site, creating an enduring mandate to address politically charged wartime histories that fall outside the celebratory Meiji-era industrial narrative, regardless of local preferences.",
+        "In popular culture": "Hashima, also known as Gunkanjima, has been featured in various digital and photographic media, including a 2013 Google Street View capture that enabled 360-degree virtual navigation of the site. In the same year, designer Bryan James released an interactive web experience titled Hashima Island: A Forgotten World, which overlays Street View imagery with historical context and guided storytelling. Photographers Marchand and Meffre documented the abandoned island in a published book titled Gunkanjima, combining contemporary photographs of the deserted infrastructure with historical images of its former densely populated community. These virtual and print projects contribute to the island's widespread representation as a photogenic ruin and a subject of digital heritage exploration."
+    },
+    "plan_path": "logs/agent2_plans/Hashima Island_plan_20260509_192025.json",
+    "created_at": "20260509_192025"
+}

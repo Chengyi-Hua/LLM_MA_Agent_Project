@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "island": "Kavachi",
+    "order": [
+        "Geography",
+        "Eruptions",
+        "Marine life"
+    ],
+    "dependency": {
+        "Geography": [],
+        "Eruptions": [
+            "Geography"
+        ],
+        "Marine life": [
+            "Geography",
+            "Eruptions"
+        ]
+    },
+    "summaries": {
+        "Geography": "Kavachi Volcano is a shallow submarine volcano situated in the southwest Pacific Ocean, specifically just south of Vangunu Island within the Solomon Islands. It lies along the highly active Pacific Ring of Fire tectonic boundary, which contributes to its frequent volcanic activity and occasional ephemeral island emergence. The volcano's summit features an oblong, pockmarked crater measuring approximately 120 meters by 75 meters, with a rim averaging 24 meters below sea level and the deepest soundings reaching roughly 70 meters. The surrounding terrain is asymmetrical with 18-degree slopes that descend to depths exceeding 1,000 meters, and a secondary summit is located 1.3 kilometers southwest of the main peak. Its remote geographic position and explosive behavior have historically restricted direct scientific access to the proximal summit area.",
+        "Eruptions": "Kavachi is a shallow submarine volcano located south of Vangunu Island in the Solomon Islands, also known as Rejo te Kvachi, and is characterized by explosive behavior that normally restricts scientific access to its summit. A January 2015 expedition coincided with a rare lull in volcanic activity, enabling direct access to the active crater and flanks where researchers documented hydrothermal plume structures, measured water temperature and gas flux over the summit, and identified a secondary peak southwest of the main summit exhibiting diffuse-flow venting. The active crater environment supports chemosynthetic microbial populations dominated by sulfur-reducing ε-proteobacteria, alongside gelatinous animals, small fish, and sharks, highlighting the extreme ecological conditions associated with the volcano's ongoing activity.",
+        "Marine life": "Kavachi submarine volcano hosts extreme marine ecosystems where extremophile organisms, microbial mats, bluefin trevally, snapper, hammerhead sharks, and silky sharks thrive in highly acidic, mineral-rich crater waters with elevated temperatures. Secondary and tertiary consumers are frequently observed within the hydrothermal plume during quiescent periods, demonstrating remarkable physiological and behavioral resilience to extreme heat, acidity, and turbidity. Potential survival mechanisms include behavioral adaptations such as entering the crater during calm phases and departing before eruptions, enhanced sensory perception for detecting chemical or seismic warning signs, and physiological tolerance to harsh environmental conditions. This unique ecosystem serves as a natural laboratory for studying marine adaptation to climate stress, offering critical insights into the evolutionary history of marine animals and their capacity to survive past and future shifts in ocean chemistry."
+    },
+    "plan_path": "logs/agent2_plans/Kavachi_plan_20260509_195628.json",
+    "created_at": "20260509_195628"
+}
