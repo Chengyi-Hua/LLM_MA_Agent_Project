@@ -49,6 +49,5 @@ class NaiveRAG(BaseRAG):
             island_name=island_name,
             article_text=article_text,
             chunks=top_chunks,
-            rerank_strategy="global",
-            top_l_applied_at="global" if self.use_top_l else "none"
+            rerank_strategy="global"
         )

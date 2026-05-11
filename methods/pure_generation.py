@@ -45,6 +45,5 @@ class PureGeneration(BaseRAG):
             island_name=island_name,
             article_text=article_text,
             chunks=[],
-            rerank_strategy="none",
-            top_l_applied_at="none"
+            rerank_strategy="none"
         )
