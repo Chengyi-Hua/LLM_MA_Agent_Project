@@ -124,7 +124,7 @@ def get_level_1_sections(island_name):
     exclude_sections = [
         "see also", "references", "external links", "further reading", 
         "notes", "explanatory notes", "publications", "bibliography", 
-        "gallery", "sources", "citations", "index"
+        "gallery", "sources", "citations", "index", "notes and references", "footnotes", "howland_island"
     ]
     
     if "parse" in data and "sections" in data["parse"]:
