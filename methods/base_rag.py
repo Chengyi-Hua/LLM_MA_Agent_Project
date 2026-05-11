@@ -125,9 +125,12 @@ class BaseRAG:
         bm25 = BM25Okapi(tokenized_corpus)
         scores = bm25.get_scores(query.lower().split())
         ranked = sorted(zip(scores, chunks), key=lambda x: x[0], reverse=True)
+        result = []
         for score, chunk in ranked:
-            chunk["relevance_score"] = float(score)
-        return [c for _, c in ranked]
+            c = dict(chunk)  # shallow copy
+            c["relevance_score"] = float(score)
+            result.append(c)
+        return result
 
     def _rerank_cross_encoder(self, chunks: list[dict], query: str) -> list[dict]:
         from sentence_transformers import CrossEncoder
@@ -135,9 +138,12 @@ class BaseRAG:
         pairs = [[query, c["text"]] for c in chunks]
         scores = model.predict(pairs)
         ranked = sorted(zip(scores, chunks), key=lambda x: x[0], reverse=True)
+        result = []
         for score, chunk in ranked:
-            chunk["relevance_score"] = float(score)
-        return [c for _, c in ranked]
+            c = dict(chunk)  # shallow copy
+            c["relevance_score"] = float(score)
+            result.append(c)
+        return result
     
     def _apply_mmr_selection(self, scored_chunks: list, top_l: int, lambda_mult: float = 0.5) -> list:
         from sklearn.feature_extraction.text import TfidfVectorizer
