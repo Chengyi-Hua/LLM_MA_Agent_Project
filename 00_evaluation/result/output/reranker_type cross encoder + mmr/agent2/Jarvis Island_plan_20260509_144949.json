@@ -1,0 +1,36 @@
+{
+    "status": "success",
+    "island": "Jarvis Island",
+    "order": [
+        "Geography and ecology",
+        "History",
+        "Transportation",
+        "Military",
+        "National Wildlife Refuge"
+    ],
+    "dependency": {
+        "Geography and ecology": [],
+        "History": [
+            "Geography and ecology"
+        ],
+        "National Wildlife Refuge": [
+            "History",
+            "Geography and ecology",
+            "Military"
+        ],
+        "Transportation": [],
+        "Military": [
+            "Geography and ecology",
+            "History"
+        ]
+    },
+    "summaries": {
+        "Geography and ecology": "Jarvis Island is located in the central equatorial Pacific Ocean, with its refuge boundary encompassing all of the island together with its territorial sea extending outward to the three-mile limit, as defined by 39 Federal Register 27930. The emergent land area for Jarvis encompasses 1,273 acres, while submerged lands and waters within the three-mile limit encompass 36,214 acres, for a total of 37,487 acres. Jarvis is described as one of the last places in the world where terrestrial and marine tropical island ecosystems are still intact and relatively free of human impact, offering the opportunity to serve as a living laboratory for measuring current and future human impacts to island, coral reef, and deep marine habitats. Natural, physical, and ecological processes unfold with limited human interference and support a diverse community of native marine organisms including seabirds, marine mammals, turtles, and fish. The preservation of the complete ecosystem, both terrestrial and marine, is a core management objective, with special emphasis given to the large seabird nesting colonies. Howland Island, Baker Island, and Jarvis Island are all part of the Pacific island group managed under U.S. Fish and Wildlife Service National Wildlife Refuge Comprehensive Conservation Plans, and all three islands have histories of feral cat eradication efforts, with documented ecological recovery observed in a biogeographical context over the 25 years following cat removal.",
+        "History": "The first known sighting of Jarvis Island by Europeans was on August 21, 1821, by the British ship Eliza Francis owned by Edward, Thomas, and William Jarvis, for whom the island was named. American whalers and other seafarers exploring the central Pacific discovered guano resulting in the United States Exploring Expedition to survey Jarvis in 1840. In 1857, Arthur Benson and Charles Judd, aboard the Hawaiian schooner Liholiho, took possession of Jarvis and claimed it for the American Guano Company under the Guano Islands Act of 1856. President Franklin D. Roosevelt signed Executive Order 7368 on May 13, 1936, placing control and jurisdiction of Jarvis Island with the Secretary of the Interior, originally administered by the Office of Territorial Affairs. On June 27, 1974, the Secretary of the Interior designated Jarvis Island and its territorial sea extending to the 3 nautical mile limit as a unit of the National Wildlife Refuge System, with the stated purpose of preservation of the complete ecosystem, terrestrial as well as marine, with special emphasis given to the large seabird nesting colonies.",
+        "National Wildlife Refuge": "Jarvis Island National Wildlife Refuge was established in 1974 and is located 1,305 nautical miles south of Honolulu, with a reported area of 1,744.87 km² and a site ID of 2931, classified as a Marine and Coastal Protected Area within the United States Minor Outlying Islands. The refuge includes submerged lands out to 200 nautical miles from the island, encompassing 429,853 acres total, with 1,273 acres being terrestrial and 428,580 acres being submerged. On January 6, 2009, the Pacific Islands Heritage Marine National Monument was established, which includes Jarvis Island National Wildlife Refuge within its boundaries. The National Wildlife Refuge System mission is to administer a national network of lands and waters for the conservation, management, and where appropriate, restoration of the fish, wildlife, and plant resources and their habitats within the United States for the benefit of present and future generations of Americans. The U.S. Fish and Wildlife Service published a Comprehensive Conservation Plan for Jarvis Island National Wildlife Refuge in 2008 out of Honolulu, HI, alongside similar plans for Howland Island National Wildlife Refuge and Baker Island National Wildlife Refuge. Amateur radio operation on the refuge has been evaluated under a draft Compatibility Determination, which found it will not detract from the refuge's core mission to protect and preserve the natural character of fish, wildlife, plants, coral reef communities, and other associated resources. Related protected areas include Palmyra Atoll National Wildlife Refuge and the Pacific Remote Islands Marine area.",
+        "Transportation": "No relevant information regarding Transportation is available.",
+        "Military": "The U.S. Army Garrison-Hawaii's Distinguished Lecture Series, sponsored by Col. Douglas Mulbury, commander of USAG-HI, was held at the Nehelani at Schofield Barracks, Hawaii, on Aug. 27, with 170 attendees present. The lecture series is co-sponsored by the Native Hawaiian Liaison Office and encourages military and Hawaiian communities to learn about each other in an informal setting. A photograph from Howland Island in June 1936 depicts William Stewart Markham, Kini Pea, Killarney Opiopio, James Kamakaiwi, and two unidentified military personnel posing together, with Opiopio and Kamakaiwi among the first six Kamehameha School for Boys alumni to colonize the island. The military era is referenced as one of the historical periods of human habitation on Jarvis Island, alongside the guano mining era, with hazards potentially remaining ashore as a result. The U.S. Coast Guard, along with NOAA and private charter vessels, has provided transportation to Jarvis Island in recent years, with NOAA scientific ship expeditions to central Pacific Ocean insular properties including Baker, Howland, and Johnston Island NWR typically departing from Honolulu, arriving at Johnston after 3 days of travel, spending 4 days there before departing for Howland after 7 additional days of travel."
+    },
+    "plan_path": "logs/agent2_plans/Jarvis Island_plan_20260509_144949.json",
+    "created_at": "20260509_144949"
+}

@@ -1,0 +1,49 @@
+{
+    "status": "success",
+    "island": "Howland Island",
+    "order": [
+        "Flora and fauna",
+        "Economics",
+        "Time zone",
+        "History",
+        "National Wildlife Refuge",
+        "Earhart Light",
+        "Image gallery"
+    ],
+    "dependency": {
+        "Flora and fauna": [],
+        "Economics": [],
+        "Time zone": [],
+        "History": [
+            "Economics",
+            "Time zone"
+        ],
+        "National Wildlife Refuge": [
+            "Flora and fauna",
+            "Economics",
+            "Time zone",
+            "History"
+        ],
+        "Earhart Light": [
+            "Time zone",
+            "History",
+            "National Wildlife Refuge"
+        ],
+        "Image gallery": [
+            "History",
+            "National Wildlife Refuge",
+            "Earhart Light"
+        ]
+    },
+    "summaries": {
+        "Flora and fauna": "",
+        "Economics": "The main elements of the FSM economy vary from state to state and include subsistence farming, local fishing, lease of fishing rights to FSM waters, servicing of fishing fleets, government employment, and tourism. Tourism is considered to have potential for near-term income generation due to the natural and marine beauty of the islands, though limitations in air transportation, land-use issues, and competition with other island destinations closer to tourist markets represent challenges to developing larger-scale tourism investment. The FSM considers the ocean to be the country's most important resource, earning $18-24 million annually in recent years through licensing fees paid by foreign vessels for tuna fishing in the FSM's Exclusive Economic Zone. Rising sea levels are identified as a threat to local economies and infrastructure across Pacific Island jurisdictions, exacerbating existing inequities. The US-Affiliated Pacific Islands (USAPI) comprises American Sāmoa, Guam, the Pacific Remote Islands, the Commonwealth of the Northern Mariana Islands, and the Freely Associated States, all of which face vulnerabilities including threats to freshwater and fisheries resources that underpin their economies. Gaps in socioeconomic data across these regions perpetuate historical social injustices reinforced by colonial and postcolonial governance systems.",
+        "Time zone": "Howland Island and Baker Island observe UTC-12:00, designated as Nautical Letter Y (Yankee), making them part of the United States Minor Outlying Islands in that offset zone. This places them in the IDLW (International Date Line West) time zone, which represents the latest time zone on Earth for any given calendar date. As a result, Howland and Baker Islands are the last places on Earth where any given date remains valid, which is why the \"Anywhere on Earth\" (AoE) calendar designation references these islands specifically — for any given date, the latest place on Earth where it would still be valid is on Howland and Baker Islands, in the IDLW time zone on the Western Hemisphere side of the International Date Line.",
+        "History": "Howland Island was first sighted in 1822 by George Worth, a Nantucket whaling-ship captain, who named it Worth Island. In 1842, another American whaling ship visited the island and it was renamed Howland Island after that ship's lookout. In 1791, Edmund Fanning, an American sailor, is also noted as having discovered the island. The United States claimed Howland in 1857, along with nearby Baker Island, under the Guano Act of 1856. Prior to 1890, organic nitrate (guano) was mined from the island by both the United States and the British, though the atoll's guano deposits are now exhausted. The island was colonized from Hawaii in 1935. In 1937, famous pilot Amelia Earhart attempted to land there during her around-the-world flight but never made it. During World War II, the island served as a lookout point for the U.S. military. Today, it is part of the U.S. National Wildlife Refuge system and the Pacific Remote Islands Marine National Monument, with no permanent residents and very limited human presence.",
+        "National Wildlife Refuge": "Howland Island, a coral atoll and unincorporated territory of the United States located in the southwestern Pacific Ocean approximately 1,650 miles southwest of Honolulu, is designated as a U.S. National Wildlife Refuge and is currently part of the U.S. National Wildlife Refuge system, providing nesting areas and forage for a variety of birds and marine wildlife, including several species of migratory seabirds and shorebirds as well as threatened and endangered sea turtles. The island was also designated part of the Pacific Remote Islands Marine National Monument in 2009, which helps safeguard marine resources in the surrounding area. The island has no permanent inhabitants and serves an essential role for science and ecology, with researchers visiting to study its wildlife and environment, contributing to the protection of coral reefs and unique bird species. The island is composed of coral fragments and is surrounded by an active fringing reef, and high-resolution images captured by astronauts aboard the International Space Station are used to update geographic maps of reefs, assess the health of reef ecosystems, and calculate bathymetry of the surrounding ocean bottom.",
+        "Earhart Light": "The Earhart Light is a small lighthouse located on Howland Island, a remote 450-acre uninhabited coral island in the Pacific Ocean situated almost halfway between Hawaii and Australia. It was built in 1937 in anticipation of Amelia Earhart's scheduled refueling stop on the island during her transpacific flight on July 2, 1937, and land was also cleared as an unpaved landing strip for this purpose. Although Earhart's radio broadcasts were heard on Howland, her plane never arrived, and she is thought to have crashed in the waters just north of the island. The lighthouse suffered further misfortune during World War II when, in 1941, Japanese aircraft dropped approximately 60 bombs on Howland Island, and a Japanese submarine subsequently fired 50 shells into Itascatown, rendering the Amelia Earhart light beacon useless. The station has been inactive since 1942 and is now considered a \"day beacon.\" Brief visits have since been made to the island to restore the light beacon and to add the names of two colonists lost during the Japanese attack. The beacon remains on Howland Island today, which is a National Wildlife Refuge under the jurisdiction of the U.S. Fish and Wildlife Service, and the memory of Earhart's intended voyage to the island continues to be commemorated through the beacon that bears her name.",
+        "Image gallery": "The gallery of Howland Island includes a map of Howland Island and a digital image photographed by an Expedition 10 crewmember aboard the International Space Station (ISS), captured on 3 December 2004, with the image identifier ISS010-E-09287. The image was taken using a Kodak DCS760c Electronic Still Camera with an 800 mm focal length, from an altitude of 192 nautical miles (356 km), at a look angle of 41 degrees in the SW direction, with a sun azimuth of 115° and sun elevation of 19°, and a cloud percentage of 10%. The image source is the JSC Gateway to Astronaut Photography of Earth, authored by the Earth Science and Remote Sensing Unit at Lyndon B. Johnson Space Center. The photograph shows Howland Island, a United States possession in the north Pacific, surrounded by an active fringing reef visible through white breakers encircling the island, and was taken as part of a global reef mapping and monitoring program conducted by astronauts aboard the Space Station, with high-resolution images used to update geographic maps, assess reef ecosystem health, and calculate bathymetry of the surrounding ocean bottom."
+    },
+    "plan_path": "logs/agent2_plans/Howland Island_plan_20260509_151452.json",
+    "created_at": "20260509_151452"
+}

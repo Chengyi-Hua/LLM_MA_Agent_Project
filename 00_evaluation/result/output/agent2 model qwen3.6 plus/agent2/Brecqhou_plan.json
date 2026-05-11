@@ -1,0 +1,45 @@
+{
+    "status": "success",
+    "island": "Brecqhou",
+    "order": [
+        "Name",
+        "Geography",
+        "Feudal relationship with Sark",
+        "Fort Brecqhou",
+        "Flag and stamps",
+        "Public visits",
+        "Notes and references"
+    ],
+    "dependency": {
+        "Name": [],
+        "Geography": [],
+        "Feudal relationship with Sark": [
+            "Geography"
+        ],
+        "Fort Brecqhou": [
+            "Geography",
+            "Feudal relationship with Sark"
+        ],
+        "Flag and stamps": [
+            "Geography"
+        ],
+        "Public visits": [
+            "Fort Brecqhou"
+        ],
+        "Notes and references": [
+            "Fort Brecqhou",
+            "Flag and stamps"
+        ]
+    },
+    "summaries": {
+        "Name": "No relevant information regarding Name is available.",
+        "Geography": "Sark is a Channel Island dependency of Guernsey located in the English Channel, positioned 7 miles east of Guernsey and approximately 25 miles west of the Cherbourg Peninsula in France. The island spans 3 miles in length and 1.5 miles at its widest point, covering a total area of 2.1 square miles that includes the smaller, privately owned island of Brecqhou, which is separated from Great Sark by the narrow Le Gouliot Channel. The primary landmass comprises Great Sark and Little Sark, joined by La Coupée, a 300-foot-long isthmus measuring only 30 feet in width. Geographically, the island forms a plateau that rises to an elevation of 375 feet and features a coastline bordered by steep cliffs. Settlement patterns are dispersed, with agricultural use covering about a third of the terrain for dairying, tillage, and market gardening.",
+        "Feudal relationship with Sark": "Sark historically operated under a feudal regime that was ultimately dismantled following a Privy Council decision to introduce universal voting rights and a 28-member assembly, a transition heavily campaigned for by the Barclay brothers, owners of the neighboring island of Brecqhou, through their publication Sark News. The jurisdictional and feudal relationship between Brecqhou and Sark has been historically contested, notably involving Dame Sibyl Hathaway's illegal bestowal of Sark Tenement status and a seat in Chief Pleas upon Brecqhou. Legal assessments from the mid-twentieth century characterized Brecqhou's tenure as analogous to other Sark tenements, defining the owner as a tenant in perpetuity holding a manorial freehold, despite the practical enjoyment of freehold possession. This dyad illustrates a complex, evolving interpretation of feudal dependency, where historical positioning, legal advice, and political power dynamics continuously shape the perceived and actual jurisdictional ties between the islands.",
+        "Fort Brecqhou": "Fort Brecqhou is a fully extant country house located on Brecqhou Island in Guernsey, recognized as the largest house built in Britain in the last 200 years. Designed by British architect John Quinlan Terry between 1994 and 1996 for Sir David and Sir Frederick Barclay, the property is a granite-clad castle constructed on a quadrangular plan in the castellated Gothic style, featuring circular turrets at each corner and giant twisted chimneys characteristic of the Henry VIII era. The Barclay brothers purchased the tenement in 1993 for £2.3 million, with the estimated construction cost for the house, gardens, and outbuildings reaching £90 million. Currently held by an individual or family trust and serving as a private residence for the Barclay brothers, the estate is not listed and offers public access to its grounds only by appointment. The architecture is documented in David Watkin's 2006 publication Radical Classicism: The Architecture of Quinlan Terry.",
+        "Flag and stamps": "Within the Bailiwick of Guernsey, autonomous island territories construct a sense of place and local identity by utilizing symbols associated with nation building, such as anthems, flags, crests, currency, and postage stamps. Associated archival records further document extensive materials regarding flag history, color symbolism, national flags, maritime flags, and various organizational banners.",
+        "Public visits": "No relevant information regarding Public visits is available.",
+        "Notes and references": "Baal, H. J. (1933) published The birds of the Ecrehous in Société Jersiaise Annual Bulletin, 12, 183–192; Baldacchino, G. (2012) authored The lure of the island: A spatial analysis of power relations in Journal of Marine and Island Cultures, 1, 55–62; Bassett, F. S. (1885) wrote Legends and superstitions of the sea and of sailors in all lands and at all times for Belford, Clarke & Co.; Borwick, R. (1989) released Lihou Island: Never at half moon via The Guernsey Press; and Bouet, P. (1973) contributed Le millénaire monastique du Mont Saint-Michel to Cahiers de Civilisation Médiévale, 16, 51–58."
+    },
+    "plan_path": "logs/agent2_plans/Brecqhou_plan_20260509_190846.json",
+    "created_at": "20260509_190846"
+}

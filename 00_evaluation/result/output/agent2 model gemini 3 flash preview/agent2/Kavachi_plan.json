@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "island": "Kavachi",
+    "order": [
+        "Geography",
+        "Eruptions",
+        "Marine life"
+    ],
+    "dependency": {
+        "Geography": [],
+        "Eruptions": [
+            "Geography"
+        ],
+        "Marine life": [
+            "Geography",
+            "Eruptions"
+        ]
+    },
+    "summaries": {
+        "Geography": "Kavachi Volcano is a shallow submarine volcano located in the southwest Pacific Ocean, situated just south of Vangunu Island in the Solomon Islands within the Pacific Ring of Fire tectonic zone. The volcano features an oblong, pockmarked summit crater measuring approximately 120 meters by 75 meters with a rim rising to an average depth of 24 meters. Its deepest soundings reach approximately 70 meters, and the edifice is characterized by asymmetrical terrain surrounded by uniform flanks with 18-degree slopes that descend to depths exceeding 1,000 meters. A secondary summit or southwest extension is located 1.3 kilometers southwest of the main peak and displays evidence of diffuse-flow venting. Its position along a highly active tectonic boundary results in frequent eruptions that occasionally breach the sea surface to create ephemeral volcanic islands.",
+        "Eruptions": "Kavachi is a shallow submarine volcano in the Solomon Islands characterized by explosive behavior and the production of hydrothermal plumes. An expedition in January 2015 occurred during a rare lull in volcanic activity, allowing for the measurement of gas flux and water temperature over the summit. The volcano's active crater serves as an extreme environment containing a hydrothermal plume structure and diffuse-flow venting from a secondary peak to the southwest. Previous observational efforts have been limited by the volcano's explosive nature, which typically restricts access to surface imagery and peripheral water-column data. Analysis of the crater rim and summit indicates the presence of sulfur-reducing ε-proteobacteria and multiple trophic levels of marine life, including sharks and gelatinous animals, living within the active volcanic site.",
+        "Marine life": "Kavachi volcano, nicknamed \"Sharkano,\" supports a unique ecosystem of extremophile marine life thriving in acidic, mineral-rich crater waters with a pH of approximately 1-2 and temperatures 13°C higher than surrounding surface waters. Observed species inside the hydrothermal plume include secondary and tertiary consumers such as hammerhead sharks, silky sharks, bluefin trevally, snapper, and various fish. Microbial mats have been documented on the summit of the Southwest Extension. Scientists study these organisms to understand physiological and behavioral resiliency to heat, acidity, and turbidity, which provides insights into marine animal evolution and adaptation to climate change. Potential survival mechanisms for large predators include behavioral adaptations to exit before eruptions, enhanced sensory perception of seismic or chemical warnings, and physiological tolerance to extreme environments."
+    },
+    "plan_path": "logs/agent2_plans/Kavachi_plan_20260509_171851.json",
+    "created_at": "20260509_171851"
+}

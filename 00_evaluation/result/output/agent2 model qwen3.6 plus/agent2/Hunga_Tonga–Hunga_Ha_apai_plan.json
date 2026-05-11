@@ -1,0 +1,29 @@
+{
+    "status": "success",
+    "island": "Hunga Tonga–Hunga Haʻapai",
+    "order": [
+        "Volcano and caldera",
+        "Geography",
+        "Eruptions",
+        "Footnotes"
+    ],
+    "dependency": {
+        "Volcano and caldera": [],
+        "Geography": [
+            "Volcano and caldera"
+        ],
+        "Eruptions": [
+            "Volcano and caldera",
+            "Geography"
+        ],
+        "Footnotes": []
+    },
+    "summaries": {
+        "Volcano and caldera": "The Hunga Tonga-Hunga Ha'apai volcanic system features a large submarine caldera identified through high-resolution multibeam sonar surveys as a 4 by 2 kilometer, 150 meter deep depression formed by the explosive collapse of a previous volcanic structure. The islands of Hunga Tonga and Hunga Ha'apai represent the visible northern and western remnants of the ridge surrounding this active submarine volcano, with geological samples revealing alternating layers of andesitic lava flows, scoria, lapilli, and ash dipping away from the caldera's center. The January 2022 eruption, characterized as a once-in-1,000-years event for the Hunga caldera, potentially reached a volcanic explosivity index (VEI) of 5 and completely fragmented the previously joined islands, leaving only minor remnants at the western and eastern edges. This explosive event generated a Pacific-wide tsunami and dispersed volcanic ash ranging from 5 to 50 millimeters in thickness across multiple Tongan island groups, causing significant agricultural and coastal damage.",
+        "Geography": "Hunga Tonga-Hunga Ha'apai is a submarine volcano situated along the Tonga segment of the Tonga-Kermadec intra-oceanic arc in the Pacific Ocean, formed by the subduction of the Pacific Plate beneath the Indo-Australian Plate across a 2,550 km tectonic system extending between New Zealand and Tonga. The volcanic edifice rises over 1.8 km from the ocean floor, spans approximately 20 km across the seafloor, and is capped by a submerged 5 km diameter caldera, with only two small uninhabited islands originally breaching the water at its extremities. A 2014/15 undersea eruption deposited tephra that connected these separate landmasses into a single conjoined island, creating a new terrestrial feature that has been monitored for morphological evolution and coastal erosion. The geographic footprint of the volcanic activity extended far beyond the immediate archipelago, with atmospheric shockwaves recorded in Fiji roughly 500 kilometers northwest, New Zealand 1,600 to 2,000 kilometers away, and Alaska approximately 9,370 kilometers northeast, while global pressure waves circumnavigated the planet three times before dissipating.",
+        "Eruptions": "The Hunga Tonga–Hunga Haʻapai submarine volcano erupted on 15 January 2022, producing a vertical plume exceeding 30 kilometers in height with overshooting tops above 55 kilometers, marking a record in the satellite era. The event released an estimated 10 to 28 exajoules of energy, potentially surpassing the 1991 Mount Pinatubo eruption and approaching the 1883 Krakatoa event, while injecting vast quantities of water vapor and between 0.5 and 1.5 metric megatons of sulfur dioxide into the stratosphere. This sulfur dioxide generated sulfate aerosols that reflected sunlight, causing a brief global radiative flux decrease of less than 0.25 watts per square meter and slight cooling in the Southern Hemisphere during 2022 and 2023 before dissipating by the end of 2023. The eruption triggered widespread destruction across Tonga, generated a nearly 15-meter tsunami, and produced a sonic boom that circled the globe twice, establishing it as the largest recorded eruption of the 21st century and the biggest in three decades.",
+        "Footnotes": "No relevant information regarding Footnotes is available."
+    },
+    "plan_path": "logs/agent2_plans/Hunga Tonga–Hunga Haʻapai_plan_20260509_193929.json",
+    "created_at": "20260509_193929"
+}

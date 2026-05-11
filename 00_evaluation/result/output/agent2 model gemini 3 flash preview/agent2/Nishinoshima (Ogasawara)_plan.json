@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "island": "Nishinoshima (Ogasawara)",
+    "order": [
+        "Etymology",
+        "Geology",
+        "Ecology"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Geology": [
+            "Etymology"
+        ],
+        "Ecology": [
+            "Geology",
+            "Etymology"
+        ]
+    },
+    "summaries": {
+        "Etymology": "The name Nishinoshima translates to \"western island\" in English.",
+        "Geology": "Nishinoshima is an andesitic volcanic island located at the summit of a large submarine volcano approximately 30 km in diameter, situated 1000 kilometers south of Tokyo at 27°14'49\" N and 140°52'28\" E. The island is characterized by regular volcanic activity, including major eruptions in 1973 and 2013 that periodically reset the landscape. Geological features include volcanic plumes, volcanic blocks, water columns, and lava flows that have historically formed new landmasses and connected them to the main island. The first recorded eruption in 1973 began as an undersea phreatomagmatic explosion, eventually forming five craters that ejected volcanic blocks and lava. The SiO2 content of the ejecta ranges between 51.8 and 60.1 wt %, and the island's elevation is approximately 25 meters. Severe erosion has historically removed the majority of volcanic edifices, though deposit movement has linked old and new landforms and closed off bay mouths. The island's geological isolation and frequent volcanic resets facilitate the study of primary succession and the founder's effect in ecosystem development.",
+        "Ecology": "Nishinoshima Island is a volcanic site within the Ogasawara Island chain where frequent eruptions physically shape the terrain and significantly impact local plant life. The island serves as a real-time case study for island colonization, ecological succession, and ecosystem development following submarine volcanic activity. Volcanic eruptions in 2019 led to the extinction of the native purslane, Portulaca oleracea, on the island, though researchers from Tokyo Metropolitan University preserved specimens in a laboratory setting. The broader Ogasawara region exhibits high rates of endemism and independent evolution from mainland Asia, featuring unique forest structures such as Ardisia dominant forests and mesic forests. Ecological stability in the region is influenced by factors including feral goats, typhoons, and competition between native species like Scalesia and introduced plants such as Cinchona succirubra and Lantana camara. Ongoing scientific research focuses on species colonization, marine ecosystem formation, and the conservation of endangered botanical species within these isolated environments."
+    },
+    "plan_path": "logs/agent2_plans/Nishinoshima (Ogasawara)_plan_20260509_171909.json",
+    "created_at": "20260509_171909"
+}

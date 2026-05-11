@@ -1,0 +1,36 @@
+{
+    "status": "success",
+    "island": "Jarvis Island",
+    "order": [
+        "Geography and ecology",
+        "History",
+        "National Wildlife Refuge",
+        "Transportation",
+        "Military"
+    ],
+    "dependency": {
+        "Geography and ecology": [],
+        "History": [
+            "Geography and ecology"
+        ],
+        "National Wildlife Refuge": [
+            "Geography and ecology",
+            "History"
+        ],
+        "Transportation": [],
+        "Military": [
+            "History",
+            "National Wildlife Refuge",
+            "Geography and ecology"
+        ]
+    },
+    "summaries": {
+        "Geography and ecology": "Jarvis Island is situated in the central equatorial Pacific Ocean and encompasses an emergent land area of 1,273 acres, with submerged lands and waters extending to a three-mile territorial sea limit covering 36,214 acres for a total refuge area of 37,487 acres. The island maintains largely intact terrestrial and marine tropical island ecosystems that remain relatively free of human impact, functioning as a living laboratory for monitoring effects on island, coral reef, and deep marine habitats. Natural, physical, and ecological processes operate with minimal human interference, sustaining a diverse community of native marine organisms such as seabirds, marine mammals, and turtles. Conservation management prioritizes the preservation of the complete terrestrial and marine ecosystem, with special emphasis placed on protecting large seabird nesting colonies.",
+        "History": "The first known European sighting of Jarvis Island occurred on August 21, 1821, by the British ship Eliza Francis, owned by Edward, Thomas, and William Jarvis, for whom the island was named. Following the discovery of guano by American whalers and seafarers, the United States Exploring Expedition surveyed the island in 1840. In 1857, Arthur Benson and Charles Judd took possession of the island aboard the Hawaiian schooner Liholiho and claimed it for the American Guano Company under the Guano Islands Act of 1856. On May 13, 1936, President Franklin D. Roosevelt signed Executive Order 7368, placing control and jurisdiction of Jarvis Island with the Secretary of the Interior. Originally administered by the Office of Territorial Affairs, the Secretary of the Interior designated the island and its territorial sea extending to a three-nautical-mile limit as a unit of the National Wildlife Refuge System on June 27, 1974.",
+        "National Wildlife Refuge": "Jarvis Island National Wildlife Refuge was established in 1974 and is situated 1,305 nautical miles south of Honolulu, encompassing 429,853 acres that include 1,273 acres of terrestrial land and 428,580 acres of submerged lands extending out to 200 nautical miles from the island. On January 6, 2009, the refuge was incorporated into the boundaries of the Pacific Islands Heritage Marine National Monument. The broader National Wildlife Refuge System, which also manages Howland Island, Baker Island, and Palmyra Atoll National Wildlife Refuges, operates under a mission to administer a national network of lands and waters for the conservation, management, and appropriate restoration of fish, wildlife, plant resources, and their habitats for the benefit of present and future generations of Americans. Management directives emphasize protecting the natural character of these ecosystems, including coral reef communities, while evaluating compatible uses such as amateur radio operations to ensure they do not detract from core conservation objectives.",
+        "Transportation": "No relevant information regarding Transportation is available.",
+        "Military": "The U.S. Army Garrison-Hawaii sponsored a lecture series to foster connections between military and Hawaiian communities, featuring a documentary on U.S. colonization of Pacific atolls between 1935 and 1942. Historical records from June 1936 document unidentified military personnel stationed on Howland Island alongside civilian colonists. The region experienced human habitation during distinct military eras, and contemporary logistical support for the area has involved the U.S. Coast Guard alongside scientific and private maritime operations."
+    },
+    "plan_path": "logs/agent2_plans/Jarvis Island_plan_20260509_194701.json",
+    "created_at": "20260509_194701"
+}

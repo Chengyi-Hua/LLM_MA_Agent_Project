@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "island": "Kavachi",
+    "order": [
+        "Geography",
+        "Eruptions",
+        "Marine life"
+    ],
+    "dependency": {
+        "Geography": [],
+        "Eruptions": [
+            "Geography"
+        ],
+        "Marine life": [
+            "Geography",
+            "Eruptions"
+        ]
+    },
+    "summaries": {
+        "Geography": "Kavachi Volcano is a shallow submarine volcano located in the South Pacific Ocean, just south of Vangunu Island in the Solomon Islands. It is situated along the Pacific Ring of Fire, a highly active tectonic boundary. The volcano's summit has an oblong crater measuring approximately 120 by 75 meters with a rim rising to an average depth of 24 meters, and the deepest soundings on the peak are around 70 meters water depth. A secondary summit, or southwest extension, is located 1.3 kilometers southwest of the main summit.",
+        "Eruptions": "An expedition in January 2015 accessed the Kavachi submarine volcano during a rare lull in its normally explosive activity, allowing entry into its active crater. The volcano's isolated location and explosive behavior typically restrict access, limiting prior observations to surface imagery and peripheral water-column data. The expedition identified a second peak southwest of the main summit showing evidence of diffuse-flow venting.",
+        "Marine life": "Kavachi Volcano, nicknamed \"Sharkano,\" is famous for its marine life, including sharks and fish, observed in its acidic, mineral-rich crater waters during quiescent periods. Specific marine life documented inside the volcano's crater includes bluefin trevally, snapper, hammerhead sharks, and silky sharks. The crater waters are highly acidic with a pH of approximately 1-2 and have elevated temperatures, supporting extremophile marine life. The presence of these secondary and tertiary consumers in such extreme conditions offers insights into the physiological and behavioral resiliency of marine animals to increased temperature, acidity, and turbidity, which is relevant for understanding adaptation to climate change and past major changes in ocean chemistry."
+    },
+    "plan_path": "logs/agent2_plans/Kavachi_plan_20260509_164545.json",
+    "created_at": "20260509_164545"
+}

@@ -1,0 +1,11 @@
+comparison_label,variant_name,variant_type,num_rows,num_islands,writing_status__success,informativeness_status__success,concept_status__success,verifiability_status__success,cscs_status__success,context_status__success,plan_status__success,plan_output_alignment_status__success,cscs_status__missing_plan,plan_status__missing_plan,plan_output_alignment_status__missing_plan
+agent2 model deepseek v3.2,agent2 model deepseek v3.2,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+agent2 model gemini 3 flash preview,agent2 model gemini 3 flash preview,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+agent2 model qwen3.6 plus,agent2 model qwen3.6 plus,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+agent3 model claude opus 4.7,agent3 model claude opus 4.7,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+agent3 model gemini 3.1 pro preview,agent3 model gemini 3.1 pro preview,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+agent3 model gpt5.4,agent3 model gpt5.4,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+rerank_scope global,rerank_scope global,method3_ablation,10,10,10,10,10,10,9,10,9,9,1.0,1.0,1.0
+reranker_type cross encoder + mmr,reranker_type cross encoder + mmr,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+threshold 0.3,threshold 0.3,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,
+threshold 0.6,threshold 0.6,method3_ablation,10,10,10,10,10,10,10,10,10,10,,,

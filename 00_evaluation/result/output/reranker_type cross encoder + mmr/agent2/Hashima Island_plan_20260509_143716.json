@@ -1,0 +1,50 @@
+{
+    "status": "success",
+    "island": "Hashima Island",
+    "order": [
+        "Etymology",
+        "History",
+        "Access",
+        "Current status",
+        "World Heritage Site approval controversy",
+        "In popular culture"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "History": [
+            "Etymology"
+        ],
+        "Current status": [
+            "History",
+            "Etymology",
+            "Access"
+        ],
+        "Access": [
+            "Etymology",
+            "History"
+        ],
+        "World Heritage Site approval controversy": [
+            "History",
+            "Etymology",
+            "Current status",
+            "Access"
+        ],
+        "In popular culture": [
+            "History",
+            "Etymology",
+            "Current status",
+            "Access",
+            "World Heritage Site approval controversy"
+        ]
+    },
+    "summaries": {
+        "Etymology": "Hashima means \"island\" or \"peninsula\" in Japanese, with the name likely referring to the city's historical geographical features, which may have once been surrounded by water or protruded into a body of water. The etymology of the name is rooted in the Japanese language. The island is also widely known by the nickname \"Gunkanjima\" (Battleship Island), a name derived from the resemblance of its tightly packed, high-rise reinforced-concrete buildings to the Imperial Japanese Navy battleship Tosa, as seen from a distance. The native Japanese name for the island is written as 端島.",
+        "History": "Gunkanjima, also known as Hashima or Battleship Island, is a small island located in the East China Sea off the coast of Nagasaki, Japan, whose history spans a century of industrial capitalism, imperial expansion, wartime mobilization, postwar prosperity, and postindustrial decline. The island was expanded through landfill and protected by seawalls, functioning as a Mitsubishi company town that organized labor, housing, and social life within hard boundaries. Its most iconic structures, including concrete apartment blocks, schools, hospitals, and entertainment facilities, began to rise during the early 20th century to accommodate miners drawn by the promise of steady work. By the 1950s, Hashima had reached its peak population of over 5,000 residents living in just 16 acres, making it one of the most densely populated places on Earth. The island operated as a node within a larger imperial labor regime whose coercive force operated through law, recruitment channels, policing, confinement, wage discipline, and unequal exit options, with thousands of miners descending into deep shafts, some voluntarily and some by force. The island's fortunes were closely tied to Japan's coal industry, which began to decline in the 1960s as petroleum became the dominant energy source, and by 1974, Mitsubishi Corporation closed the mines, leading to the near-overnight abandonment of the island, with residents leaving behind apartment blocks, schools, shops, and playgrounds to the mercy of the elements, after which nature began to reclaim the structures, earning Gunkanjima a reputation as one of Japan's most haunted and mysterious places.",
+        "Current status": "Hashima Island is a UNESCO World Heritage Site located in Nagasaki Prefecture, Japan, abandoned in 1974, and is currently better known through fictional representations including its appearance as Raoul Silva's lair in the 2012 James Bond film Skyfall, survival-horror games such as The Closed Ward (2018), and numerous VR and immersive media projects spanning nearly two decades, including CAVE-type stereoscopic prototypes, museum installations, university scanning initiatives, community-produced VRChat worlds, and commercial walking simulators. The island's ruins are actively circulated through tourism campaigns and UNESCO heritage designations as picturesque decay, while its history remains subject to contested memory politics involving UNESCO inscription, national memory, and commercial tourism that jointly construct what counts as historically authentic.",
+        "Access": "Hashima Island can only be visited by joining a guided boat tour, with most tours departing from Nagasaki Port. From Nagasaki Eki-mae Station, a 3-minute tram ride towards Sofukuji Station leads to Ohato Station, and from Nagasaki Airport a 40-minute bus ride reaches Ohato Station. Landing on the island is subject to strict weather conditions set by Nagasaki City regulations, requiring wave heights below 0.5 meters, wind speeds below 5 meters per second, and visibility above 500 meters, though the captain retains final authority on whether landing is safe, meaning boats can only land on approximately 100 days per year. Even when landing is permitted, visitors are restricted to designated routes and do not roam freely through the apartment blocks or mine structures, with the official route being controlled, short, and focused on exterior viewing. Flexible itinerary planning is strongly advised given the frequency of cancellations due to sea and weather conditions.",
+        "World Heritage Site approval controversy": "Hashima Island, one of 23 old industrial facilities comprising Japan's \"Sites of Japan's Meiji Industrial Revolution,\" was inscribed on the UNESCO World Heritage List in 2015 following a committee meeting held in Bonn, Germany through July 9 of that year, with the serial property covering iron and steel, shipbuilding, and coal mining sites intended to illustrate Japan's rapid transformation from a feudal farming society into an industrial power at the end of the 19th century. The inscription process formalized an international dispute over wartime labor, as South Korea and other parties contested the listing on the grounds that Korean and Chinese laborers were forced to work at multiple component sites including Hashima Island during World War II. As a condition of inscription, Japan acknowledged that \"a large number of Koreans and others\" were \"brought against their will and forced to work under harsh conditions\" at certain component sites and committed to implementing interpretive measures enabling visitors to understand the \"full history\" of those sites. Subsequent interpretive practice, particularly at the Tokyo-based Industrial Heritage Information Center established to fulfill that commitment, remained contested, and UNESCO repeatedly found Japan's response to its interpretive obligations inadequate, creating an enduring dispute over whether Japan had honored the acknowledgments made during the 2015 approval process.",
+        "In popular culture": "Hashima (Gunkanjima) has attracted significant cultural and creative attention, including Google Street View capturing 360° imagery of the island in 2013 enabling virtual navigation beyond the tourist path, and designer Bryan James releasing \"Hashima Island: A Forgotten World\" that same year, an interactive web experience overlaying Street View with historical context and guided storytelling. Photographers Marchand and Meffre documented the abandoned island in a book called \"Gunkanjima,\" presenting historical photographs of the once-bustling community alongside images of its current ruined state, with a local photographer's archival shots of the overcrowded community creating a haunting contrast with the deserted streets, shops, and houses. The island has been described as a ghostly place whose mysterious and unique character, described as beautiful in its own way yet also symbolic and horrifying, has made it a subject of widespread cultural fascination, with its resemblance to a battleship from a distance contributing to its evocative nickname and its condensed history of industrial capitalism, imperial expansion, wartime mobilization, postwar prosperity, and postindustrial decline making it susceptible to selective representation across various media formats."
+    },
+    "plan_path": "logs/agent2_plans/Hashima Island_plan_20260509_143716.json",
+    "created_at": "20260509_143716"
+}

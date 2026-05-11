@@ -1,0 +1,50 @@
+{
+    "status": "success",
+    "island": "Hashima Island",
+    "order": [
+        "Etymology",
+        "History",
+        "Current status",
+        "Access",
+        "In popular culture",
+        "World Heritage Site approval controversy"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "History": [
+            "Etymology"
+        ],
+        "Current status": [
+            "Etymology",
+            "History"
+        ],
+        "Access": [
+            "Etymology",
+            "History",
+            "Current status"
+        ],
+        "World Heritage Site approval controversy": [
+            "History",
+            "Etymology",
+            "Current status",
+            "Access",
+            "In popular culture"
+        ],
+        "In popular culture": [
+            "Etymology",
+            "History",
+            "Current status",
+            "Access"
+        ]
+    },
+    "summaries": {
+        "Etymology": "The nickname \"Gunkanjima\" (Battleship Island) for Hashima Island originated because its tightly packed, high-rise reinforced-concrete buildings, when viewed from a distance, were said to resemble the Imperial Japanese Navy battleship Tosa.",
+        "History": "Hashima Island, known as Gunkanjima or Battleship Island, is an abandoned relic of Japan's industrial past located off the coast of Nagasaki. Its most iconic concrete structures, including apartment blocks, schools, and hospitals, were built in the early 20th century to accommodate miners, reaching peak population in the 1950s with over 5,000 residents on just 16 acres. The island's prosperity was tied to coal mining, which declined in the 1960s, leading Mitsubishi to close the mines and abandon the island in 1974. It was left untouched for decades, with nature reclaiming the crumbling buildings, and it is now considered a ghost town. The island's history encompasses industrial capitalism, imperial expansion, wartime mobilization involving forced labor, and postindustrial decline.",
+        "Current status": "Hashima Island is currently a UNESCO World Heritage Site and a focus of tourism campaigns that circulate its ruins as picturesque decay; it is widely recognized through its fictional representations in media such as the film *Skyfall* and various video games. The island was abandoned in 1974. A comprehensive survey of publicly accessible immersive and virtual reality projects focused on Hashima reveals that every project confines itself to either the \"golden age\" of community life or the contemporary state of ruins, with no project simulating the intervening period of abandonment.",
+        "Access": "Access to Hashima Island is exclusively through authorized guided boat tours departing from Nagasaki Port, with landings restricted to designated visitor routes on the island. Tour schedules and landings are highly dependent on weather and sea conditions, specifically requiring wave heights below 0.5 meters, wind speeds below 5 meters per second, and visibility over 500 meters, resulting in landings being possible on only about 100 days per year.",
+        "World Heritage Site approval controversy": "Hashima Island, part of Japan's \"Sites of Japan's Meiji Industrial Revolution,\" was inscribed on the UNESCO World Heritage List in 2015 during a committee meeting in Bonn, Germany. The approval was controversial as the site is central to a dispute over forced labor during World War II. As part of the listing process, Japan acknowledged that \"a large number of Koreans and others\" were \"brought against their will and forced to work under harsh conditions\" at several component sites including Hashima and committed to interpretive measures. Subsequent interpretive practice, particularly at the Tokyo-based Industrial Heritage Information Center, has remained contested, with UNESCO repeatedly finding Japan's response inadequate to meet the obligation to present the \"full history.\"",
+        "In popular culture": "Hashima (Gunkanjima) has been the subject of various digital and artistic projects, including Google Street View imagery captured in 2013 and an interactive web experience titled \"Hashima Island: A Forgotten World.\" Photographers Marchand and Meffre documented the abandoned island in a book called \"Gunkanjima,\" which juxtaposes historical photographs of the densely populated community with images of its current ruined state. The island's distinctive, battleship-like silhouette and its history as a former Mitsubishi company town and coal mining community have made it a frequent subject for representation, often framed as an engineering triumph, a lost community, or a photogenic ruin."
+    },
+    "plan_path": "logs/agent2_plans/Hashima Island_plan_20260509_163957.json",
+    "created_at": "20260509_163957"
+}

@@ -1,0 +1,5 @@
+method,num_rows,num_islands,writing_status__success,informativeness_status__success,concept_status__success,verifiability_status__success,cscs_status__not_applicable,context_status__success,plan_status__success,plan_output_alignment_status__success,cscs_status__success
+method0,10,10,10,10,10,10,10.0,10,10,10,
+method1,10,10,10,10,10,10,10.0,10,10,10,
+method2,10,10,10,10,10,10,10.0,10,10,10,
+method3,10,10,10,10,10,10,,10,10,10,10.0

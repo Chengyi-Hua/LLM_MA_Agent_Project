@@ -1,0 +1,11 @@
+{
+    "graph_analysis": {
+        "total_sections": 3,
+        "orphan_nodes_count": 1,
+        "orphan_nodes_list": [
+            "Geography"
+        ],
+        "orphan_node_ratio": "33.33%",
+        "max_graph_depth": 3
+    }
+}
