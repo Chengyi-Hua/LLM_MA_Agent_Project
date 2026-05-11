@@ -18,17 +18,22 @@ This project builds a multi-agent RAG pipeline to automatically generate Wikiped
 
 ```
 LLM_MA_Agent_Project/
+LLM_MA_Agent_Project/
 ├── 00_evaluation/
 │   ├── __pycache__/
 │   ├── evaluations/                          # Evaluation CSV outputs and aggregated summaries
+│   │   ├── 00_aggregated/                    # Aggregated evaluation results across methods/variants
+│   │   └── 00_error_analysis/                # Error-analysis frequency tables and error instances
+│   │   └── etc                               # Evaluation each
 │   ├── references/                           # Human Wikipedia reference articles
+│   ├── result/                               # Generated contents
 │   ├── eval_utils.py                         # Shared helpers for loading files, references, citations, and text normalization
 │   ├── evaluate_basic.py                     # Basic evaluation: Agent 4 writing + ROUGE-L + METEOR
 │   ├── fetch_wikipedia_references.py         # Fetches original Wikipedia articles for references/
 │   ├── full_evaluation.py                    # Main full evaluation pipeline
-│   ├── compute_non_agent4_metrics_if_needed  # Recomputes non-Agent-4 metrics while preserving writing/concept scores
-│   ├── aggregate_evaluations.py              # Aggregates per-island evaluation CSVs into method-level summaries
-│   ├── metrics_artifact_diagnostics.py       # Artifact, output, citation-index, context, and plan diagnostics
+│   ├── compute_non_agent4_metrics_if_needed.py # Recomputes non-Agent-4 metrics while preserving writing/concept scores
+│   ├── aggregate_evaluations.py              # Aggregates per-island evaluation CSVs into method-level and variant-level summaries
+│   ├── error_analysis.py                     # Converts evaluation metrics into error classes and frequency tables
 │   ├── metrics_cscs.py                       # Cross-Sectional Consistency Score for method3
 │   ├── metrics_informativeness.py            # ROUGE-L and METEOR with citation markers removed
 │   └── metrics_verifiability.py              # Citation rate, sentence support, link precision, and NLI checking
