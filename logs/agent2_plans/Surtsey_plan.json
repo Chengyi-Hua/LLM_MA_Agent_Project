@@ -3,29 +3,29 @@
     "island": "Surtsey",
     "order": [
         "Geology",
+        "Human impact",
         "Recent development",
-        "Biology",
-        "Human impact"
+        "Biology"
     ],
     "dependency": {
         "Geology": [],
         "Recent development": [
-            "Geology"
+            "Geology",
+            "Human impact"
         ],
         "Biology": [
             "Geology",
-            "Recent development"
+            "Recent development",
+            "Human impact"
         ],
         "Human impact": [
-            "Geology",
-            "Recent development",
-            "Biology"
+            "Geology"
         ]
     },
     "summaries": {
-        "Geology": "Surtsey is a volcanic oceanic island about 32 km south of Iceland’s coast, formed by eruptions from 1963 to 1967; because it was protected from human interference from the moment it emerged, it has served as a pristine natural laboratory for studying island formation and primary ecological succession, including the arrival of seeds by ocean currents and the subsequent colonization by microbes, fungi, and vascular plants.",
-        "Recent development": "Recent development includes continued annual scientific monitoring of Surtsey’s ecological succession and wildlife status, with an annual summer visit by scientists to maintain the 60-year-long study. The Surtsey Research Society coordinates ongoing research and has published 15 reports on scientific work on its website, with the newest report published in 2022. The 2025 IUCN World Heritage Outlook assessment describes the research trend as highly effective and the state and trend of values for ongoing scientific research as good with improving trend.",
+        "Geology": "Surtsey is a volcanic island located approximately 32 kilometers south of the Icelandic coast, formed by volcanic eruptions between 1963 and 1967. It represents a rare example of a new island created by seafloor volcanic activity that broke the ocean surface, allowing scientists to observe the geological and biological succession processes from inception in a pristine, human-free environment. The island's formation involved a race between volcanic ash, lava flows, and erosion, with magma interacting directly with seawater during eruptions. Surtsey's geological significance lies in its status as a natural laboratory for studying oceanic island formation, volcanic activity, and subsequent colonization by life forms, with the Icelandic government designating it as a scientific preserve to protect its unique geological and ecological development.",
+        "Recent development": "Surtsey, a volcanic island located about 32 kilometers south of the Icelandic coast, was formed by eruptions between 1963 and 1967 and has been protected from human interference since its emergence, serving as a pristine natural laboratory for studying the colonization and succession of plant and animal life on new land. Since scientific studies began in 1964, researchers have observed the arrival of seeds via ocean currents, the appearance of molds, bacteria, and fungi, the emergence of the first vascular plant in 1965, and the establishment of multiple species over the decades, with 60 species recorded by 2004. The island is visited annually by a small group of about 10 scientists who conduct low-impact ecological monitoring and research coordinated by the Surtsey Research Society, which has published numerous reports and a dedicated journal. The 2025 IUCN Conservation Outlook Assessment rates the ongoing scientific research on colonization and succession as highly effective, with the state and trend of the island's World Heritage values considered good and improving, confirming Surtsey's status as a globally significant natural laboratory for geological and biological studies.",
         "Biology": "",
-        "Human impact": "Surtsey is free of human interference and, in a normal year, is visited by a single group of about 10 scientists, with monitoring of ecological succession and the status of wildlife and flora carried out through low-impact annual studies by scientists and the site manager; it has been protected since its birth and remains a pristine natural laboratory because ongoing ecological processes have remained unaffected by human activities."
+        "Human impact": "Surtsey island, formed by volcanic eruptions from 1963 to 1967 approximately 32 km south of Iceland's coast, has been strictly protected from human interference since its emergence, serving as a pristine natural laboratory for studying ecological succession and colonization by plant and animal life. Human impact is minimized by limiting visits to about ten scientists annually who conduct low-impact monitoring and research, ensuring that ongoing ecological processes remain unaffected by human activities. This strict protection aligns with IUCN category 1a Strict Nature Reserve standards, making Surtsey a unique global reference for natural colonization without human disturbance, with management plans continuously updated to strengthen conservation efforts."
     }
 }
