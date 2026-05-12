@@ -52,9 +52,6 @@ retrieval:
     chunk_size: 500
     overlap: 60
 
-  rerank:
-    top_l: 8
-
 pipeline_config:
   target_entity: "Surtsey"
 
