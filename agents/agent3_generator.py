@@ -101,6 +101,7 @@ class Agent3Generator(HierarchicalRAG):
         full_article_parts    = []
         all_used_chunks       = []
         generated_summaries   = {}
+        sections_output       = []
 
         for section_name in execution_order:
 
@@ -133,8 +134,12 @@ class Agent3Generator(HierarchicalRAG):
                 context=context_block
             )
 
+            parsed = self._parse_article_to_sections(f"=={section_name}==\n{section_text}", top_chunks)
+            sections_output.extend(parsed)
+
             full_article_parts.append(f"=={section_name}==\n{section_text}")
             all_used_chunks.extend(top_chunks)
+
             generated_summaries[section_name] = self._summarize_generated_section(
                 island_name=island_name,
                 section=section_name,
@@ -144,13 +149,17 @@ class Agent3Generator(HierarchicalRAG):
 
         article_text = "\n\n".join(full_article_parts)
 
-        return self._build_output(
-            method="method3",
-            island_name=island_name,
-            article_text=article_text,
-            chunks=all_used_chunks,
-            rerank_strategy=self.rerank_scope,
-        )
+        return {
+            "method": "method3",
+            "island_name": island_name,
+            "metadata": {
+                "reranker": self.reranker_type,
+                "rerank_strategy": self.rerank_scope,
+                "top_l": self.top_l,
+            },
+            "generated_article": article_text,
+            "sections": sections_output
+        }
 
     # ── Override: _generate_section ───────────────────────────────────────────
 
