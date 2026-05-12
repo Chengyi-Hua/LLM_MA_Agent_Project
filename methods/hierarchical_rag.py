@@ -31,17 +31,15 @@ Do NOT write a "References", "See also", or "External links" section — only in
 
 class HierarchicalRAG(BaseRAG):
     agent_key = "method2"
-
     def generate(self, input_data: dict) -> dict:
         island_name, sections_data = self._parse_input(input_data)
-        all_chunks = self._get_all_chunks(sections_data)  # needed for 2.1
+        all_chunks = self._get_all_chunks(sections_data)
 
         full_article_parts = []
         all_used_chunks = []
+        sections_output = []
 
         for section, section_info in sections_data.items():
-            # 2.1: rerank from all chunks globally per section
-            # 2.2: rerank only within Eden's pre-assigned section chunks
             if self.rerank_scope == "global":
                 chunks_to_rerank = all_chunks
                 rerank_strategy = "global"
@@ -54,18 +52,27 @@ class HierarchicalRAG(BaseRAG):
                 section=section,
                 section_chunks=chunks_to_rerank
             )
+
+            # 用這個 section 自己的 top_chunks 立刻解析 citation
+            parsed = self._parse_article_to_sections(f"=={section}==\n{section_text}", top_chunks)
+            sections_output.extend(parsed)
+
             full_article_parts.append(f"=={section}==\n{section_text}")
             all_used_chunks.extend(top_chunks)
 
         article_text = "\n\n".join(full_article_parts)
 
-        return self._build_output(
-            method="method2",
-            island_name=island_name,
-            article_text=article_text,
-            chunks=all_used_chunks,
-            rerank_strategy=rerank_strategy,
-        )
+        return {
+            "method": "method2",
+            "island_name": island_name,
+            "metadata": {
+                "reranker": self.reranker_type,
+                "rerank_strategy": rerank_strategy,
+                "top_l": self.top_l,
+            },
+            "generated_article": article_text,
+            "sections": sections_output
+        }
 
     def _generate_section(
         self,
