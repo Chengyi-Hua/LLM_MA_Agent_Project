@@ -29,12 +29,12 @@ The table reports mean ± standard deviation.
 
 ## 1.1 Overall default method results
 
-| Method  |         Writing |          ROUGE-L |           METEOR |   Concept score | Citation precision | Citation link precision |   Citation rate |            CSCS |
-| ------- | --------------: | ---------------: | ---------------: | --------------: | -----------------: | ----------------------: | --------------: | --------------: |
-| method0 | 4.1990 ± 0.3204 | 15.7924 ± 2.3616 | 26.3162 ± 4.1166 | 4.0500 ± 0.3496 |    0.0000 ± 0.0000 |         0.0000 ± 0.0000 | 0.0000 ± 0.0000 |               — |
-| method1 | 3.9010 ± 0.1594 | 13.8597 ± 3.3729 | 16.0993 ± 9.1728 | 3.7250 ± 0.3623 |    0.2330 ± 0.2035 |         0.1049 ± 0.1171 | 0.9789 ± 0.0446 |               — |
-| method2 | 3.4330 ± 0.2274 | 16.2569 ± 2.5955 | 22.1475 ± 8.0204 | 3.5750 ± 0.5144 |    0.1938 ± 0.1600 |         0.0699 ± 0.0673 | 0.9408 ± 0.1010 |               — |
-| method3 | 3.6000 ± 0.3454 | 15.6986 ± 2.5423 | 22.6172 ± 9.2699 | 3.7000 ± 0.4534 |    0.2034 ± 0.1913 |         0.0612 ± 0.0682 | 0.9746 ± 0.0541 | 0.5073 ± 0.0757 |
+| Method  |         Writing |          ROUGE-L |           METEOR |   Concept score | Citation recall | Citation precision | Citation link precision |   Citation rate |            CSCS |
+| ------- | --------------: | ---------------: | ---------------: | --------------: | --------------: | -----------------: | ----------------------: | --------------: | --------------: |
+| method0 | 4.1990 ± 0.3204 | 15.7924 ± 2.3616 | 26.3162 ± 4.1166 | 4.0500 ± 0.3496 | 0.0000 ± 0.0000 |    0.0000 ± 0.0000 |         0.0000 ± 0.0000 | 0.0000 ± 0.0000 |               — |
+| method1 | 3.9010 ± 0.1594 | 13.8597 ± 3.3729 | 16.0993 ± 9.1728 | 3.7250 ± 0.3623 | 0.2305 ± 0.2051 |    0.2330 ± 0.2035 |         0.1049 ± 0.1171 | 0.9789 ± 0.0446 |               — |
+| method2 | 3.4330 ± 0.2274 | 16.2569 ± 2.5955 | 22.1475 ± 8.0204 | 3.5750 ± 0.5144 | 0.1802 ± 0.1383 |    0.1938 ± 0.1600 |         0.0699 ± 0.0673 | 0.9408 ± 0.1010 |               — |
+| method3 | 3.6000 ± 0.3454 | 15.6986 ± 2.5423 | 22.6172 ± 9.2699 | 3.7000 ± 0.4534 | 0.2021 ± 0.1920 |    0.2034 ± 0.1913 |         0.0612 ± 0.0682 | 0.9746 ± 0.0541 | 0.5073 ± 0.0757 |
 
 ---
 
@@ -110,7 +110,7 @@ method2 citation_rate = 0.9408 ± 0.1010
 
 This means the systems place citations frequently.
 
-However, citation precision and citation link precision are low:
+However, citation recall, citation precision, and citation link precision are low:
 
 ```text
 method1 citation_precision = 0.2330 ± 0.2035
@@ -124,7 +124,16 @@ method2 citation_link_precision = 0.0699 ± 0.0673
 method3 citation_link_precision = 0.0612 ± 0.0682
 ```
 
+Citation recall is also low across the RAG-based methods:
+
+```text
+method1 citation_recall = 0.2305 ± 0.2051
+method3 citation_recall = 0.2021 ± 0.1920
+method2 citation_recall = 0.1802 ± 0.1383
+```
+
 This shows that the models often place citation markers, but many citations are not verified as supporting the cited claims.
+
 
 ---
 
@@ -150,6 +159,7 @@ This indicates moderate cross-sectional consistency: some dependency information
 | Best overall concept score                         | `method0`      |
 | Best concept coverage among RAG/planning methods   | `method3`      |
 | Best concept accuracy among RAG/planning methods   | `method3`      |
+| Best citation recall among RAG/planning methods    | `method1`      |
 | Best citation precision among RAG/planning methods | `method1`      |
 | Method with CSCS                                   | `method3` only |
 
@@ -182,9 +192,9 @@ The goal is to understand which Method 3 configuration improves which metric gro
 
 The default Method 3 row is:
 
-| Variant         |         Writing |          ROUGE-L |           METEOR |   Concept score | Citation precision | Citation link precision |   Citation rate |            CSCS |
-| --------------- | --------------: | ---------------: | ---------------: | --------------: | -----------------: | ----------------------: | --------------: | --------------: |
-| default_method3 | 3.6000 ± 0.3454 | 15.6986 ± 2.5423 | 22.6172 ± 9.2699 | 3.7000 ± 0.4534 |    0.2034 ± 0.1913 |         0.0612 ± 0.0682 | 0.9746 ± 0.0541 | 0.5073 ± 0.0757 |
+| Variant         |         Writing |          ROUGE-L |           METEOR |   Concept score | Citation recall | Citation precision | Citation link precision |   Citation rate |            CSCS |
+| --------------- | --------------: | ---------------: | ---------------: | --------------: | --------------: | -----------------: | ----------------------: | --------------: | --------------: |
+| default_method3 | 3.6000 ± 0.3454 | 15.6986 ± 2.5423 | 22.6172 ± 9.2699 | 3.7000 ± 0.4534 | 0.2021 ± 0.1920 |    0.2034 ± 0.1913 |         0.0612 ± 0.0682 | 0.9746 ± 0.0541 | 0.5073 ± 0.0757 |
 
 The ablations should be interpreted relative to this default Method 3 baseline.
 
@@ -207,19 +217,19 @@ The ablations should be interpreted relative to this default Method 3 baseline.
 
 ## 2.3 Method 3 ablation table
 
-| Variant                             |         Writing |          ROUGE-L |           METEOR |   Concept score | Citation precision | Citation link precision |   Citation rate |            CSCS |
-| ----------------------------------- | --------------: | ---------------: | ---------------: | --------------: | -----------------: | ----------------------: | --------------: | --------------: |
-| default_method3                     | 3.6000 ± 0.3454 | 15.6986 ± 2.5423 | 22.6172 ± 9.2699 | 3.7000 ± 0.4534 |    0.2034 ± 0.1913 |         0.0612 ± 0.0682 | 0.9746 ± 0.0541 | 0.5073 ± 0.0757 |
-| agent2 model deepseek v3.2          | 3.6330 ± 0.3322 | 15.8447 ± 2.8777 | 22.2636 ± 8.4544 | 3.6250 ± 0.4449 |    0.1358 ± 0.1083 |         0.0570 ± 0.0567 | 0.9574 ± 0.0768 | 0.5131 ± 0.0562 |
-| agent2 model gemini 3 flash preview | 3.5670 ± 0.3175 | 15.7839 ± 2.8467 | 22.2771 ± 8.8469 | 3.6500 ± 0.4595 |    0.1792 ± 0.2186 |         0.0674 ± 0.0837 | 0.9612 ± 0.0693 | 0.5042 ± 0.0784 |
-| agent2 model qwen3.6 plus           | 3.5660 ± 0.2764 | 15.6343 ± 2.6837 | 22.4771 ± 8.6431 | 3.8000 ± 0.3873 |    0.2319 ± 0.1925 |         0.0799 ± 0.0585 | 0.9641 ± 0.0634 | 0.4937 ± 0.0669 |
-| agent3 model claude opus 4.7        | 3.2650 ± 0.3797 | 17.1820 ± 2.9137 | 28.0961 ± 6.5702 | 3.5000 ± 0.4410 |    0.2394 ± 0.2037 |         0.0879 ± 0.0897 | 0.9243 ± 0.0994 | 0.5250 ± 0.1122 |
-| agent3 model gemini 3.1 pro preview | 3.3330 ± 0.3147 | 16.3843 ± 3.2327 | 22.3543 ± 8.3951 | 3.5000 ± 0.4249 |    0.1117 ± 0.1381 |         0.0496 ± 0.0626 | 0.9695 ± 0.0558 | 0.4778 ± 0.0963 |
-| agent3 model gpt5.4                 | 3.6330 ± 0.2935 | 15.9739 ± 2.0528 | 23.9922 ± 7.2755 | 3.6500 ± 0.5297 |    0.1542 ± 0.1793 |         0.0610 ± 0.1033 | 0.9527 ± 0.0869 | 0.5325 ± 0.0677 |
-| rerank_scope global                 | 3.5990 ± 0.3451 | 15.4988 ± 2.6786 | 20.4043 ± 7.8611 | 3.6750 ± 0.4257 |    0.1583 ± 0.1952 |         0.0692 ± 0.0909 | 0.9652 ± 0.0736 | 0.4990 ± 0.0626 |
-| reranker_type cross encoder + mmr   | 3.6320 ± 0.4294 | 16.1587 ± 2.7956 | 22.5790 ± 8.4242 | 3.7250 ± 0.4632 |    0.3620 ± 0.2040 |         0.1825 ± 0.1345 | 0.9591 ± 0.0740 | 0.5066 ± 0.0943 |
-| threshold 0.3                       | 3.5670 ± 0.2274 | 16.0616 ± 2.4707 | 22.2655 ± 8.2031 | 3.7000 ± 0.4048 |    0.2608 ± 0.2168 |         0.0799 ± 0.0795 | 0.9522 ± 0.0798 | 0.4964 ± 0.0986 |
-| threshold 0.6                       | 3.6990 ± 0.3676 | 15.9496 ± 2.7210 | 22.8560 ± 8.8544 | 3.6750 ± 0.4091 |    0.2113 ± 0.1487 |         0.1163 ± 0.1113 | 0.9436 ± 0.0938 | 0.5246 ± 0.0785 |
+| Variant                             |         Writing |          ROUGE-L |           METEOR |   Concept score | Citation recall | Citation precision | Citation link precision |   Citation rate |            CSCS |
+| ----------------------------------- | --------------: | ---------------: | ---------------: | --------------: | --------------: | -----------------: | ----------------------: | --------------: | --------------: |
+| default_method3                     | 3.6000 ± 0.3454 | 15.6986 ± 2.5423 | 22.6172 ± 9.2699 | 3.7000 ± 0.4534 | 0.2021 ± 0.1920 |    0.2034 ± 0.1913 |         0.0612 ± 0.0682 | 0.9746 ± 0.0541 | 0.5073 ± 0.0757 |
+| agent2 model deepseek v3.2          | 3.6330 ± 0.3322 | 15.8447 ± 2.8777 | 22.2636 ± 8.4544 | 3.6250 ± 0.4449 | 0.1301 ± 0.1077 |    0.1358 ± 0.1083 |         0.0570 ± 0.0567 | 0.9574 ± 0.0768 | 0.5131 ± 0.0562 |
+| agent2 model gemini 3 flash preview | 3.5670 ± 0.3175 | 15.7839 ± 2.8467 | 22.2771 ± 8.8469 | 3.6500 ± 0.4595 | 0.1772 ± 0.2179 |    0.1792 ± 0.2186 |         0.0674 ± 0.0837 | 0.9612 ± 0.0693 | 0.5042 ± 0.0784 |
+| agent2 model qwen3.6 plus           | 3.5660 ± 0.2764 | 15.6343 ± 2.6837 | 22.4771 ± 8.6431 | 3.8000 ± 0.3873 | 0.2265 ± 0.1945 |    0.2319 ± 0.1925 |         0.0799 ± 0.0585 | 0.9641 ± 0.0634 | 0.4937 ± 0.0669 |
+| agent3 model claude opus 4.7        | 3.2650 ± 0.3797 | 17.1820 ± 2.9137 | 28.0961 ± 6.5702 | 3.5000 ± 0.4410 | 0.2196 ± 0.1901 |    0.2394 ± 0.2037 |         0.0879 ± 0.0897 | 0.9243 ± 0.0994 | 0.5250 ± 0.1122 |
+| agent3 model gemini 3.1 pro preview | 3.3330 ± 0.3147 | 16.3843 ± 3.2327 | 22.3543 ± 8.3951 | 3.5000 ± 0.4249 | 0.1102 ± 0.1380 |    0.1117 ± 0.1381 |         0.0496 ± 0.0626 | 0.9695 ± 0.0558 | 0.4778 ± 0.0963 |
+| agent3 model gpt5.4                 | 3.6330 ± 0.2935 | 15.9739 ± 2.0528 | 23.9922 ± 7.2755 | 3.6500 ± 0.5297 | 0.1520 ± 0.1799 |    0.1542 ± 0.1793 |         0.0610 ± 0.1033 | 0.9527 ± 0.0869 | 0.5325 ± 0.0677 |
+| rerank_scope global                 | 3.5990 ± 0.3451 | 15.4988 ± 2.6786 | 20.4043 ± 7.8611 | 3.6750 ± 0.4257 | 0.1567 ± 0.1958 |    0.1583 ± 0.1952 |         0.0692 ± 0.0909 | 0.9652 ± 0.0736 | 0.4990 ± 0.0626 |
+| reranker_type cross encoder + mmr   | 3.6320 ± 0.4294 | 16.1587 ± 2.7956 | 22.5790 ± 8.4242 | 3.7250 ± 0.4632 | 0.3444 ± 0.1986 |    0.3620 ± 0.2040 |         0.1825 ± 0.1345 | 0.9591 ± 0.0740 | 0.5066 ± 0.0943 |
+| threshold 0.3                       | 3.5670 ± 0.2274 | 16.0616 ± 2.4707 | 22.2655 ± 8.2031 | 3.7000 ± 0.4048 | 0.2520 ± 0.2190 |    0.2608 ± 0.2168 |         0.0799 ± 0.0795 | 0.9522 ± 0.0798 | 0.4964 ± 0.0986 |
+| threshold 0.6                       | 3.6990 ± 0.3676 | 15.9496 ± 2.7210 | 22.8560 ± 8.8544 | 3.6750 ± 0.4091 | 0.1989 ± 0.1440 |    0.2113 ± 0.1487 |         0.1163 ± 0.1113 | 0.9436 ± 0.0938 | 0.5246 ± 0.0785 |
 
 ---
 
@@ -348,6 +358,6 @@ The results show a tradeoff between surface quality, semantic content quality, c
 
 # 4. Short Final Summary
 
-The default comparison shows that `method0` produces the most polished text, while `method3` provides the most relevant planning-based signal among retrieval methods, especially for concept coverage and accuracy. However, citation support remains weak across all citation-based methods.
+The default comparison shows that `method0` produces the most polished text, while `method3` provides the most relevant planning-based signal among retrieval methods, especially for concept coverage and accuracy. However, citation support remains weak across all RAG-based methods.
 
 The Method 3 ablation results show that the most useful improvement for verifiability is `reranker_type cross encoder + mmr`, while Agent 3 model choice has the strongest impact on lexical overlap and cross-sectional consistency.
