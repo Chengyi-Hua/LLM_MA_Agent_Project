@@ -22,6 +22,7 @@ Outputs:
     error_instances_*.csv
     error_frequency_by_method_*.csv
     error_frequency_by_variant_*.csv
+    error_frequency_by_variant_*.csv
     error_frequency_by_variant_method_*.csv
     error_frequency_by_island_*.csv
     error_frequency_overall_*.csv
@@ -469,6 +470,189 @@ def load_csv(path: str) -> List[Dict[str, Any]]:
 
     return rows
 
+def is_default_method_row(row: Dict[str, Any]) -> bool:
+    variant_name = str(row.get("variant_name", "")).strip().lower()
+    variant_type = str(row.get("variant_type", "")).strip().lower()
+    comparison_label = str(row.get("comparison_label", "")).strip().lower()
+    method = str(row.get("method", "")).strip().lower()
+
+    if variant_type == "default_all_methods":
+        return True
+
+    if variant_name == "default":
+        return True
+
+    if comparison_label == f"default_{method}":
+        return True
+
+    return False
+
+
+def filter_errors_to_rows(
+    errors: List[Dict[str, Any]],
+    rows: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    output_ids = {row.get("__output_id", "") for row in rows}
+    return [error for error in errors if error.get("output_id", "") in output_ids]
+
+
+ERROR_GROUP_KEYS = {"error_family", "error_class", "error_subclass"}
+
+
+def get_threshold_settings_from_errors(errors: List[Dict[str, Any]]) -> List[str]:
+    settings = sorted(
+        {
+            str(error.get("threshold_setting", "")).strip()
+            for error in errors
+            if str(error.get("threshold_setting", "")).strip()
+        }
+    )
+
+    return settings or ["main"]
+
+
+def make_error_catalog(include_subclass: bool) -> List[Dict[str, str]]:
+    """
+    Returns all error classes/subclasses defined by the methodology,
+    including classes that may have zero affected outputs.
+    """
+
+    catalog = []
+    seen = set()
+
+    def add(error_family: str, error_class: str, error_subclass: str = "") -> None:
+        if not include_subclass:
+            error_subclass = ""
+
+        key = (error_family, error_class, error_subclass)
+
+        if key in seen:
+            return
+
+        seen.add(key)
+
+        catalog.append(
+            {
+                "error_family": error_family,
+                "error_class": error_class,
+                "error_subclass": error_subclass,
+            }
+        )
+
+    # Rubric-based errors
+    for spec in RUBRIC_THRESHOLDS.values():
+        add(
+            spec["family"],
+            spec["class"],
+            spec["subclass"],
+        )
+
+    # Categorical evaluator errors
+    add(
+        "Content quality",
+        "Content omission",
+        "Missing key concepts",
+    )
+
+    add(
+        "Content quality",
+        "Content substitution",
+        "Inaccurate or unsupported concepts",
+    )
+
+    # Distribution-based metric errors
+    for spec in DISTRIBUTION_ERROR_MAP.values():
+        add(
+            spec["family"],
+            spec["class"],
+            spec["subclass"],
+        )
+
+    return catalog
+
+
+def make_base_group_rows(
+    rows: List[Dict[str, Any]],
+    group_keys: List[str],
+    threshold_settings: List[str],
+) -> List[Dict[str, Any]]:
+    """
+    Builds all non-error group combinations that should exist in the output.
+
+    Example:
+        group_keys = ["threshold_setting", "method", "error_family", "error_class"]
+
+    This returns one base group for each threshold_setting x method.
+    """
+
+    base_keys = [
+        key for key in group_keys
+        if key not in ERROR_GROUP_KEYS
+    ]
+
+    if not base_keys:
+        return [{}]
+
+    has_threshold = "threshold_setting" in base_keys
+    base_keys_without_threshold = [
+        key for key in base_keys
+        if key != "threshold_setting"
+    ]
+
+    unique_base_values = set()
+
+    if base_keys_without_threshold:
+        for row in rows:
+            unique_base_values.add(
+                tuple(row.get(key, "") for key in base_keys_without_threshold)
+            )
+    else:
+        unique_base_values.add(tuple())
+
+    base_rows = []
+
+    for values in sorted(unique_base_values):
+        base = {
+            key: value
+            for key, value in zip(base_keys_without_threshold, values)
+        }
+
+        if has_threshold:
+            for threshold_setting in threshold_settings:
+                row = dict(base)
+                row["threshold_setting"] = threshold_setting
+                base_rows.append(row)
+        else:
+            base_rows.append(base)
+
+    return base_rows
+
+
+def error_spec_applicable_to_base_group(
+    base_group: Dict[str, Any],
+    error_spec: Dict[str, str],
+) -> bool:
+    """
+    Avoids adding misleading zero rows for graph coherence to methods
+    where CSCS is not applicable.
+    """
+
+    error_class = error_spec.get("error_class", "")
+
+    if error_class != "Graph coherence failure":
+        return True
+
+    method = str(base_group.get("method", "")).strip().lower()
+    comparison_label = str(base_group.get("comparison_label", "")).strip().lower()
+
+    if method:
+        return method == "method3"
+
+    if comparison_label.startswith("default_method"):
+        return comparison_label == "default_method3"
+
+    return True
+
 
 def write_csv(path: str, rows: List[Dict[str, Any]], fieldnames: List[str]) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -498,6 +682,10 @@ def get_output_paths(input_path: str, output_dir: Optional[str]) -> Dict[str, st
     return {
         "instances": os.path.join(output_dir, f"error_instances_{tag}.csv"),
         "by_method": os.path.join(output_dir, f"error_frequency_by_method_{tag}.csv"),
+        "default_by_method": os.path.join(
+            output_dir,
+            f"error_frequency_default_by_method_{tag}.csv",
+        ),
         "by_variant": os.path.join(output_dir, f"error_frequency_by_variant_{tag}.csv"),
         "by_variant_method": os.path.join(
             output_dir,
@@ -892,7 +1080,6 @@ def build_denominators(
 
     return {key: len(value) for key, value in denominators.items()}
 
-
 def aggregate_errors(
     errors: List[Dict[str, Any]],
     rows: List[Dict[str, Any]],
@@ -903,6 +1090,9 @@ def aggregate_errors(
 
     grouped = {}
 
+    # -------------------------------------------------------------
+    # 1. Aggregate real observed errors
+    # -------------------------------------------------------------
     for error in errors:
         key = tuple(error.get(k, "") for k in group_keys)
 
@@ -920,6 +1110,7 @@ def aggregate_errors(
             group_row["high_severity_count"] = 0
             group_row["medium_severity_count"] = 0
             group_row["low_severity_count"] = 0
+
             grouped[key] = group_row
 
         group = grouped[key]
@@ -941,6 +1132,54 @@ def aggregate_errors(
             group["low_severity_count"] += 1
             group["low_severity_output_ids"].add(output_id)
 
+    # -------------------------------------------------------------
+    # 2. Add zero-count rows for methodology-defined error classes
+    # -------------------------------------------------------------
+    include_subclass = "error_subclass" in group_keys
+
+    error_catalog = make_error_catalog(
+        include_subclass=include_subclass,
+    )
+
+    threshold_settings = get_threshold_settings_from_errors(errors)
+
+    base_group_rows = make_base_group_rows(
+        rows=rows,
+        group_keys=group_keys,
+        threshold_settings=threshold_settings,
+    )
+
+    for base_group in base_group_rows:
+        for error_spec in error_catalog:
+            if not error_spec_applicable_to_base_group(base_group, error_spec):
+                continue
+
+            seed = {}
+            seed.update(base_group)
+            seed.update(error_spec)
+
+            key = tuple(seed.get(k, "") for k in group_keys)
+
+            if key in grouped:
+                continue
+
+            group_row = {k: seed.get(k, "") for k in group_keys}
+            group_row["total_error_instances"] = 0
+            group_row["affected_output_ids"] = set()
+
+            group_row["high_severity_output_ids"] = set()
+            group_row["medium_severity_output_ids"] = set()
+            group_row["low_severity_output_ids"] = set()
+
+            group_row["high_severity_count"] = 0
+            group_row["medium_severity_count"] = 0
+            group_row["low_severity_count"] = 0
+
+            grouped[key] = group_row
+
+    # -------------------------------------------------------------
+    # 3. Convert grouped data to output rows
+    # -------------------------------------------------------------
     output = []
 
     for group in grouped.values():
@@ -974,6 +1213,7 @@ def aggregate_errors(
             "error_family": group.get("error_family", ""),
             "error_class": group.get("error_class", ""),
             "error_subclass": group.get("error_subclass", ""),
+
             "total_error_instances": group["total_error_instances"],
             "affected_outputs": affected_outputs,
             "total_outputs_in_group": total_outputs,
@@ -1002,6 +1242,7 @@ def aggregate_errors(
             r.get("island_name", ""),
             r.get("error_family", ""),
             r.get("error_class", ""),
+            r.get("error_subclass", ""),
             -int(r.get("total_error_instances", 0)),
         )
     )
@@ -1034,7 +1275,12 @@ def top_error_subclasses(
         )
     )
 
-    return aggregated[:top_n]
+    nonzero = [
+        row for row in aggregated
+        if int(row.get("total_error_instances", 0)) > 0
+    ]
+
+    return nonzero[:top_n]  
 
 
 # ---------------------------------------------------------------------
@@ -1133,9 +1379,44 @@ def main():
         ],
     )
 
+
     write_csv(
         output_paths["by_method"],
         by_method,
+        FREQUENCY_FIELDS,
+    )
+
+    # -------------------------------------------------------------
+    # Default-only method comparison
+    # -------------------------------------------------------------
+    default_rows = [row for row in rows if is_default_method_row(row)]
+
+    # If this file only contains corrected default-method rows but they are
+    # not explicitly labeled as variant_name="default", use all rows.
+    # This is useful for after-fix re-evaluations that contain only method2/method3.
+    if not default_rows:
+        print(
+            "Warning: no rows matched the default-method filter. "
+            "Using all rows for default-by-method aggregation."
+        )
+        default_rows = rows
+
+    default_errors = filter_errors_to_rows(main_errors, default_rows)
+
+    default_by_method = aggregate_errors(
+        errors=default_errors,
+        rows=default_rows,
+        group_keys=[
+            "threshold_setting",
+            "method",
+            "error_family",
+            "error_class",
+        ],
+    )
+
+    write_csv(
+        output_paths["default_by_method"],
+        default_by_method,
         FREQUENCY_FIELDS,
     )
 
@@ -1257,6 +1538,7 @@ def main():
     print("Saved:")
     print(f"  Error instances:              {output_paths['instances']}")
     print(f"  Frequency by method:          {output_paths['by_method']}")
+    print(f"  Default-only by method:       {output_paths['default_by_method']}")
     print(f"  Frequency by variant:         {output_paths['by_variant']}")
     print(f"  Frequency by variant/method:  {output_paths['by_variant_method']}")
     print(f"  Frequency by island:          {output_paths['by_island']}")

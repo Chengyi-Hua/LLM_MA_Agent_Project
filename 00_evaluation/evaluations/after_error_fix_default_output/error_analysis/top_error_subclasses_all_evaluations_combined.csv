@@ -1,0 +1,10 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+main,,,,,,Content quality,Content substitution,Low concept accuracy,9,9,20,0.450000,0,0.000000,9,0.450000,0,0.000000,0,9,0
+main,,,,,,Citation and verifiability,Citation coverage failure,Low citation rate,5,5,20,0.250000,2,0.100000,3,0.150000,0,0.000000,2,3,0
+main,,,,,,Citation and verifiability,Citation coverage failure,Low citation recall,5,5,20,0.250000,2,0.100000,3,0.150000,0,0.000000,2,3,0
+main,,,,,,Citation and verifiability,Citation support failure,Low citation link precision,5,5,20,0.250000,2,0.100000,3,0.150000,0,0.000000,2,3,0
+main,,,,,,Citation and verifiability,Citation support failure,Low citation precision,5,5,20,0.250000,2,0.100000,3,0.150000,0,0.000000,2,3,0
+main,,,,,,Content quality,Content omission,Low METEOR,5,5,20,0.250000,2,0.100000,3,0.150000,0,0.000000,2,3,0
+main,,,,,,Content quality,Content omission,Low ROUGE-L,5,5,20,0.250000,2,0.100000,3,0.150000,0,0.000000,2,3,0
+main,,,,,,Planning and graph,Graph coherence failure,Low CSCS,4,4,20,0.200000,2,0.100000,2,0.100000,0,0.000000,2,2,0
+main,,,,,,Content quality,Content omission,Low concept coverage,1,1,20,0.050000,1,0.050000,0,0.000000,0,0.000000,1,0,0

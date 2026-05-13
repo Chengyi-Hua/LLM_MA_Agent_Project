@@ -659,6 +659,15 @@ def main():
         combined["variant_name"].str.lower() == "default"
     ].copy()
 
+    # If this evaluation folder only contains corrected default-method
+    # outputs split into method-specific folders, there may be no
+    # variant_name == "default" rows. In that case, aggregate the loaded
+    # rows directly by method.
+    if default_df.empty:
+        default_df = combined[
+            combined["method"].str.lower().isin(METHOD_ORDER)
+        ].copy()
+
     default_group_cols = ["method"]
 
     default_agg = aggregate_numeric(

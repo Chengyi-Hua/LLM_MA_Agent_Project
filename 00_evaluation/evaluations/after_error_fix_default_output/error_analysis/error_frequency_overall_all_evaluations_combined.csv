@@ -1,0 +1,10 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+main,,,,,,Citation and verifiability,Citation coverage failure,,10,8,20,0.400000,4,0.200000,5,0.250000,0,0.000000,4,6,0
+main,,,,,,Citation and verifiability,Citation support failure,,10,6,20,0.300000,3,0.150000,4,0.200000,0,0.000000,4,6,0
+main,,,,,,Content quality,Content addition,,0,0,20,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,,Content quality,Content omission,,11,7,20,0.350000,4,0.200000,5,0.250000,0,0.000000,5,6,0
+main,,,,,,Content quality,Content organization error,,0,0,20,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,,Content quality,Content quality error,,0,0,20,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,,Content quality,Content substitution,,9,9,20,0.450000,0,0.000000,9,0.450000,0,0.000000,0,9,0
+main,,,,,,Planning and graph,Graph coherence failure,,4,4,20,0.200000,2,0.100000,2,0.100000,0,0.000000,2,2,0
+main,,,,,,Writing quality,Writing error,,0,0,20,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0

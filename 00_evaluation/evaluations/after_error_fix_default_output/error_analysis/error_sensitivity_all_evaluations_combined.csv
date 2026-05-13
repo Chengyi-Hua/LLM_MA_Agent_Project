@@ -1,0 +1,52 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+lenient,,,,method2,,Citation and verifiability,Citation coverage failure,,2,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,1,1,0
+lenient,,,,method2,,Citation and verifiability,Citation support failure,,2,2,10,0.200000,0,0.000000,2,0.200000,0,0.000000,0,2,0
+lenient,,,,method2,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method2,,Content quality,Content omission,,4,2,10,0.200000,0,0.000000,2,0.200000,0,0.000000,0,4,0
+lenient,,,,method2,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method2,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method2,,Content quality,Content substitution,,4,4,10,0.400000,0,0.000000,4,0.400000,0,0.000000,0,4,0
+lenient,,,,method2,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method3,,Citation and verifiability,Citation coverage failure,,6,4,10,0.400000,2,0.200000,2,0.200000,0,0.000000,2,4,0
+lenient,,,,method3,,Citation and verifiability,Citation support failure,,6,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,2,4,0
+lenient,,,,method3,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method3,,Content quality,Content omission,,5,3,10,0.300000,2,0.200000,1,0.100000,0,0.000000,3,2,0
+lenient,,,,method3,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method3,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+lenient,,,,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+lenient,,,,method3,,Planning and graph,Graph coherence failure,,4,4,10,0.400000,1,0.100000,3,0.300000,0,0.000000,1,3,0
+lenient,,,,method3,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Citation and verifiability,Citation coverage failure,,3,3,10,0.300000,1,0.100000,2,0.200000,0,0.000000,1,2,0
+main,,,,method2,,Citation and verifiability,Citation support failure,,2,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,1,1,0
+main,,,,method2,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Content quality,Content omission,,5,3,10,0.300000,1,0.100000,3,0.300000,0,0.000000,1,4,0
+main,,,,method2,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Content quality,Content substitution,,4,4,10,0.400000,0,0.000000,4,0.400000,0,0.000000,0,4,0
+main,,,,method2,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method3,,Citation and verifiability,Citation coverage failure,,7,5,10,0.500000,3,0.300000,3,0.300000,0,0.000000,3,4,0
+main,,,,method3,,Citation and verifiability,Citation support failure,,8,4,10,0.400000,2,0.200000,3,0.300000,0,0.000000,3,5,0
+main,,,,method3,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method3,,Content quality,Content omission,,6,4,10,0.400000,3,0.300000,2,0.200000,0,0.000000,4,2,0
+main,,,,method3,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method3,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+main,,,,method3,,Planning and graph,Graph coherence failure,,4,4,10,0.400000,2,0.200000,2,0.200000,0,0.000000,2,2,0
+main,,,,method3,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method2,,Citation and verifiability,Citation coverage failure,,12,10,10,1.000000,2,0.200000,9,0.900000,0,0.000000,2,10,0
+strict,,,,method2,,Citation and verifiability,Citation support failure,,5,3,10,0.300000,2,0.200000,3,0.300000,0,0.000000,2,3,0
+strict,,,,method2,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method2,,Content quality,Content omission,,8,5,10,0.500000,1,0.100000,4,0.400000,0,0.000000,2,6,0
+strict,,,,method2,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method2,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method2,,Content quality,Content substitution,,4,4,10,0.400000,0,0.000000,4,0.400000,0,0.000000,0,4,0
+strict,,,,method2,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method3,,Citation and verifiability,Citation coverage failure,,15,10,10,1.000000,4,0.400000,8,0.800000,0,0.000000,5,10,0
+strict,,,,method3,,Citation and verifiability,Citation support failure,,11,7,10,0.700000,3,0.300000,6,0.600000,0,0.000000,4,7,0
+strict,,,,method3,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method3,,Content quality,Content omission,,7,4,10,0.400000,3,0.300000,1,0.100000,0,0.000000,5,2,0
+strict,,,,method3,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method3,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+strict,,,,method3,,Content quality,Content substitution,,5,5,10,0.500000,0,0.000000,5,0.500000,0,0.000000,0,5,0
+strict,,,,method3,,Planning and graph,Graph coherence failure,,7,7,10,0.700000,4,0.400000,3,0.300000,0,0.000000,4,3,0
+strict,,,,method3,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0

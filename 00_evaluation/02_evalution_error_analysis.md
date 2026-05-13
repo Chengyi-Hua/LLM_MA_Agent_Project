@@ -4,6 +4,8 @@ This error analysis summarizes the main article-quality failure modes across the
 
 The analysis covers **140 total outputs**.
 
+Overall error frequency and top error subclasses are computed across all **140 outputs**. The default method comparison uses only the default-method subset: `method0`, `method1`, `method2`, and default `method3`, with **10 outputs per method**. The Method 3 ablation comparison uses the default Method 3 setup plus the Method 3 ablation variants, with **10 outputs per variant**.
+
 ## Reported fields
 
 | Field | Meaning |
@@ -13,6 +15,8 @@ The analysis covers **140 total outputs**.
 | `high_severity_affected_outputs` | Number of outputs with at least one high-severity error of this class. |
 | `medium_severity_affected_outputs` | Number of outputs with at least one medium-severity error of this class. |
 | `total_error_instances` | Total number of error flags. One output can contain multiple error instances. |
+
+Severity-specific affected-output counts are not mutually exclusive. One output can contain both high-severity and medium-severity error instances within the same error class, so high- and medium-severity affected counts may sum to more than the total number of affected outputs.
 
 ---
 
@@ -26,8 +30,8 @@ The analysis covers **140 total outputs**.
 | Concept relevance | score < 3.0 | score < 2.5 | Measures irrelevant or off-topic content. |
 | Concept organization | score < 3.0 | score < 2.5 | Measures whether concepts are organized coherently. |
 | Missing key concepts | 1 missing concept | 2+ missing concepts | Based on categorical evaluator output. |
-| Inaccurate / unsupported concepts | any listed issue | any listed issue | Treated as serious because unsupported concepts directly affect factuality. |
-| Citation rate | < 0.80 | < 0.50 | Share of factual sentences with citations. |
+| Inaccurate / unsupported concepts | — | any listed issue | Treated as high severity because unsupported concepts directly affect factuality. |
+| Citation rate | < 0.80 | < 0.50 | Share of generated sentences with citations. |
 | Citation recall | < 0.20 | < 0.10 | Share of all sentences that are both cited and supported. |
 | Citation precision | < 0.25 | < 0.10 | Share of cited sentences that are supported. |
 | Citation link precision | < 0.10 | < 0.05 | Share of citation links that point to supporting evidence. |
@@ -61,7 +65,7 @@ Writing quality is not a major failure mode. Only **1.4%** of outputs have writi
 
 ---
 
-# Error frequency by method
+# Default-only error frequency by method
 
 | Method | Error class | Affected outputs | % outputs | High-severity outputs | High % |
 |---|---|---:|---:|---:|---:|
@@ -77,23 +81,25 @@ Writing quality is not a major failure mode. Only **1.4%** of outputs have writi
 | method2 | Citation support failure | 7 / 10 | 70.0% | 5 | 50.0% |
 | method2 | Content omission | 3 / 10 | 30.0% | 2 | 20.0% |
 | method2 | Content substitution | 7 / 10 | 70.0% | 1 | 10.0% |
-| method3 | Citation coverage failure | 64 / 110 | 58.2% | 43 | 39.1% |
-| method3 | Citation support failure | 80 / 110 | 72.7% | 57 | 51.8% |
-| method3 | Content omission | 31 / 110 | 28.2% | 12 | 10.9% |
-| method3 | Content substitution | 61 / 110 | 55.5% | 4 | 3.6% |
-| method3 | Graph coherence failure | 44 / 110 | 40.0% | 12 | 10.9% |
-| method3 | Writing error | 2 / 110 | 1.8% | 2 | 1.8% |
+| method3 | Citation coverage failure | 5 / 10 | 50.0% | 3 | 30.0% |
+| method3 | Citation support failure | 8 / 10 | 80.0% | 6 | 60.0% |
+| method3 | Content omission | 3 / 10 | 30.0% | 1 | 10.0% |
+| method3 | Content substitution | 4 / 10 | 40.0% | 0 | 0.0% |
+| method3 | Graph coherence failure | 4 / 10 | 40.0% | 1 | 10.0% |
 
 ## Method-level interpretation
 
-**method0** has the weakest citation performance, with both citation coverage and citation support failures affecting all outputs. This is expected because it is the least citation-aware baseline.
+This table compares only the **default 10-island outputs** for each method.
 
-**method1** improves citation coverage compared with method0, but content quality is weaker. Content omission affects **70.0%** of outputs, and content substitution affects **80.0%**.
+**method0** has the weakest citation performance, with both citation coverage and citation support failures affecting all outputs. This is expected because it is the least citation-aware baseline. However, it has relatively few content-quality failures.
 
-**method2** reduces content omission from **70.0%** in method1 to **30.0%**, but citation support remains weak, with **70.0%** affected and **50.0%** high-severity.
+**method1** improves citation coverage compared with method0 and has the lowest high-severity citation support failure among the RAG-based methods at **30.0%**. However, its content-quality errors are frequent: content omission affects **70.0%** of outputs, and content substitution affects **80.0%**.
 
-**method3** gives the best overall balance. It keeps content omission relatively low at **28.2%**, and severe content substitution is rare at **3.6%**. The main remaining weakness is citation support, which affects **72.7%** of method3 outputs.
+**method2** reduces content omission compared with method1, from **70.0%** to **30.0%**. However, citation support remains weak, with **70.0%** of outputs affected and **50.0%** high-severity.
 
+**method3** is strongest from a content-quality perspective among the RAG/planning methods. It has the lowest content substitution rate among the citation-based methods at **40.0%**, and no high-severity content substitution errors. It also has the lowest citation coverage failure rate among the RAG/planning methods at **50.0%**. However, citation support remains the main weakness: citation support failure affects **80.0%** of outputs, with **60.0%** high-severity.
+
+Overall, Method 3 should not be described as the best method across all error categories. It is better described as the strongest retrieval/planning method for reducing severe content-quality failures, while citation support remains unresolved.
 ---
 
 # Top concrete error subclasses
@@ -163,6 +169,6 @@ The error analysis shows three main findings:
 
 1. **Citation grounding is the main weakness.** Citation support and coverage failures dominate the error profile.
 2. **Writing quality is generally strong.** Writing errors occur in only **1.4%** of outputs.
-3. **Method3 is the strongest overall method, but reranking matters.** The cross encoder + MMR ablation gives the clearest improvement in citation-related errors.
+3. **Method 3 is strongest for reducing severe content-quality failures among the RAG/planning methods, but it is not best on every error category.** The cross encoder + MMR ablation gives the clearest improvement in citation-related errors.
 
 The most important next improvement is better evidence selection and citation grounding, especially improving citation link precision and citation precision.
