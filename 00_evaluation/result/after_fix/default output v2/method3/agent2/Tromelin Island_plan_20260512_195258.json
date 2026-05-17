@@ -1,0 +1,32 @@
+{
+    "status": "success",
+    "island": "Tromelin Island",
+    "order": [
+        "Etymology",
+        "Description",
+        "Fauna and flora",
+        "History",
+        "Climate"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Description": [],
+        "Fauna and flora": [
+            "Description"
+        ],
+        "History": [
+            "Description",
+            "Fauna and flora"
+        ],
+        "Climate": []
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Description": "Tromelin Island is a small, remote volcanic outcrop located in the southwest Indian Ocean at coordinates 15° 52' 36\" S, 54° 30' 51\" E, classified as a Possession and administratively part of France, with Réunion listed as its dependent state. The island is an almond-shaped speck of sand and coral, barely 1,700 metres at its longest point and 700 metres at its widest, with its highest point reaching only 7 metres above sea level and a total coastline of less than 4 kilometres, making it practically invisible from the sea. It was possibly first recorded by European sailors in 1722 when the French ship Diane noted its position. The island lies in the heart of the cyclone corridor of the southwest Indian Ocean, facing significant storm risk from late October until May, with recorded wind speeds reaching 230 km/hr and gusts up to 287 km/hr during cyclones. Its terrain is sparsely vegetated, kept low by constant wind, with no shade, and features a shifting sand spur at its northern end; it serves as a laying ground for sea turtles and a breeding ground for various bird species. The island's ecosystem suffered significant damage following the accidental introduction of rats, which led to the collapse of native species populations, with six of eight native bird species unable to cope with the invasive predators, and native plants similarly devastated.",
+        "Fauna and flora": "Tromelin Island's fauna is dominated by seabirds, with nesting green sea turtles (Chelonia mydas) as the primary non-avian species, and no native terrestrial mammals, reptiles, or amphibians present on the island. The island historically supported 6–8 seabird species in large numbers prior to the introduction of invasive Norway rats (Rattus norvegicus), but by 2005 only two booby species persisted with limited breeding success. Following rat eradication in 2005, the seabird community expanded to seven breeding species by 2022, with total breeding pairs rising from 353 to 4,758, reflecting improved nesting success rather than immigration. Key breeding seabirds include the masked booby (Sula dactylatra melanops), an endemic subspecies. The flora of Tromelin Island is characterized by sparse, low-lying vegetation adapted to harsh tropical coralline atoll conditions including strong winds, salt spray, and limited freshwater. Prior to invasive species impacts, the native plant community consisted primarily of a single littoral shrub species, Tournefortia argentea (synonym Heliotropium foertherianum, known as tree heliotrope), alongside fewer than 10 herbaceous species, with no native trees present. Norway rats severely suppressed native vegetation by consuming seeds, seedlings, and foliage, but following eradication, native plants that had been decimated began growing back, and three bird species returned to the island.",
+        "History": "The documentary \"Tromelin, the Island of Forgotten Slaves,\" directed by Daniel Vigne and broadcast on Arte, provides a detailed and illustrated account of historical events related to Tromelin Island. The Slate article \"Abandoned on a Deserted Island: The Tragedy of Tromelin's Forgotten Slaves\" explores the memorial and political dimensions of the island's history. Archaeological and historical research has been conducted by Max Guérout, a former naval officer and archaeologist, whose reports document the living conditions on Tromelin during its historical period of human habitation. The island's history also carries cultural and political significance, as referenced across multiple source documents. Additionally, Tromelin Island's ecological history includes a period of thriving biodiversity before the accidental introduction of rats, which caused the collapse of the island's ecosystem, leading to the loss of six of eight native bird species, until French scientists from Réunion Island initiated an eradication project in 2005 to restore the island's natural environment.",
+        "Climate": "No relevant information regarding Climate is available."
+    },
+    "plan_path": "logs/agent2_plans/Tromelin Island_plan_20260512_195258.json",
+    "created_at": "20260512_195258"
+}

@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "island": "Kavachi",
+    "order": [
+        "Geography",
+        "Eruptions",
+        "Marine life"
+    ],
+    "dependency": {
+        "Geography": [],
+        "Eruptions": [],
+        "Marine life": [
+            "Geography"
+        ]
+    },
+    "summaries": {
+        "Geography": "Kavachi Volcano is located in the southwest Pacific Ocean, just south of Vangunu Island in the Solomon Islands, positioned along the Pacific Ring of Fire, a highly active tectonic boundary that makes it prone to frequent volcanic activity. The volcano is a shallow submarine volcano, meaning it erupts beneath the ocean surface, and its shallow positioning means eruptions are often visible from space and surrounding islands. The summit of Kavachi has an oblong, pockmarked crater measuring approximately 120 m × 75 m with a length-wise strike of 115° and a rim rising to an average of 24 m depth, with the deepest soundings on the peak at approximately 70 m water depth, surrounded by asymmetrical terrain with almost uniform flanks featuring 18° slopes that descend to depths greater than 1,000 m. A secondary summit, referred to as a \"southwest extension,\" is located 1.3 km southwest of the main summit. Kavachi is known for frequent phreatomagmatic and subaerial eruptions leading to occasional ephemeral island emergence, making it one of the most active submarine volcanoes in the world and by far the most active volcano in the Solomon Islands region.",
+        "Eruptions": "No relevant information regarding Eruptions is available.",
+        "Marine life": "Kavachi volcano, nicknamed \"Sharkano,\" is famous for extreme marine life thriving in its highly acidic crater waters with pH levels of approximately 1-2 and elevated temperatures, with a recorded temperature difference of +13°C between Kavachi's plume and surrounding surface waters. Species observed inside the crater using a baited drop camera include bluefin trevally, snapper, hammerhead sharks, and silky sharks, all functioning as secondary and tertiary consumers within the hydrothermal plume environment. Microbial mats have also been documented on the summit of the Southwest Extension of the crater. Scientists remain uncertain how large marine predators survive such extreme conditions, with proposed explanations including behavioral adaptation whereby sharks enter during calm phases and depart before eruptions, enhanced sensory perception allowing detection of chemical or seismic warning signs, and physiological tolerance to heat and acidity. The ecosystem supported by Kavachi's extreme environment is considered scientifically significant as it contributes to research into the physiological and behavioral resilience of marine animals to increased temperature, acidity, and turbidity, offering relevance to climate change impacts and deep-sea mining activities, and may provide clues to the types of animals that survived past major changes in ocean chemistry and those that could thrive in future ocean conditions, with researchers noting that a further understanding of organisms thriving in these environments could offer new insights into the evolutionary history of marine animals."
+    },
+    "plan_path": "logs/agent2_plans/Kavachi_plan_20260509_182049.json",
+    "created_at": "20260509_182049"
+}

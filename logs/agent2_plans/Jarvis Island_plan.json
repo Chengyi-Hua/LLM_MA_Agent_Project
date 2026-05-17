@@ -1,0 +1,34 @@
+{
+    "status": "success",
+    "island": "Jarvis Island",
+    "order": [
+        "Geography and ecology",
+        "History",
+        "National Wildlife Refuge",
+        "Transportation",
+        "Military"
+    ],
+    "dependency": {
+        "Geography and ecology": [],
+        "History": [
+            "Geography and ecology"
+        ],
+        "National Wildlife Refuge": [
+            "Geography and ecology",
+            "History"
+        ],
+        "Transportation": [],
+        "Military": [
+            "Geography and ecology",
+            "National Wildlife Refuge",
+            "History"
+        ]
+    },
+    "summaries": {
+        "Geography and ecology": "Howland Island has a land area of 0.77 square miles, a seafloor area from 0-100 ft of 1.16 square miles, a reef area from 0-100 ft of 0.77 square miles, a seafloor area of 100-500 ft of 0.77 square miles, a monument area of 19,945 square miles, zero population, an ecological grouping of Equatorial Upwelling Island, and the Island Chain is the Phoenix Islands. Jarvis Island has a land area of 1.5 square miles, a seafloor area from 0-100 ft of 1.5 square miles, a reef area from 0-100 ft of 1.5 square miles, a seafloor area of 100-500 ft of 1.16 square miles, a monument area of 121,655 square miles, zero population, an ecological grouping of Equatorial Upwelling Island, and the Island Chain is the Line Islands. Johnston Atoll has a land area of 1.16 square miles, a seafloor area from 0-100 ft of 74.9 square miles, a reef area from 0-100 ft of 36.3 square miles, a seafloor area of 100-500 ft of 18.9 square miles, a monument area of 170,830 square miles, zero population, an ecological grouping of Northernmost Oligotrophic Island, and the Island Chain is the Line Islands. Wake Island has a land area of 2.7 square miles, a seafloor area from 0-100 ft of 7.3 square miles, a reef area from 0-100 ft of 5.0 square miles, a seafloor area of 100-500 ft of 1.16 square miles, a monument area of 157,447 square miles, a population of 100, an ecological grouping of Northernmost Oligotrophic Island, and the Island Chain is the Marshall Islands. Baker Island has a land area of 0.77 square miles, a seafloor area from 0-100 ft of 1.5 square miles, a reef area from 0-100 ft of 1.5 square miles, a seafloor area of 100-500 ft of 0.77 square miles, a monument area of 19,945 square miles, zero population, an ecological grouping of Equatorial Upwelling Island, and the Island Chain is the Phoenix Islands. Jarvis Island is located just south of the equator about 1,850 kilometers east of Howland and Baker Islands, is about 3.2 kilometers long and 1.6 kilometers wide, consists of a relatively flat sandy coral island platform with a lower central basin and a narrow fringing reef, has a submarine terrace extending to one kilometer offshore, is tropical with little rainfall, constant wind, and burning sun, and is part of the Line Islands linear volcanic chain; the EEZ contains small to moderate-size seamounts, the dominant sea-floor topography is an abyssal plain more than 5,000 meters deep, and sediment in the south and west is siliceous ooze while in the north and east it is carbonate ooze.",
+        "History": "Jarvis Island was discovered in 1821 by Captain Brown aboard the British ship Eliza Francis. In 1857 Alfred G. Benson and Charles H. Judd took formal possession of the island for the American Guano Company of New York, and later that year Commander Charles Henry Davis of the USS St. Mary surveyed it and formally claimed it for the United States. Under the Guano Act of 1856 Jarvis became a U.S. possession, and it was mined for guano in the late 1800s before being abandoned in 1879 after large quantities had been removed. The United Kingdom annexed the island in 1889 and leased it to the Pacific Phosphate Company of London in 1906, though mining was not further developed. The United States reoccupied and reclaimed Jarvis in 1935, placed it under the jurisdiction of the Department of the Interior in 1936, evacuated new colonists in 1942 after Japanese attacks, and the island has remained mostly uninhabited since then; scientists occupied Millersville during 1957-1958, and since June 1974 it has been administered by the U.S. Fish and Wildlife Service as part of the National Wildlife Refuge system.",
+        "National Wildlife Refuge": "Jarvis Island National Wildlife Refuge was established in 1974 and is part of the Pacific Islands Heritage Marine National Monument. It includes submerged lands out to 200 nautical miles from Jarvis Island, encompassing 429,853 acres total, with 1,273 terrestrial acres and 428,580 submerged acres. Since June 1974, Jarvis Island has been administered by the U.S. Department of the Interior Fish and Wildlife Service as part of the National Wildlife Refuge system.",
+        "Transportation": "No relevant information regarding Transportation is available.",
+        "Military": "Jarvis Island has a documented military era following its 19th-century guano mining period, with human habitation and military-era remains noted as potential hazards. The settlement at Millersville existed until World War II broke out, after which the island was no longer inhabited, and the refuge plan references “hazards that may wash ashore or remain because of human habitation during the guano mining and military eras.”"
+    }
+}

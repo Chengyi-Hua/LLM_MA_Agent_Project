@@ -1,0 +1,13 @@
+{
+    "graph_analysis": {
+        "total_sections": 4,
+        "orphan_nodes_count": 3,
+        "orphan_nodes_list": [
+            "History",
+            "Governance",
+            "Jethou in popular culture"
+        ],
+        "orphan_node_ratio": "75.00%",
+        "max_graph_depth": 2
+    }
+}

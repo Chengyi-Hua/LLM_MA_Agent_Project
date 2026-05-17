@@ -1,0 +1,56 @@
+{
+    "status": "success",
+    "island": "Howland Island",
+    "order": [
+        "Flora and fauna",
+        "Economics",
+        "Time zone",
+        "History",
+        "National Wildlife Refuge",
+        "Earhart Light",
+        "Image gallery"
+    ],
+    "dependency": {
+        "Flora and fauna": [],
+        "Economics": [
+            "Flora and fauna"
+        ],
+        "Time zone": [
+            "Economics"
+        ],
+        "History": [
+            "Time zone",
+            "Flora and fauna"
+        ],
+        "National Wildlife Refuge": [
+            "Flora and fauna",
+            "Time zone",
+            "History",
+            "Economics"
+        ],
+        "Earhart Light": [
+            "Time zone",
+            "History",
+            "National Wildlife Refuge",
+            "Flora and fauna"
+        ],
+        "Image gallery": [
+            "Flora and fauna",
+            "Time zone",
+            "History",
+            "National Wildlife Refuge",
+            "Earhart Light"
+        ]
+    },
+    "summaries": {
+        "Flora and fauna": "",
+        "Economics": "The main elements of the FSM economy are subsistence farming and fishing, lease of fishing rights, servicing of fishing fleets, government employment, and tourism, with tourism having potential for near-term income generation but facing challenges in transportation and competition. The FSM considers the ocean its most important resource, earning $18-24 million annually in tuna fishing licensing fees. Rising sea levels threaten local economies and infrastructure, exacerbating existing inequities.",
+        "Time zone": "Howland Island and Baker Island are both unincorporated territories of the United States located in the Central Pacific Ocean. They lie within the International Date Line West (IDLW) time zone, which is 12 hours behind Coordinated Universal Time (UTC-12:00). This places them among the last inhabited places on Earth to experience a new calendar day. The islands have no indigenous population and are administered by the U.S. Fish and Wildlife Service as part of the Pacific Remote Islands Marine National Monument. Geologically, they are coral islands sitting atop Cretaceous volcanic seamounts, with Howland measuring approximately 3.2 by 0.8 km and Baker measuring about 1.6 by 1.4 km.",
+        "History": "Howland Island was discovered in 1791 by American sailor Edmund Fanning. It was first recorded sighted in 1822 by whaling captain George Worth, who named it Worth Island, and renamed Howland Island in 1842 for a whaling ship's lookout. The United States claimed the island in 1857 under the Guano Act of 1856. Prior to 1890, guano was mined from the island by both the United States and Britain. It was colonized from Hawaii in 1935. In 1937, pilot Amelia Earhart attempted to land there during her world flight but disappeared. During World War II, it served as a U.S. military lookout point.",
+        "National Wildlife Refuge": "Howland Island is a U.S. National Wildlife Refuge, part of the U.S. National Wildlife Refuge system, and was designated part of the Pacific Remote Islands Marine National Monument in 2009. It provides nesting areas and forage for a variety of birds and marine wildlife, including several species of migratory seabirds and shorebirds as well as threatened and endangered sea turtles. The island is a coral atoll with a land area of less than 0.6 square mile, composed of coral fragments and surrounded by an active fringing reef.",
+        "Earhart Light": "The Amelia Earhart light beacon was a small lighthouse built on Howland Island in 1937 in anticipation of her scheduled transpacific refueling stop. It was rendered useless after a Japanese bombing and shelling attack in 1941 during World War II, which heavily damaged the nearby Itascatown. The station has been inactive since 1942 and the structure is now considered a \"day beacon.\" The beacon remains on the island today, and there have been brief visits to restore it, including to add the names of lost colonists.",
+        "Image gallery": "The source documents contain a \"Gallery of Howland Island\" section and include a detailed description of an image titled \"ISS010-E-09287 (3 December 2004) --- Howland Island, Oceania\" which is a digital image photographed by an Expedition 10 crewmember on the International Space Station. The image shows Howland Island, a United States possession in the north Pacific, and the description provides technical details such as the camera used (Kodak DCS760c Electronic Still Camera), focal length (800 mm), altitude (192 nautical miles), and various look angles and sun azimuth/elevation data. The image is used for updating geographic maps, assessing reef ecosystem health, and calculating ocean bathymetry."
+    },
+    "plan_path": "logs/agent2_plans/Howland Island_plan_20260509_164207.json",
+    "created_at": "20260509_164207"
+}

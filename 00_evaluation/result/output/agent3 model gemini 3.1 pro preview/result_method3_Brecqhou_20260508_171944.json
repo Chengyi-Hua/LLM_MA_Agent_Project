@@ -1,0 +1,80 @@
+{
+  "method3": {
+    "method": "method3",
+    "island_name": "Brecqhou",
+    "metadata": {
+      "reranker": "bm25+mmr",
+      "rerank_strategy": "per-section",
+      "top_l": 5
+    },
+    "generated_article": "==Name==\nThe name \"Brecqhou\" refers specifically to the island itself, whereas the name \"Sark\" is used to describe both the neighboring island and the broader jurisdiction that includes Sark, Brecqhou, and other nearby rocks and islets.[1] The island's name is also sometimes spelled as \"Brechou\".[5] Historically, the island became known as *Isle des Marchants* after Jeanne de Chesney married Denis Le Marchant of Guernsey, which passed ownership of the island through the Le Marchant family line.[2] Even after ownership of the island was transferred to others, the name *Isle des Marchants* continued to be used.[2]\n\n==Geography==\nBrecqhou is located in the English Channel, northwest of the French coast of Normandy, and is one of the Channel Islands within the Bailiwick of Guernsey.[2][3] It is situated just west of Great Sark, from which it is separated by the narrow Le Gouliot Channel.[4] Together with Sark, the islands have a combined area of 2.1 square miles (5.5 square km).[4] Brecqhou is a privately owned island and maintains a very small population compared to its larger neighbor.[1][4]\n\nGeologically, Brecqhou is composed primarily of metamorphic rocks, specifically schists and gneisses.[5] These formations are among the oldest rocks in the Channel Islands.[5] They experienced multiple phases of deformation and metamorphism during the early Proterozoic era, approximately 2020 million years ago.[5]\n\n==Flag and stamps==\nBrecqhou is associated with a flag that incorporates the colors black, white, and red.[1] The broader Sark and Brecqhou island dyad has been characterized as a type of microstate or micronation, reflecting a contested history and distinct traditional ways of life.[2][4] In terms of postal services, the overarching jurisdiction of the Bailiwick of Guernsey achieved postal independence in 1969 and issues its own distinctive local postage stamps.[5] Within this framework, the owners of Brecqhou have maintained a tense and often contested jurisdictional relationship with Sark, challenging the political system and spatial power dynamics of the islands.[2][4]\n\n==Public visits==\nBrecqhou is a small, privately owned island.[1] In 1993, the island was sold to the Barclay brothers.[4] It serves as a private residence for the Barclay family and a small number of island employees.[2] Because of its status as a private estate, public access is restricted and visitation to the island is permitted by invitation only.[4]\n\n==Notes and references==\n* The States of Guernsey legally defines Brecqhou as a constituent part of Sark, though the island's physical separation is marked by a distance of 85 metres and an area of approximately 160 acres.[2]\n* Access to the island is restricted by steep cliffs, making it difficult to land anywhere other than its designated harbour.[2]\n* The Channel Islands archipelago, which includes Brecqhou, has been politically united with Great Britain since 1204 and historically maintained a Norman dialect.[1]\n* The island's flag was originally created in the 1960s by former tenement owner Leonard Matchan, who added his personal coat of arms to the Sark flag.[2]\n* Matchan also began issuing Brecqhou\n\n==Feudal relationship with Sark==\nIn 1565, Queen Elizabeth I granted the fiefdom of Sark to Helier de Carteret on the condition that he defend the territory against her enemies with forty armed men.[1][2] To fulfill this obligation, de Carteret divided the land into forty tenements, each carrying perpetual property rights alongside reciprocal duties of defense and tithe.[3] Due to the close proximity of the islands, it is presumed that de Carteret's defensive responsibilities extended to Brecqhou, and Sark's jurisdiction traditionally encompasses its offshore islets.[1] \n\nThe historical classification of Brecqhou as a true tenement of Sark has been a subject of dispute.[1][4] Some scholars argue that Brecqhou was not originally part of the fief and that Dame Sibyl Hathaway unlawfully granted it the status of a Sark tenement, which included a seat in the island's legislative body, Chief Pleas.[1][4] In the mid-twentieth century, legal advisors characterized the island's tenure as a \"manorial freehold\" where the owner acts as a tenant in perpetuity, similar to other Sark tenements.[4] Despite historical contestation over its status, major political authorities such as the United Kingdom's Ministry of Justice officially recognize Brecqhou as part of Sark's jurisdiction.[1] Consequently, Sark's laws generally apply to Brecqhou, although certain laws have been disapplied to grant the island a degree of autonomy.[1]\n\nThe feudal relationship faced significant challenges after Sir David and Sir Frederick Barclay purchased Brecqhou in 1993.[3] Under Sark's traditional tax laws, the brothers were liable to pay the *treizième*, a feudal tax amounting to one-thirteenth of the purchase price (estimated at £179,000), directly to the Seigneur of Sark.[3] Asserting human rights principles, the Barclays initiated a series of legal campaigns against the island's seigneurial system\n\n==Fort Brecqhou==\nFort Brecqhou is a massive granite-clad castle designed by British architect John Quinlan Terry and constructed between 1994 and 1996 for the billionaire twins Sir David and Sir Frederick Barclay.[2][3] It is considered the largest house built in Britain in the last two centuries.[1][2] The construction of the house, along with its extensive gardens and outbuildings, cost an estimated £90 million.[2] \n\nSituated on a rocky outcrop on the island, the fortress was built using two types of Spanish granite and has been described as practically indestructible.[1] The structure was designed in a castellated Gothic style on a quadrangular plan, featuring circular turrets at each of its four corners.[2] Its architecture incorporates giant twisted chimneys inspired by the style developed during the reign of King Henry VIII, a feature unique to English architecture.[2] Architectural historian David Watkin highlighted the building's dramatic roofscape, perilous platforms, crenelated parapets, and dark, winding staircases.[1][2] \n\nThe imposing structure served as a symbol of the Barclays' immense wealth and their strong desire for privacy.[1] Although it is a private residence, the grounds of Fort Brecqhou are open to the public by appointment.[2] Following the death of Sir David Barclay in January 2021, the estate was reported to have fallen silent.[1]",
+    "sections": [
+      {
+        "section_name": "Name",
+        "content": "The name \"Brecqhou\" refers specifically to the island itself, whereas the name \"Sark\" is used to describe both the neighboring island and the broader jurisdiction that includes Sark, Brecqhou, and other nearby rocks and islets.[1] The island's name is also sometimes spelled as \"Brechou\".[5] Historically, the island became known as *Isle des Marchants* after Jeanne de Chesney married Denis Le Marchant of Guernsey, which passed ownership of the island through the Le Marchant family line.[2] Even after ownership of the island was transferred to others, the name *Isle des Marchants* continued to be used.[2]",
+        "citations": [
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf",
+          "https://www.britannica.com/place/Sark",
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf"
+        ]
+      },
+      {
+        "section_name": "Geography",
+        "content": "Brecqhou is located in the English Channel, northwest of the French coast of Normandy, and is one of the Channel Islands within the Bailiwick of Guernsey.[2][3] It is situated just west of Great Sark, from which it is separated by the narrow Le Gouliot Channel.[4] Together with Sark, the islands have a combined area of 2.1 square miles (5.5 square km).[4] Brecqhou is a privately owned island and maintains a very small population compared to its larger neighbor.[1][4]\n\nGeologically, Brecqhou is composed primarily of metamorphic rocks, specifically schists and gneisses.[5] These formations are among the oldest rocks in the Channel Islands.[5] They experienced multiple phases of deformation and metamorphism during the early Proterozoic era, approximately 2020 million years ago.[5]",
+        "citations": [
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf",
+          "https://discovery.researcher.life/article/channel-island-french/c16a0431634f3ad18aed5782cf978fde",
+          "https://www.countryfile.com/go-outdoors/residence-des-freres-barclay-channel-islands",
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf",
+          "https://www.britannica.com/place/Sark"
+        ]
+      },
+      {
+        "section_name": "Flag and stamps",
+        "content": "Brecqhou is associated with a flag that incorporates the colors black, white, and red.[1] The broader Sark and Brecqhou island dyad has been characterized as a type of microstate or micronation, reflecting a contested history and distinct traditional ways of life.[2][4] In terms of postal services, the overarching jurisdiction of the Bailiwick of Guernsey achieved postal independence in 1969 and issues its own distinctive local postage stamps.[5] Within this framework, the owners of Brecqhou have maintained a tense and often contested jurisdictional relationship with Sark, challenging the political system and spatial power dynamics of the islands.[2][4]",
+        "citations": [
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf",
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf",
+          "https://www.countryfile.com/go-outdoors/residence-des-freres-barclay-channel-islands",
+          "https://www.britannica.com/place/Sark"
+        ]
+      },
+      {
+        "section_name": "Public visits",
+        "content": "Brecqhou is a small, privately owned island.[1] In 1993, the island was sold to the Barclay brothers.[4] It serves as a private residence for the Barclay family and a small number of island employees.[2] Because of its status as a private estate, public access is restricted and visitation to the island is permitted by invitation only.[4]",
+        "citations": [
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf",
+          "https://www.countryfile.com/go-outdoors/residence-des-freres-barclay-channel-islands",
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf"
+        ]
+      },
+      {
+        "section_name": "Notes and references",
+        "content": "* The States of Guernsey legally defines Brecqhou as a constituent part of Sark, though the island's physical separation is marked by a distance of 85 metres and an area of approximately 160 acres.[2]\n* Access to the island is restricted by steep cliffs, making it difficult to land anywhere other than its designated harbour.[2]\n* The Channel Islands archipelago, which includes Brecqhou, has been politically united with Great Britain since 1204 and historically maintained a Norman dialect.[1]\n* The island's flag was originally created in the 1960s by former tenement owner Leonard Matchan, who added his personal coat of arms to the Sark flag.[2]\n* Matchan also began issuing Brecqhou",
+        "citations": [
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf",
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf"
+        ]
+      },
+      {
+        "section_name": "Feudal relationship with Sark",
+        "content": "In 1565, Queen Elizabeth I granted the fiefdom of Sark to Helier de Carteret on the condition that he defend the territory against her enemies with forty armed men.[1][2] To fulfill this obligation, de Carteret divided the land into forty tenements, each carrying perpetual property rights alongside reciprocal duties of defense and tithe.[3] Due to the close proximity of the islands, it is presumed that de Carteret's defensive responsibilities extended to Brecqhou, and Sark's jurisdiction traditionally encompasses its offshore islets.[1] \n\nThe historical classification of Brecqhou as a true tenement of Sark has been a subject of dispute.[1][4] Some scholars argue that Brecqhou was not originally part of the fief and that Dame Sibyl Hathaway unlawfully granted it the status of a Sark tenement, which included a seat in the island's legislative body, Chief Pleas.[1][4] In the mid-twentieth century, legal advisors characterized the island's tenure as a \"manorial freehold\" where the owner acts as a tenant in perpetuity, similar to other Sark tenements.[4] Despite historical contestation over its status, major political authorities such as the United Kingdom's Ministry of Justice officially recognize Brecqhou as part of Sark's jurisdiction.[1] Consequently, Sark's laws generally apply to Brecqhou, although certain laws have been disapplied to grant the island a degree of autonomy.[1]\n\nThe feudal relationship faced significant challenges after Sir David and Sir Frederick Barclay purchased Brecqhou in 1993.[3] Under Sark's traditional tax laws, the brothers were liable to pay the *treizième*, a feudal tax amounting to one-thirteenth of the purchase price (estimated at £179,000), directly to the Seigneur of Sark.[3] Asserting human rights principles, the Barclays initiated a series of legal campaigns against the island's seigneurial system",
+        "citations": [
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf",
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf",
+          "https://discovery.researcher.life/article/channel-island-french/c16a0431634f3ad18aed5782cf978fde",
+          "https://www.countryfile.com/go-outdoors/residence-des-freres-barclay-channel-islands"
+        ]
+      },
+      {
+        "section_name": "Fort Brecqhou",
+        "content": "Fort Brecqhou is a massive granite-clad castle designed by British architect John Quinlan Terry and constructed between 1994 and 1996 for the billionaire twins Sir David and Sir Frederick Barclay.[2][3] It is considered the largest house built in Britain in the last two centuries.[1][2] The construction of the house, along with its extensive gardens and outbuildings, cost an estimated £90 million.[2] \n\nSituated on a rocky outcrop on the island, the fortress was built using two types of Spanish granite and has been described as practically indestructible.[1] The structure was designed in a castellated Gothic style on a quadrangular plan, featuring circular turrets at each of its four corners.[2] Its architecture incorporates giant twisted chimneys inspired by the style developed during the reign of King Henry VIII, a feature unique to English architecture.[2] Architectural historian David Watkin highlighted the building's dramatic roofscape, perilous platforms, crenelated parapets, and dark, winding staircases.[1][2] \n\nThe imposing structure served as a symbol of the Barclays' immense wealth and their strong desire for privacy.[1] Although it is a private residence, the grounds of Fort Brecqhou are open to the public by appointment.[2] Following the death of Sir David Barclay in January 2021, the estate was reported to have fallen silent.[1]",
+        "citations": [
+          "https://www.shimajournal.org/issues/v8n1/d.-Johnson-Shima-v8n1-9-33.pdf",
+          "https://discovery.researcher.life/article/channel-island-french/c16a0431634f3ad18aed5782cf978fde",
+          "https://www.shimajournal.org/issues/v9n1/i.-Johnson-Shima-v9n1-89-108.pdf"
+        ]
+      }
+    ]
+  }
+}

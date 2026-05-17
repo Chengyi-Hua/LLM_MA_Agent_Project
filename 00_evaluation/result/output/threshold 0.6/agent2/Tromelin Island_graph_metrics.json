@@ -1,0 +1,13 @@
+{
+    "graph_analysis": {
+        "total_sections": 5,
+        "orphan_nodes_count": 3,
+        "orphan_nodes_list": [
+            "Etymology",
+            "Description",
+            "Climate"
+        ],
+        "orphan_node_ratio": "60.00%",
+        "max_graph_depth": 3
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "status": "success",
+    "island": "Jarvis Island",
+    "order": [
+        "Geography and ecology",
+        "History",
+        "National Wildlife Refuge",
+        "Transportation",
+        "Military"
+    ],
+    "dependency": {
+        "Geography and ecology": [],
+        "History": [
+            "Geography and ecology"
+        ],
+        "National Wildlife Refuge": [
+            "Geography and ecology",
+            "History"
+        ],
+        "Transportation": [],
+        "Military": [
+            "Geography and ecology",
+            "History",
+            "National Wildlife Refuge"
+        ]
+    },
+    "summaries": {
+        "Geography and ecology": "Jarvis Island is located in the central equatorial Pacific Ocean, with its refuge boundary encompassing all of the island together with its territorial sea extending outward to the three-mile limit, as defined by 39 Federal Register 27930. The emergent land area for Jarvis encompasses 1,273 acres, while submerged lands and waters within the three-mile limit encompass 36,214 acres, for a total of 37,487 acres. Jarvis is described as one of the last places in the world where terrestrial and marine tropical island ecosystems are still intact and relatively free of human impact, offering the opportunity to serve as a living laboratory for measuring current and future human impacts to island, coral reef, and deep marine habitats. Natural, physical, and ecological processes unfold with limited human interference and support a diverse community of native marine organisms including seabirds, marine mammals, turtles, and fish. The preservation of the complete ecosystem, both terrestrial and marine, is a core management objective, with special emphasis given to the large seabird nesting colonies. Howland Island, Baker Island, and Jarvis Island are all situated in the Pacific Ocean and are managed as National Wildlife Refuges under Comprehensive Conservation Plans published by the U.S. Fish and Wildlife Service in 2008, with Palmyra Atoll, Kingman Reef, Johnston Atoll, and Wake Atoll also forming part of this broader Pacific island biogeographical context.",
+        "History": "The first known sighting of Jarvis Island by Europeans was on August 21, 1821, by the British ship Eliza Francis owned by Edward, Thomas, and William Jarvis, for whom the island was named. American whalers and other seafarers exploring the central Pacific discovered guano resulting in the United States Exploring Expedition to survey Jarvis in 1840. In 1857, Arthur Benson and Charles Judd, aboard the Hawaiian schooner Liholiho, took possession of Jarvis and claimed it for the American Guano Company under the Guano Islands Act of 1856. Prior to refuge establishment, President Franklin D. Roosevelt signed Executive Order 7368 on May 13, 1936, placing control and jurisdiction of Jarvis Island with the Secretary of the Interior, originally administered by the Office of Territorial Affairs. On June 27, 1974, the Secretary of the Interior designated Jarvis Island and its territorial sea extending to the 3 nautical mile limit as a unit of the National Wildlife Refuge System (39 FR 27930), with the stated purpose at the time of transfer being the preservation of the complete ecosystem, terrestrial as well as marine, with special emphasis given to the large seabird nesting colonies.",
+        "National Wildlife Refuge": "Jarvis Island National Wildlife Refuge was established in 1974 and is located 1,305 nautical miles south of Honolulu, with a reported area of 1,744.87 km² and a site ID of 2931, classified as a Marine and Coastal Protected Area within the United States Minor Outlying Islands. The refuge includes submerged lands out to 200 nautical miles from the island, encompassing 429,853 acres total, with 1,273 acres being terrestrial and 428,580 acres being submerged. On January 6, 2009, the Pacific Islands Heritage Marine National Monument was established, which includes Jarvis Island National Wildlife Refuge within its boundaries. The National Wildlife Refuge System mission is to administer a national network of lands and waters for the conservation, management, and where appropriate, restoration of the fish, wildlife, and plant resources and their habitats within the United States for the benefit of present and future generations of Americans. The U.S. Fish and Wildlife Service published Comprehensive Conservation Plans in 2008 for Howland Island, Baker Island, and Jarvis Island National Wildlife Refuges, all based in Honolulu, HI. Related protected areas include Palmyra Atoll National Wildlife Refuge and the Pacific Remote Islands Marine area. Amateur radio operation at the refuge has been evaluated and found not to detract from the refuge's core mission to protect and preserve the natural character of fish, wildlife, plants, coral reef communities, and other associated resources.",
+        "Transportation": "No relevant information regarding Transportation is available.",
+        "Military": "The U.S. Army Garrison-Hawaii's Distinguished Lecture Series, sponsored by Col. Douglas Mulbury, commander of USAG-HI, was held at the Nehelani at Schofield Barracks, Hawaii, on Aug. 27, with 170 attendees present. The lecture series is co-sponsored by the Native Hawaiian Liaison Office and encourages military and Hawaiian communities to learn more about each other in an informal setting. A photograph from Howland Island in June 1936 depicts two unidentified military personnel alongside colonists William Stewart Markham, Kini Pea, Killarney Opiopio, and James Kamakaiwi, referencing a military era of human habitation on the islands. The U.S. Coast Guard has been among the organizations, alongside NOAA and private charter vessels, providing transportation to the remote Pacific islands in recent years, with NOAA scientific ship expeditions to central Pacific Ocean insular properties including Baker, Howland, and Johnston Island NWR conducted on a biennial basis, with the ship arriving at Johnston after 3 days of travel from Honolulu and spending 4 days of research time there before departing for Howland after 7 days of travel. President Franklin D. Roosevelt signed Executive Order 7368 on May 13, 1936, placing control and jurisdiction of Jarvis Island with the Secretary of the Interior, predating the military era referenced in the colonization efforts from 1935-1942."
+    },
+    "plan_path": "logs/agent2_plans/Jarvis Island_plan_20260509_181906.json",
+    "created_at": "20260509_181906"
+}

@@ -1,0 +1,33 @@
+{
+    "status": "success",
+    "island": "Jethou",
+    "order": [
+        "History",
+        "Governance",
+        "Wildlife",
+        "Jethou in popular culture"
+    ],
+    "dependency": {
+        "History": [],
+        "Governance": [
+            "History"
+        ],
+        "Wildlife": [
+            "History",
+            "Governance"
+        ],
+        "Jethou in popular culture": [
+            "Wildlife",
+            "History",
+            "Governance"
+        ]
+    },
+    "summaries": {
+        "History": "Guernsey's strategic position in the Channel Islands offered a constant visual landmark attracting early maritime peoples, with its distinctive granite massif including La Fauconnaire providing a navigational beacon visible from surrounding waters. The island's topography and paleogeography show it remained intertidal or fully exposed throughout postglacial sea-level rise, facilitating access. Archaeological evidence from the Guernsey SMR indicates prehistoric activity including stone rings and flint tools, while local folklore reflects the perilous nature of coastal navigation around these islands.",
+        "Governance": "Guernsey's first Biodiversity Strategy was adopted by the States of Guernsey in 2014. Herm, Jethou and The Humps were designated as a Ramsar site, a Wetland of International Importance, as Guernsey is signed up to the Ramsar Convention. Sites of Special Significance (SSS) are designated areas afforded protection within the Island Development Plan.",
+        "Wildlife": "Jethou is part of the Herm, Jethou and The Humps Ramsar site, a wetland of international importance. This shallow marine ecosystem spans 1,850 hectares and includes reefs, shipwrecks, and seabeds. It features habitats like eelgrass beds and maerl gravel, serving as spawning grounds for fish such as European sea bass and Atlantic mackerel. The area hosts globally threatened species including the green ormer, Balearic shearwater, and marine mammals. The tidal range reaches up to 10 metres. Wildlife includes Atlantic grey seals, basking sharks, sea bass, Black Sea bream, and nine bird species including puffins.",
+        "Jethou in popular culture": "Jethou has issued postage stamps as part of its cultural representation, with its first issue in 1960 designed with input from Charles Coker. A set of five stamps depicted symbols of island identity, including the island's crest featuring a lion and an imaginary castle-like tower shown on a 1½d stamp along with the word \"JETHOU\" in capital letters. A 4d stamp featured a map of the island including its two tidal islets, Fauconnière and Crevichon, which were themselves featured on 6d and 9d stamps respectively, though those islet stamps did not include the name Jethou. An 18d stamp showed an island scene with a Neolithic standing stone and also bore the island's name."
+    },
+    "plan_path": "logs/agent2_plans/Jethou_plan_20260509_164511.json",
+    "created_at": "20260509_164511"
+}

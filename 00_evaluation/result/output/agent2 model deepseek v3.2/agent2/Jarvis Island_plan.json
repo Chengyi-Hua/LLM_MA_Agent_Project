@@ -1,0 +1,38 @@
+{
+    "status": "success",
+    "island": "Jarvis Island",
+    "order": [
+        "Geography and ecology",
+        "History",
+        "National Wildlife Refuge",
+        "Transportation",
+        "Military"
+    ],
+    "dependency": {
+        "Geography and ecology": [],
+        "History": [
+            "Geography and ecology"
+        ],
+        "National Wildlife Refuge": [
+            "Geography and ecology",
+            "History"
+        ],
+        "Transportation": [
+            "Geography and ecology"
+        ],
+        "Military": [
+            "Geography and ecology",
+            "History",
+            "National Wildlife Refuge"
+        ]
+    },
+    "summaries": {
+        "Geography and ecology": "Jarvis Island is located in the central equatorial Pacific Ocean with an emergent land area of 1,273 acres and a total refuge area including submerged lands within a three-mile territorial sea of 37,487 acres. It is described as one of the last places where terrestrial and marine tropical island ecosystems remain intact and relatively free of human impact, serving as a living laboratory for measuring human impacts to island, coral reef, and deep marine habitats. The refuge's purpose includes the preservation of the complete ecosystem with special emphasis on large seabird nesting colonies.",
+        "History": "The first known sighting of Jarvis Island by Europeans was on August 21, 1821, by the British ship Eliza Francis owned by Edward, Thomas, and William Jarvis, for whom the island was named. American whalers and other seafarers exploring the central Pacific discovered guano resulting in the United States Exploring Expedition to survey Jarvis in 1840. In 1857, Arthur Benson and Charles Judd, aboard the Hawaiian schooner Liholiho, took possession of Jarvis and claimed it for the American Guano Company under the Guano Islands Act of 1856.",
+        "National Wildlife Refuge": "Jarvis Island National Wildlife Refuge was established in 1974 and is located 1,305 nautical miles south of Honolulu. The refuge includes submerged lands out to 200 nautical miles from the island, encompassing 429,853 acres, with 1,273 acres being terrestrial and 428,580 acres being submerged. On January 6, 2009, the Pacific Islands Heritage Marine National Monument was established, which includes Jarvis Island National Wildlife Refuge within its boundaries. The National Wildlife Refuge System mission is to administer a national network of lands and waters for the conservation, management, and where appropriate, restoration of fish, wildlife, and plant resources and their habitats.",
+        "Transportation": "No relevant information regarding Transportation is available.",
+        "Military": "The documentary \"Under a Jarvis Moon\" was presented at a U.S. Army Garrison-Hawaii Distinguished Lecture Series sponsored by the garrison commander and the Native Hawaiian Liaison Office. The film details U.S. efforts from 1935-1942 to colonize Jarvis, Howland, and Baker Islands, involving over 130 young men from Hawaii, including 52 Hawaiians from Kamehameha Schools. A historical photo from Howland Island in June 1936 includes two unidentified military personnel alongside colonists. The islands have hazards from human habitation during the guano mining and military eras. Jarvis Island's control was placed with the Secretary of the Interior by Executive Order in 1936 prior to refuge establishment."
+    },
+    "plan_path": "logs/agent2_plans/Jarvis Island_plan_20260509_164412.json",
+    "created_at": "20260509_164412"
+}

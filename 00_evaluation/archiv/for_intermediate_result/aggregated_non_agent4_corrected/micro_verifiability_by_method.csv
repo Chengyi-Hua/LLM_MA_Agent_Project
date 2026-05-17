@@ -1,0 +1,5 @@
+method,num_islands,total_sentences,total_cited_sentences,total_supported_cited_sentences,micro_citation_recall,micro_citation_precision,micro_citation_rate
+method0,10,467,0,0,0.0,,0.0
+method1,10,61,56,10,0.1639,0.1786,0.918
+method2,10,93,82,14,0.1505,0.1707,0.8817
+method3,10,87,77,15,0.1724,0.1948,0.8851

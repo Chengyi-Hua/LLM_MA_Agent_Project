@@ -1,0 +1,25 @@
+# Virtual environment
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Outputs
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store.env
+data/.DS_Store
+
+.DS_Store

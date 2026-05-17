@@ -1,0 +1,40 @@
+{
+    "status": "success",
+    "island": "Howland Island",
+    "order": [
+        "Flora and fauna",
+        "Economics",
+        "Time zone",
+        "History",
+        "National Wildlife Refuge",
+        "Earhart Light",
+        "Image gallery"
+    ],
+    "dependency": {
+        "Flora and fauna": [],
+        "Economics": [],
+        "Time zone": [
+            "Economics"
+        ],
+        "History": [],
+        "National Wildlife Refuge": [
+            "Flora and fauna",
+            "Economics",
+            "Time zone"
+        ],
+        "Earhart Light": [
+            "Economics",
+            "National Wildlife Refuge"
+        ],
+        "Image gallery": []
+    },
+    "summaries": {
+        "Flora and fauna": "",
+        "Economics": "Howland Island has no economic activity. Its historical economic use included guano mining by US and British companies until about 1890.",
+        "Time zone": "The source states that the United States and its territories are designated to nine different time zones by law, extending to 11 when uninhabited territories such as Baker Island and Howland Island are included. It identifies a 12th theoretical time zone, AoE (Anywhere on Earth), assigned to Howland Island and Baker Island, with UTC-12 for the US Minor Outlying Islands. It also lists Samoa Standard Time (UTC-11) for American Samoa and US Minor Outlying Islands, Atlantic Standard Time (UTC-4) for Puerto Rico and the US Virgin Islands, Chamorro Standard Time (UTC+10) for Guam and the Northern Mariana Islands, and Wake Time (UTC+12) for US Minor Outlying Islands.",
+        "History": "",
+        "National Wildlife Refuge": "Howland Island is a U.S. National Wildlife Refuge and part of the Pacific Remote Islands Marine National Monument, designated in 2009. It is an unincorporated U.S. coral atoll in the southwestern Pacific Ocean with no permanent inhabitants and habitat for migratory seabirds, shorebirds, and threatened and endangered sea turtles.",
+        "Earhart Light": "",
+        "Image gallery": "No relevant information regarding Image gallery is available."
+    }
+}

@@ -1,0 +1,10 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+main,,,,,,Citation and verifiability,Citation coverage failure,,116,86,140,0.614286,58,0.414286,39,0.278571,0,0.000000,71,45,0
+main,,,,,,Citation and verifiability,Citation support failure,,179,104,140,0.742857,75,0.535714,41,0.292857,0,0.000000,127,52,0
+main,,,,,,Content quality,Content addition,,0,0,140,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,,Content quality,Content omission,,74,43,140,0.307143,19,0.135714,27,0.192857,0,0.000000,32,42,0
+main,,,,,,Content quality,Content organization error,,1,1,140,0.007143,1,0.007143,0,0.000000,0,0.000000,1,0,0
+main,,,,,,Content quality,Content quality error,,2,2,140,0.014286,0,0.000000,2,0.014286,0,0.000000,0,2,0
+main,,,,,,Content quality,Content substitution,,77,77,140,0.550000,6,0.042857,71,0.507143,0,0.000000,6,71,0
+main,,,,,,Planning and graph,Graph coherence failure,,44,44,140,0.314286,12,0.085714,32,0.228571,0,0.000000,12,32,0
+main,,,,,,Writing quality,Writing error,,5,2,140,0.014286,2,0.014286,1,0.007143,0,0.000000,4,1,0

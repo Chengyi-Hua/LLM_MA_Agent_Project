@@ -1,0 +1,36 @@
+{
+    "status": "success",
+    "island": "Brecqhou",
+    "order": [
+        "Name",
+        "Geography",
+        "Feudal relationship with Sark",
+        "Fort Brecqhou",
+        "Flag and stamps",
+        "Public visits",
+        "Notes and references"
+    ],
+    "dependency": {
+        "Name": [],
+        "Geography": [],
+        "Feudal relationship with Sark": [
+            "Geography"
+        ],
+        "Fort Brecqhou": [
+            "Geography",
+            "Feudal relationship with Sark"
+        ],
+        "Flag and stamps": [],
+        "Public visits": [],
+        "Notes and references": []
+    },
+    "summaries": {
+        "Name": "No relevant information regarding Name is available.",
+        "Geography": "Lihou is a small tidal island just off the west coast of Guernsey in the Channel Islands, accessible from L’Erée headland by a 570 m causeway across a rocky foreshore. It is part of the Parish of St Pierre Du Bois and covers 0.15 square kilometres (38 acres), standing as the westernmost point in the Channel Islands. The Bailiwick of Guernsey is a British Crown Dependency in the Gulf of St Malo northwest of France and includes six populated islands across the jurisdictions of Guernsey, Sark, and Alderney. Sark and Brecqhou are geographically extremely close, with Brecqhou a much smaller private island of about 160 acres.",
+        "Feudal relationship with Sark": "Sark had been governed as a fief under the hereditary rule of a Seigneur from the 16th century until 2008, when the feudal government of Sark was replaced with an elected assembly; the Seigneur had been Sark’s hereditary feudal lord and civic head. The documents also state that Brecqhou has a special relationship with privileges within the Fief of Sark and has been treated as a Sark tenement in some historical claims, though its jurisdictional status has been contested and some argue it does not fall under Sark’s jurisdiction.",
+        "Fort Brecqhou": "Fort Brecqhou is a neo-gothic mansion designed by Quinlan Terry and built from 1994 to 1996 on the Channel Island of Brecqhou.",
+        "Flag and stamps": "No relevant information regarding Flag and stamps is available.",
+        "Public visits": "No relevant information regarding Public visits is available.",
+        "Notes and references": "No relevant information regarding Notes and references is available."
+    }
+}

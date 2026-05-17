@@ -1,0 +1,64 @@
+llm:
+  temperature: 0.0
+  max_tokens: 4096
+  method0:
+    provider: "openrouter"
+    #model: "openai/gpt-5.4-mini"        # change to any model on openrouter.ai/models
+    model: "openrouter/free"
+  method1:
+    provider: "openrouter"
+    model: "openrouter/free"
+  method2:
+    provider: "openrouter"
+    model: "openrouter/free"
+  method3:
+    provider: "openrouter"
+    model: "openrouter/free"
+  agent2:
+    # Part 1: LLM for compressing chunks into summaries
+    llm:
+      provider: "openrouter"
+      model: "openrouter/free"
+      temperature: 0.3
+      max_tokens: 400
+    # Part 2: NLI model + graph algorithm config
+    graph_logic:
+      nli_model:
+        provider: "huggingface"
+        model_name: "cross-encoder/nli-deberta-v3-base"
+        entailment_index: 1
+      algorithm:
+        threshold: 0.6
+        allow_cycles: false
+  agent3:
+    provider: "openrouter"
+    model: "openrouter/free"
+  agent4:
+    provider: "openrouter"
+    model: "openai/gpt-5.5"
+
+
+api_keys:
+  openai_env: "OPENAI_API_KEY"          
+  groq_env: "GROQ_API_KEY"              
+  openrouter_env: "OPENROUTER_API_KEY"  
+
+retrieval:
+  tavily:
+    max_results: 10
+    search_depth: "advanced"
+
+  chunking:
+    chunk_size: 500
+    overlap: 60
+
+pipeline_config:
+  target_entity: "Surtsey"
+
+# Methods config — used by methods 1, 2, and 3
+methods:
+  use_top_l: true
+  top_l: 5
+  reranker_type: "bm25"          # "bm25", "cross-encoder", or "none"
+                                  # tip: use "bm25" locally — cross-encoder is slow
+  rerank_scope: "per-section"    # "global" or "per-section"

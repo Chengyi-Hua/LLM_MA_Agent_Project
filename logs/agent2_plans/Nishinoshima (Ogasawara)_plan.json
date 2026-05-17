@@ -1,0 +1,21 @@
+{
+    "status": "success",
+    "island": "Nishinoshima (Ogasawara)",
+    "order": [
+        "Etymology",
+        "Geology",
+        "Ecology"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Geology": [],
+        "Ecology": [
+            "Geology"
+        ]
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Geology": "Nishinoshima is described as a stratovolcano rising about 3,000 meters from the ocean floor with a base area of around 600 square kilometers, and its subaerial part in early 1973 consisted of a small island and several rocks at the northeastern end of a 1.2-kilometer-wide caldera that was nearly filled in and 107 meters deep at its deepest point. The volcano is situated on the western shear wall of the Ogasawara Trough, and the 2020 eruption produced submarine deposits of basalt, basaltic andesite, andesite, and dacite magmas. The island-forming activity is associated with compound lava flows and ongoing morphological evolution of a new volcanic islet.",
+        "Ecology": "Nishinoshima’s ecology is described through its island vegetation and ecosystem development: major eruptions in 2013 destroyed nearly all vegetation, and understanding the origin and characteristics of plant populations there provides insight into early island ecosystem development. Portulaca oleracea samples collected in 2019 before later eruptions were used in phylogenetic and population genetic analyses, showing that Nishinoshima populations belong to the southern genetic group, are genetically close to Chichijima populations, and likely reflect limited seed dispersal, founder effects, and genetic bottlenecks caused by volcanic eruptions and typhoons."
+    }
+}

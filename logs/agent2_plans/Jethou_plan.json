@@ -1,0 +1,31 @@
+{
+    "status": "success",
+    "island": "Jethou",
+    "order": [
+        "History",
+        "Governance",
+        "Wildlife",
+        "Jethou in popular culture"
+    ],
+    "dependency": {
+        "History": [],
+        "Governance": [
+            "History"
+        ],
+        "Wildlife": [
+            "History",
+            "Governance"
+        ],
+        "Jethou in popular culture": [
+            "History",
+            "Governance",
+            "Wildlife"
+        ]
+    },
+    "summaries": {
+        "History": "Jethou’s history includes a traditional account that in 709 AD a major storm washed away the land bridge connecting it to Herm, leaving it as a separate island. In 1416, Jethou became part of the lands owned by Henry V of England and remains a Crown lease, owned by the States of Guernsey and rented to private individuals. From 1920 to 1923, writer Compton Mackenzie rented Jethou, also renting nearby Herm, and other text states he was tenant until 1934 and used a writing hut there. In 1957, the musical Free as Air used a fictional island called Terhou, based on Jethou. The island has also been described as having a past linked to smuggling, piracy, and local folk tales about the Great Creux cave, with one account suggesting the name may derive from Keitholm, a Viking name.",
+        "Governance": "Guernsey is signed up to the Ramsar Convention and has designated sites including Lihou Island and L’Erée Headland, and Herm, Jethou and The Humps. The State of Nature report says it was produced to provide information on the state of habitats and species on Guernsey, Lihou, Herm, Jethou and The Humps and to help guide conservation efforts by government, industry, the third sector, businesses and the general public. It also states that Sites of Special Significance are designated areas afforded protection within the Island Development Plan.",
+        "Wildlife": "Jethou’s island wildlife includes puffins, which can be seen swimming near the rocks and nesting on the eastern clifftop. The State of Nature 2024 report also lists wildlife-related species on Guernsey and nearby islands, including Barn Owl (Tyto alba), Upright Chickweed (Moenchia erecta), Violet-winged Mining Bee (Andrena aglissima), and Blue-winged Grasshopper (Oedipoda caerulescens), and notes that Guernsey has approximately 41 terrestrial habitats, with over half identified as Priority Habitats.",
+        "Jethou in popular culture": "Jethou has been fictionalized as the island of “Terhou” in the 1957 British musical Free as Air, a romantic comedy with book and lyrics by Dorothy Reynolds and Julian Slade and music by Julian Slade."
+    }
+}

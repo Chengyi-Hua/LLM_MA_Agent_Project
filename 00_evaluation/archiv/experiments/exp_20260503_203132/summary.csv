@@ -1,0 +1,14 @@
+timestamp,experiment_name,island,input_json,method,combo_tag,reranker_type,rerank_scope,top_l,status,seconds,result_path,error
+2026-05-03T20:33:14,exp_20260503_203132,Hawaii,D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\data\Hawaii_rag_context.json,method2,rerank-bm25_scope-per-section_top5,bm25,per-section,5,failed,101.55,D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\00_evaluation\experiments\exp_20260503_203132\results\result_method2_Hawaii_rerank-bm25_scope-per-section_top5.json,"Traceback (most recent call last):
+  File ""D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\00_evaluation\batch_experiments.py"", line 321, in run_batch
+    result = run_method(
+  File ""D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\00_evaluation\batch_experiments.py"", line 177, in run_method
+    result = runner.generate(input_data)
+  File ""D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\methods\hierarchical_rag.py"", line 52, in generate
+    top_chunks, section_text = self._generate_section(
+  File ""D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\methods\hierarchical_rag.py"", line 93, in _generate_section
+    section_text = self._call_llm(prompt)
+  File ""D:\Users\cheng\Documents\GitHub\LLM_MA_Agent_Project\methods\base_rag.py"", line 85, in _call_llm
+    return response.choices[0].message.content.strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+"

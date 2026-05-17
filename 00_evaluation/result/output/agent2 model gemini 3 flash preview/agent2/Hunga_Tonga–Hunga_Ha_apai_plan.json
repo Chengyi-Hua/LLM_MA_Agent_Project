@@ -1,0 +1,33 @@
+{
+    "status": "success",
+    "island": "Hunga Tonga–Hunga Haʻapai",
+    "order": [
+        "Volcano and caldera",
+        "Geography",
+        "Footnotes",
+        "Eruptions"
+    ],
+    "dependency": {
+        "Volcano and caldera": [],
+        "Geography": [
+            "Volcano and caldera"
+        ],
+        "Eruptions": [
+            "Volcano and caldera",
+            "Geography",
+            "Footnotes"
+        ],
+        "Footnotes": [
+            "Volcano and caldera",
+            "Geography"
+        ]
+    },
+    "summaries": {
+        "Volcano and caldera": "The Hunga volcano is an active submarine structure featuring a large central caldera measuring 4 by 2 kilometers and 150 meters deep, which likely formed by the explosive collapse of a previous volcanic structure. The uninhabited islands of Hunga Tonga and Hunga Ha’apai represent the visible northern and western remnants of the ridge surrounding this submarine caldera. Geological samples from the site reveal alternating layers of andesitic lava flows, scoria, lapilli, and ash dipping away from the center. Eruptions in 2014 and 2015 created a new volcanic cone that joined the two islands into a single landmass of approximately 1 km2 before the January 2022 event. The 2022 eruption was described as a once-in-1,000-years event for the Hunga caldera, potentially ranking as high as 5 on the volcanic explosivity index, and resulted in the destruction of the joined islands with only small fragments remaining at the edges. This volcanic system is part of the Tonga-Kermadec arc and is located approximately 30 km south of the Fonuafoʻou submarine volcano and 65 km north of Tongatapu.",
+        "Geography": "Hunga Tonga-Hunga Ha’apai is a volcanic landform located along the Tonga segment of the Tonga-Kermadec intra-oceanic arc in the Pacific Ocean, a subduction system extending 2,550 km between New Zealand and Tonga where the Pacific Plate subducts beneath the Indo-Australian Plate. The volcano is a mostly submerged colossus standing over 1.8 km high and extending 20 km across the seafloor, topped by a 5 km wide caldera. The islands of Hunga Tonga and Hunga Ha’apai represent the emerged ends of this caldera, which were conjoined in 2014 by tephra from a volcanic cone to form a single landmass. Geographically, the site is situated approximately 310 miles southeast of Fiji and between 994 and 1,243 miles from New Zealand. The region serves as a terrestrial analog for studying morphological erosion and landform evolution similar to features observed on Mars.",
+        "Eruptions": "The Hunga Tonga–Hunga Haʻapai submarine volcano erupted on 15 January 2022, producing a vertical plume that reached heights of 58 km and creating a 15-meter tsunami. This event released between 10 and 28 exajoules of energy, making it the largest recorded eruption in 30 years and potentially comparable to the 1883 Krakatoa eruption. The eruption injected between 0.5 and 1.5 metric megatons of sulfur dioxide and vast quantities of water vapor into the stratosphere, causing a global decrease in radiative flux of less than 0.25 watt per square meter. While the volcanic aerosols caused a brief cooling effect in the Southern Hemisphere during 2022 and 2023, the warming from trapped water vapor was also present, though most atmospheric effects dissipated by the end of 2023. The 1991 eruption of Mount Pinatubo released significantly more sulfur dioxide at 20 metric megatons, leading to more substantial global cooling than the Hunga event. Data from the eruption, including a sonic boom that circled the globe twice, has been used to improve weather and climate models and create sonifications of wind data.",
+        "Footnotes": "The source documents contain several bibliographic references and citations including Proudman J (1929) regarding the effects on the sea of changes in atmospheric pressure published in Geophy Suppl Monthly Notices Royal Astr Soc, Risk Frontiers (2022a) Brief Note 458 on the Hunga Tonga-Hunga Ha'apai Eruption, Risk Frontiers (2022b) Brief Note 460 concerning the early arrival of the Tonga tsunami, a Radio New Zealand (2022) report on the eruption's scale, and Sekizawa S and Kohyama T (2022) regarding meteotsunamis observed in Japan published in Sci Online Lett Atmos."
+    },
+    "plan_path": "logs/agent2_plans/Hunga Tonga–Hunga Haʻapai_plan_20260509_171703.json",
+    "created_at": "20260509_171703"
+}

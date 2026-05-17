@@ -1,0 +1,29 @@
+{
+    "status": "success",
+    "island": "Jethou",
+    "order": [
+        "History",
+        "Governance",
+        "Wildlife",
+        "Jethou in popular culture"
+    ],
+    "dependency": {
+        "History": [],
+        "Governance": [
+            "History"
+        ],
+        "Wildlife": [
+            "History",
+            "Governance"
+        ],
+        "Jethou in popular culture": []
+    },
+    "summaries": {
+        "History": "The history of the Channel Islands involves the spread of civilization across land and sea, with Guernsey, Herm, and Sark serving as constant visual presences for prehistoric seafaring peoples. Palaeogeographic models track the evolution of the islands from 9000 BC to 4000 BC, a period marked by eustatic sea-level rise. Archaeological evidence from the Neolithic and Bronze Age includes funerary monuments, menhirs, polished stone rings, and pottery, alongside distributions of flint scrapers, transverse arrowheads, and stone axes. Historical maritime activity is noted through the navigation of granite formations like La Fauconnaire and the shipwreck of vessels such as the Kittywich, which ran aground on Jethou during a fog while returning from a Spanish port with cargo of cork and hemp.",
+        "Governance": "The States of Guernsey adopted the first Biodiversity Strategy in 2014 to guide conservation efforts across the islands of Guernsey, Lihou, Herm, Jethou, and The Humps. Governance of the natural environment involves collaboration between government, industry, the third sector, and the general public to manage habitats and species. Guernsey is a signatory to the Ramsar Convention on Wetlands of International Importance, under which Herm, Jethou, and The Humps are designated as a protected Ramsar site. Additionally, the Island Development Plan provides legal protection for Sites of Special Significance (SSS) based on their archaeological, botanical, geological, scientific, cultural, or zoological importance. Government actions are integrated with those of non-governmental organizations and international conventions to establish benchmarks for environmental status and prioritize species based on local population trends and international agreements.",
+        "Wildlife": "Jethou and the surrounding Humps are part of a Ramsar site designated in 2015 as a wetland of international importance supporting diverse habitats such as eelgrass beds and maerl gravel. This shallow marine ecosystem serves as a spawning and nursery ground for European sea bass and Atlantic mackerel while hosting globally threatened species including the green ormer and Balearic shearwater. The area is home to Atlantic grey seals, basking sharks, Black Sea bream, and nine species of birds including the puffin. The groundwater invertebrate fauna of the Channel Islands and the presence of the hoverfly Scaeva pyrastri on the south coast of Jethou further characterize the local biodiversity. Management plans for Herm, Jethou, and the Humps focus on preserving these ecosystems which are influenced by an exceptionally large tidal range of up to 10 metres.",
+        "Jethou in popular culture": "No relevant information regarding Jethou in popular culture is available."
+    },
+    "plan_path": "logs/agent2_plans/Jethou_plan_20260509_171831.json",
+    "created_at": "20260509_171831"
+}

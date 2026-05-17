@@ -1,0 +1,29 @@
+{
+    "status": "success",
+    "island": "Jethou",
+    "order": [
+        "History",
+        "Governance",
+        "Wildlife",
+        "Jethou in popular culture"
+    ],
+    "dependency": {
+        "History": [],
+        "Governance": [
+            "History"
+        ],
+        "Wildlife": [
+            "History",
+            "Governance"
+        ],
+        "Jethou in popular culture": []
+    },
+    "summaries": {
+        "History": "The Channel Islands, including Guernsey, Herm, Sark, and Jethou, have a prehistoric history tied to sea-going peoples who were drawn to the islands as a constant visual presence from the north-west coast of Jersey and the Cotentin peninsula, with palaeogeographic models tracing the region's development from 9000 BC to 4000 BC, during which eustatic sea-level rise significantly altered the landscape. Archaeological evidence from Guernsey includes funerary monuments, menhirs, Neolithic and Bronze Age pottery, polished stone rings likely made of schist, axes, stone rings, and artefacts of flint and stone including scrapers, transverse arrowheads, and cores made from local beach pebble flint. The geology of Guernsey, adapted from Roach et al. 1991, and its topography at mean sea-level have been documented, providing context for understanding prehistoric settlement and movement across the islands. Historical accounts also reference Jethou, a granite island featuring the large pyramidal rock formation known as La Fauconnaire, nearly two hundred feet high and surmounted by a fifteen-foot white stone beacon, accessible at low water via a causeway of rocks but impassable at half-tide except by boat, with the island's dangerous granite shores noted as a hazard to ships, including a vessel that ran aground on Jethou during a dense fog after returning from a Spanish port carrying cork and hemp.",
+        "Governance": "Guernsey is signed up to the Ramsar Convention on Wetlands of International Importance and has 2 designated Ramsar sites: Lihou Island and L'Erée Headland, and Herm, Jethou and The Humps. Guernsey's first Biodiversity Strategy was adopted by the States of Guernsey in 2014. Herm, Jethou and The Humps were designated under this framework, with Sites of Special Significance (SSS) being designated areas afforded protection within the Island Development Plan in recognition of their archaeological, botanical, geological, scientific, cultural, zoological or other qualities. The State of Nature report was produced to provide information on the state of habitats and species on the islands of Guernsey, Lihou, Herm, Jethou and The Humps, intended to guide conservation efforts by government, industry, the third sector, businesses, and the general public. Priority Species are assessed based on local status including population size, rarity, trends and distribution, and inclusion in international conventions. The Guernsey Conservation Herd was established under La Société Guernesiaise, as was Guernsey Seasearch, with governance actions categorized by actor type: government actions, NGO actions, national/international actions, and collaborative actions.",
+        "Wildlife": "The Herm, Jethou and The Humps Ramsar site was designated in 2015 as a wetland of international importance spanning 1,850 hectares of shallow marine ecosystems, including surrounding reefs, shipwrecks, and seabeds, with an exceptionally large tidal range of up to 10 metres. The area supports diverse habitats such as eelgrass (Zostera) beds and maerl gravel, serving as spawning and nursery grounds for fish like European sea bass (Dicentrarchus labrax) and Atlantic mackerel (Scomber scombrus). The site hosts globally threatened species including the green ormer (Haliotis tuberculata), Balearic shearwater (Puffinus mauretanicus), and marine mammals such as Atlantic grey seals and basking sharks, as well as Black Sea bream and nine species of bird including the puffin. Wildlife and puffin-spotting trips in the area are offered by Island Rib Voyages and Outdoor Guernsey, with further information available at herm.com. The Gouliot Headland on the west coast of Sark, as well as La Moie, also represent notable wildlife areas within the Channel Islands region.",
+        "Jethou in popular culture": "No relevant information regarding Jethou in popular culture is available."
+    },
+    "plan_path": "logs/agent2_plans/Jethou_plan_20260509_145337.json",
+    "created_at": "20260509_145337"
+}

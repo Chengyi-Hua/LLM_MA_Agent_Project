@@ -1,0 +1,91 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+main,,,,,Brecqhou,Citation and verifiability,Citation coverage failure,,4,3,14,0.214286,1,0.071429,2,0.142857,0,0.000000,2,2,0
+main,,,,,Brecqhou,Citation and verifiability,Citation support failure,,6,5,14,0.357143,1,0.071429,4,0.285714,0,0.000000,2,4,0
+main,,,,,Brecqhou,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Brecqhou,Content quality,Content omission,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Brecqhou,Content quality,Content organization error,,1,1,14,0.071429,1,0.071429,0,0.000000,0,0.000000,1,0,0
+main,,,,,Brecqhou,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Brecqhou,Content quality,Content substitution,,14,14,14,1.000000,3,0.214286,11,0.785714,0,0.000000,3,11,0
+main,,,,,Brecqhou,Planning and graph,Graph coherence failure,,4,4,14,0.285714,0,0.000000,4,0.285714,0,0.000000,0,4,0
+main,,,,,Brecqhou,Writing quality,Writing error,,2,1,14,0.071429,1,0.071429,1,0.071429,0,0.000000,1,1,0
+main,,,,,Hashima Island,Citation and verifiability,Citation coverage failure,,16,14,14,1.000000,8,0.571429,6,0.428571,0,0.000000,9,7,0
+main,,,,,Hashima Island,Citation and verifiability,Citation support failure,,28,14,14,1.000000,14,1.000000,6,0.428571,0,0.000000,22,6,0
+main,,,,,Hashima Island,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hashima Island,Content quality,Content omission,,3,2,14,0.142857,1,0.071429,1,0.071429,0,0.000000,2,1,0
+main,,,,,Hashima Island,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hashima Island,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hashima Island,Content quality,Content substitution,,6,6,14,0.428571,0,0.000000,6,0.428571,0,0.000000,0,6,0
+main,,,,,Hashima Island,Planning and graph,Graph coherence failure,,8,8,14,0.571429,0,0.000000,8,0.571429,0,0.000000,0,8,0
+main,,,,,Hashima Island,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Howland Island,Citation and verifiability,Citation coverage failure,,15,12,14,0.857143,4,0.285714,9,0.642857,0,0.000000,5,10,0
+main,,,,,Howland Island,Citation and verifiability,Citation support failure,,14,8,14,0.571429,3,0.214286,5,0.357143,0,0.000000,6,8,0
+main,,,,,Howland Island,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Howland Island,Content quality,Content omission,,5,3,14,0.214286,0,0.000000,3,0.214286,0,0.000000,0,5,0
+main,,,,,Howland Island,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Howland Island,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Howland Island,Content quality,Content substitution,,12,12,14,0.857143,0,0.000000,12,0.857143,0,0.000000,0,12,0
+main,,,,,Howland Island,Planning and graph,Graph coherence failure,,11,11,14,0.785714,6,0.428571,5,0.357143,0,0.000000,6,5,0
+main,,,,,Howland Island,Writing quality,Writing error,,3,1,14,0.071429,1,0.071429,0,0.000000,0,0.000000,3,0,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Citation and verifiability,Citation coverage failure,,18,12,14,0.857143,5,0.357143,10,0.714286,0,0.000000,6,12,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Citation and verifiability,Citation support failure,,19,11,14,0.785714,6,0.428571,5,0.357143,0,0.000000,10,9,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Content quality,Content omission,,5,3,14,0.214286,1,0.071429,2,0.142857,0,0.000000,2,3,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Content quality,Content substitution,,10,10,14,0.714286,0,0.000000,10,0.714286,0,0.000000,0,10,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Planning and graph,Graph coherence failure,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Hunga Tonga–Hunga Haʻapai,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jarvis Island,Citation and verifiability,Citation coverage failure,,24,13,14,0.928571,12,0.857143,8,0.571429,0,0.000000,16,8,0
+main,,,,,Jarvis Island,Citation and verifiability,Citation support failure,,23,13,14,0.928571,10,0.714286,4,0.285714,0,0.000000,18,5,0
+main,,,,,Jarvis Island,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jarvis Island,Content quality,Content omission,,1,1,14,0.071429,0,0.000000,1,0.071429,0,0.000000,0,1,0
+main,,,,,Jarvis Island,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jarvis Island,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jarvis Island,Content quality,Content substitution,,12,12,14,0.857143,0,0.000000,12,0.857143,0,0.000000,0,12,0
+main,,,,,Jarvis Island,Planning and graph,Graph coherence failure,,6,6,14,0.428571,1,0.071429,5,0.357143,0,0.000000,1,5,0
+main,,,,,Jarvis Island,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jethou,Citation and verifiability,Citation coverage failure,,15,12,14,0.857143,10,0.714286,2,0.142857,0,0.000000,11,4,0
+main,,,,,Jethou,Citation and verifiability,Citation support failure,,25,14,14,1.000000,13,0.928571,2,0.142857,0,0.000000,23,2,0
+main,,,,,Jethou,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jethou,Content quality,Content omission,,3,3,14,0.214286,3,0.214286,0,0.000000,0,0.000000,3,0,0
+main,,,,,Jethou,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jethou,Content quality,Content quality error,,2,2,14,0.142857,0,0.000000,2,0.142857,0,0.000000,0,2,0
+main,,,,,Jethou,Content quality,Content substitution,,13,13,14,0.928571,3,0.214286,10,0.714286,0,0.000000,3,10,0
+main,,,,,Jethou,Planning and graph,Graph coherence failure,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Jethou,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Kavachi,Citation and verifiability,Citation coverage failure,,8,7,14,0.500000,7,0.500000,0,0.000000,0,0.000000,8,0,0
+main,,,,,Kavachi,Citation and verifiability,Citation support failure,,20,13,14,0.928571,9,0.642857,4,0.285714,0,0.000000,16,4,0
+main,,,,,Kavachi,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Kavachi,Content quality,Content omission,,2,2,14,0.142857,1,0.071429,1,0.071429,0,0.000000,1,1,0
+main,,,,,Kavachi,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Kavachi,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Kavachi,Content quality,Content substitution,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Kavachi,Planning and graph,Graph coherence failure,,3,3,14,0.214286,1,0.071429,2,0.142857,0,0.000000,1,2,0
+main,,,,,Kavachi,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Nishinoshima (Ogasawara),Citation and verifiability,Citation coverage failure,,7,6,14,0.428571,5,0.357143,1,0.071429,0,0.000000,6,1,0
+main,,,,,Nishinoshima (Ogasawara),Citation and verifiability,Citation support failure,,18,12,14,0.857143,9,0.642857,4,0.285714,0,0.000000,14,4,0
+main,,,,,Nishinoshima (Ogasawara),Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Nishinoshima (Ogasawara),Content quality,Content omission,,28,14,14,1.000000,10,0.714286,5,0.357143,0,0.000000,20,8,0
+main,,,,,Nishinoshima (Ogasawara),Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Nishinoshima (Ogasawara),Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Nishinoshima (Ogasawara),Content quality,Content substitution,,5,5,14,0.357143,0,0.000000,5,0.357143,0,0.000000,0,5,0
+main,,,,,Nishinoshima (Ogasawara),Planning and graph,Graph coherence failure,,2,2,14,0.142857,0,0.000000,2,0.142857,0,0.000000,0,2,0
+main,,,,,Nishinoshima (Ogasawara),Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Surtsey,Citation and verifiability,Citation coverage failure,,4,3,14,0.214286,3,0.214286,0,0.000000,0,0.000000,4,0,0
+main,,,,,Surtsey,Citation and verifiability,Citation support failure,,7,4,14,0.285714,4,0.285714,0,0.000000,0,0.000000,7,0,0
+main,,,,,Surtsey,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Surtsey,Content quality,Content omission,,23,12,14,0.857143,2,0.142857,12,0.857143,0,0.000000,2,21,0
+main,,,,,Surtsey,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Surtsey,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Surtsey,Content quality,Content substitution,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Surtsey,Planning and graph,Graph coherence failure,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Surtsey,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Tromelin Island,Citation and verifiability,Citation coverage failure,,5,4,14,0.285714,3,0.214286,1,0.071429,0,0.000000,4,1,0
+main,,,,,Tromelin Island,Citation and verifiability,Citation support failure,,19,10,14,0.714286,6,0.428571,7,0.500000,0,0.000000,9,10,0
+main,,,,,Tromelin Island,Content quality,Content addition,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Tromelin Island,Content quality,Content omission,,4,3,14,0.214286,1,0.071429,2,0.142857,0,0.000000,2,2,0
+main,,,,,Tromelin Island,Content quality,Content organization error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Tromelin Island,Content quality,Content quality error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,,Tromelin Island,Content quality,Content substitution,,5,5,14,0.357143,0,0.000000,5,0.357143,0,0.000000,0,5,0
+main,,,,,Tromelin Island,Planning and graph,Graph coherence failure,,10,10,14,0.714286,4,0.285714,6,0.428571,0,0.000000,4,6,0
+main,,,,,Tromelin Island,Writing quality,Writing error,,0,0,14,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0

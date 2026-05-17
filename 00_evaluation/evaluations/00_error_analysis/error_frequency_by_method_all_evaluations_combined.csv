@@ -1,0 +1,34 @@
+threshold_setting,comparison_label,variant_name,variant_type,method,island_name,error_family,error_class,error_subclass,total_error_instances,affected_outputs,total_outputs_in_group,percentage_of_outputs,high_severity_affected_outputs,high_severity_percentage_of_outputs,medium_severity_affected_outputs,medium_severity_percentage_of_outputs,low_severity_affected_outputs,low_severity_percentage_of_outputs,high_severity_count,medium_severity_count,low_severity_count
+main,,,,method0,,Citation and verifiability,Citation coverage failure,,20,10,10,1.000000,10,1.000000,0,0.000000,0,0.000000,20,0,0
+main,,,,method0,,Citation and verifiability,Citation support failure,,20,10,10,1.000000,10,1.000000,0,0.000000,0,0.000000,20,0,0
+main,,,,method0,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method0,,Content quality,Content omission,,2,2,10,0.200000,1,0.100000,1,0.100000,0,0.000000,1,1,0
+main,,,,method0,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method0,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method0,,Content quality,Content substitution,,1,1,10,0.100000,1,0.100000,0,0.000000,0,0.000000,1,0,0
+main,,,,method0,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method1,,Citation and verifiability,Citation coverage failure,,7,6,10,0.600000,2,0.200000,4,0.400000,0,0.000000,2,5,0
+main,,,,method1,,Citation and verifiability,Citation support failure,,12,7,10,0.700000,3,0.300000,5,0.500000,0,0.000000,5,7,0
+main,,,,method1,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method1,,Content quality,Content omission,,13,7,10,0.700000,4,0.400000,4,0.400000,0,0.000000,7,6,0
+main,,,,method1,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method1,,Content quality,Content quality error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method1,,Content quality,Content substitution,,8,8,10,0.800000,0,0.000000,8,0.800000,0,0.000000,0,8,0
+main,,,,method1,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Citation and verifiability,Citation coverage failure,,7,6,10,0.600000,3,0.300000,3,0.300000,0,0.000000,4,3,0
+main,,,,method2,,Citation and verifiability,Citation support failure,,12,7,10,0.700000,5,0.500000,3,0.300000,0,0.000000,8,4,0
+main,,,,method2,,Content quality,Content addition,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Content quality,Content omission,,5,3,10,0.300000,2,0.200000,1,0.100000,0,0.000000,3,2,0
+main,,,,method2,,Content quality,Content organization error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method2,,Content quality,Content quality error,,1,1,10,0.100000,0,0.000000,1,0.100000,0,0.000000,0,1,0
+main,,,,method2,,Content quality,Content substitution,,7,7,10,0.700000,1,0.100000,6,0.600000,0,0.000000,1,6,0
+main,,,,method2,,Writing quality,Writing error,,0,0,10,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method3,,Citation and verifiability,Citation coverage failure,,82,64,110,0.581818,43,0.390909,32,0.290909,0,0.000000,45,37,0
+main,,,,method3,,Citation and verifiability,Citation support failure,,135,80,110,0.727273,57,0.518182,33,0.300000,0,0.000000,94,41,0
+main,,,,method3,,Content quality,Content addition,,0,0,110,0.000000,0,0.000000,0,0.000000,0,0.000000,0,0,0
+main,,,,method3,,Content quality,Content omission,,54,31,110,0.281818,12,0.109091,21,0.190909,0,0.000000,21,33,0
+main,,,,method3,,Content quality,Content organization error,,1,1,110,0.009091,1,0.009091,0,0.000000,0,0.000000,1,0,0
+main,,,,method3,,Content quality,Content quality error,,1,1,110,0.009091,0,0.000000,1,0.009091,0,0.000000,0,1,0
+main,,,,method3,,Content quality,Content substitution,,61,61,110,0.554545,4,0.036364,57,0.518182,0,0.000000,4,57,0
+main,,,,method3,,Planning and graph,Graph coherence failure,,44,44,110,0.400000,12,0.109091,32,0.290909,0,0.000000,12,32,0
+main,,,,method3,,Writing quality,Writing error,,5,2,110,0.018182,2,0.018182,1,0.009091,0,0.000000,4,1,0

@@ -1,0 +1,35 @@
+{
+    "status": "success",
+    "island": "Tromelin Island",
+    "order": [
+        "Etymology",
+        "Description",
+        "Fauna and flora",
+        "History",
+        "Climate"
+    ],
+    "dependency": {
+        "Etymology": [],
+        "Description": [],
+        "Fauna and flora": [
+            "Description"
+        ],
+        "History": [
+            "Description",
+            "Fauna and flora",
+            "Etymology"
+        ],
+        "Climate": [
+            "Etymology"
+        ]
+    },
+    "summaries": {
+        "Etymology": "No relevant information regarding Etymology is available.",
+        "Description": "Tromelin Island is a small, remote French possession located in the southwest Indian Ocean approximately 580 kilometres north of Mauritius. The island measures about 1.7 kilometres long by 700 metres wide, with its highest point only 7 metres above sea level. It consists primarily of a low-lying coral sandbank topped with sparse vegetation, constantly reshaped by waves, cyclones, and winds. Tromelin serves as a critical nesting ground for seabirds like red-footed boobies and green sea turtles, but its ecosystem faces threats from invasive rats and devastating cyclones. The island has no freshwater source, no permanent population, no economic activity, with access severely restricted due to its hazardous surroundings.",
+        "Fauna and flora": "Tromelin Island historically supported 6–8 seabird species in large numbers and native plants primarily consisting of the littoral shrub Tournefortia argentea and fewer than 10 herbaceous species. Invasive Norway rats severely suppressed this fauna and flora, reducing breeding seabirds to only two booby species by 2005 and decimating native vegetation. Following rat eradication in 2005, the ecosystem recovered with seven seabird species breeding by 2022 and native plants regrowing. The island's fauna is dominated by seabirds, including the endemic subspecies masked booby, and nesting green sea turtles, with no native terrestrial mammals, reptiles, or amphibians. The flora is characterized by sparse, salt-tolerant vegetation adapted to the harsh atoll conditions.",
+        "History": "The documentary \"Tromelin, the Island of Forgotten Slaves\" directed by Daniel Vigne provides a detailed account of the events. Reports by Max Guérout detail the living conditions on Tromelin. A Slate article explores the memorial and political dimensions of Tromelin as a historical symbol. Daniela Gariglio's analysis examines survival and human adaptability in extreme conditions on a desert island.",
+        "Climate": "No relevant information regarding Climate is available."
+    },
+    "plan_path": "logs/agent2_plans/Tromelin Island_plan_20260509_164859.json",
+    "created_at": "20260509_164859"
+}

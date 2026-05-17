@@ -1,0 +1,49 @@
+{
+    "status": "success",
+    "island": "Howland Island",
+    "order": [
+        "Flora and fauna",
+        "Economics",
+        "Time zone",
+        "History",
+        "National Wildlife Refuge",
+        "Earhart Light",
+        "Image gallery"
+    ],
+    "dependency": {
+        "Flora and fauna": [],
+        "Economics": [
+            "Flora and fauna"
+        ],
+        "Time zone": [],
+        "History": [
+            "Time zone",
+            "Flora and fauna"
+        ],
+        "National Wildlife Refuge": [
+            "History"
+        ],
+        "Earhart Light": [
+            "Time zone",
+            "History",
+            "National Wildlife Refuge"
+        ],
+        "Image gallery": [
+            "Flora and fauna",
+            "History",
+            "National Wildlife Refuge",
+            "Earhart Light"
+        ]
+    },
+    "summaries": {
+        "Flora and fauna": "",
+        "Economics": "The main elements of the Federated States of Micronesia economy include subsistence farming, local fishing, leasing fishing rights, servicing fishing fleets, government employment, and tourism. Tourism holds potential for near-term income generation due to the islands' natural and marine beauty, though larger-scale investment faces challenges from limited air transportation, land-use issues, and competition from other island destinations. The ocean serves as the nation's most critical economic resource, generating between $18 million and $24 million annually through licensing fees paid by foreign vessels for tuna fishing within the country's exclusive economic zone.",
+        "Time zone": "Howland and Baker Islands are situated in the UTC-12:00 time zone, corresponding to the nautical letter Y (Yankee), and are also referenced as being in the IDLW time zone on the Western Hemisphere side of the International Date Line.",
+        "History": "Howland Island was discovered in 1791 by American sailor Edmund Fanning, with the first recorded sighting occurring in 1822 by Nantucket whaling captain George Worth, who initially named it Worth Island. In 1842, an American whaling vessel visited and renamed it Howland Island after its lookout. The United States claimed the territory in 1857 under the Guano Act of 1856, prompting organic nitrate mining by American and British operations prior to 1890. The island was colonized from Hawaii in 1935 and gained aviation notoriety in 1937 when Amelia Earhart attempted to land there during her global flight but disappeared. During World War II, it functioned as a U.S. military observation post before ultimately being designated as a strict nature reserve and integrated into the U.S. National Wildlife Refuge system.",
+        "National Wildlife Refuge": "Howland Island is an unincorporated United States territory that functions as part of the U.S. National Wildlife Refuge system and was designated as part of the Pacific Remote Islands Marine National Monument in 2009. Operating strictly as a nature reserve without economic or industrial activities, the refuge provides critical nesting areas and forage for migratory seabirds, shorebirds, threatened and endangered sea turtles, and diverse marine wildlife. The island's conservation status supports scientific research and ecological monitoring aimed at protecting coral reef ecosystems and unique avian species, with its management focused entirely on environmental preservation rather than commercial exploitation.",
+        "Earhart Light": "The Earhart Light is a historic navigational beacon located on Howland Island, a remote uninhabited coral atoll in the central Pacific Ocean. Constructed in 1937, the small lighthouse was specifically built to serve as a visual guide and refueling marker for Amelia Earhart's attempted transpacific flight, though she never reached the island and is believed to have crashed in nearby waters. The beacon's operational life was cut short during World War II when Japanese aircraft bombed Howland Island in 1941, rendering the structure useless and leading to its deactivation in 1942. Today, the ruins of the light remain on the island, which is managed as a National Wildlife Refuge, and the structure is currently classified as an inactive day beacon that has only been visited occasionally for minor restoration and historical commemoration.",
+        "Image gallery": "The image gallery for Howland Island features a digital photograph designated ISS010-E-09287, captured on December 3, 2004, by an Expedition 10 crewmember aboard the International Space Station. The image, titled View of Howland Island, was taken using a Kodak DCS760c Electronic Still Camera with an 800 mm focal length from an altitude of 192 nautical miles (356 km) with a 10% cloud cover. Sourced from the JSC Gateway to Astronaut Photography of Earth and authored by the Earth Science and Remote Sensing Unit at the Lyndon B. Johnson Space Center, the photograph documents the island's coral composition and surrounding active fringing reef, with white breakers indicating the reef's position. High-resolution imagery like this is utilized in a global mapping and monitoring program to update geographic maps, assess reef ecosystem health, and calculate the bathymetry of the surrounding ocean floor."
+    },
+    "plan_path": "logs/agent2_plans/Howland Island_plan_20260509_193458.json",
+    "created_at": "20260509_193458"
+}
